@@ -1,0 +1,69 @@
+@font-face {
+  font-family: "Emblema One";
+  src: url(/src/vendor/Emblema_One/EmblemaOne-Regular.ttf);
+}
+
+@font-face {
+  font-family: "Konkhmer Sleokchher";
+  src: url(/src/vendor/konkhmer-sleokchher_5.2.6/webfonts/konkhmer-sleokchher-khmer-400-normal.woff);
+}
+
+a:link {
+  display: flex;
+  text-decoration: none;
+}
+
+.header {
+  background-color: #ffffff;
+}
+
+.header-nav-bar {
+  padding: 20px 70px 0;
+  height: 72px;
+  width: auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.header-nav-bar__logo-container {
+  width: 273px;
+  height: 38px;
+}
+
+.header-nav-bar__icon {
+  width: 43px;
+  height: 38px;
+}
+
+.header-nav-bar__name {
+  margin: 0;
+  width: 233px;
+  height: 30px;
+  line-height: 30px;
+  font-size: 28px;
+  font-family: Emblema One;
+  color: #000000;
+}
+
+.header-nav-bar__account-container {
+  padding: 0 33px 17px 0;
+  display: flex;
+  column-gap: 48.5px;
+}
+
+.header-nav-bar__login {
+  margin: 0;
+  font-family: Konkhmer Sleokchher;
+  color: #000000;
+  font-weight: 400;
+  font-size: 15px;
+}
+
+.header-nav-bar__signUp {
+  margin: 0;
+  font-family: Konkhmer Sleokchher;
+  color: #4fc2f8;
+  font-weight: 400;
+  font-size: 15px;
+}

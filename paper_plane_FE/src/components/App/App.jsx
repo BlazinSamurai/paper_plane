@@ -10,7 +10,9 @@ function App() {
 
   return (
     <div className="page">
-      <div className="page_content"></div>
+      <div className="page_content">
+        <Header></Header>
+      </div>
     </div>
   );
 }
