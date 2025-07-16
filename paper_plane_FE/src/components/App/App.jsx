@@ -1,17 +1,16 @@
 import { useState } from "react";
-import paperPlane from "../../assets/blue_pp_icon.png";
 
 import "./App.css";
 
 import Header from "../Header/Header";
+import Mapbox from "../../utils/mapBoxApi";
 
 function App() {
-  const [count, setCount] = useState(0);
-
   return (
     <div className="page">
       <div className="page_content">
         <Header></Header>
+        <Mapbox></Mapbox>
       </div>
     </div>
   );
