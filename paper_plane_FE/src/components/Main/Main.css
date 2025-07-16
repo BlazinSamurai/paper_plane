@@ -1,0 +1,9 @@
+.main {
+  background: linear-gradient(
+    transparent 0px,
+    #1b2d51 190px,
+    #1b2d51,
+    transparent
+  );
+  height: 1000px;
+}

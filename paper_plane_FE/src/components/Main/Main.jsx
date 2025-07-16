@@ -2,8 +2,16 @@ import "./Main.css";
 
 import { useContext } from "react";
 
+import Mapbox from "../../utils/mapBoxApi";
+
 function Main() {
-  return <main></main>;
+  return (
+    <main className="main">
+      <h2 className="main__title">Take your travel plans from</h2>
+      <h2 className="main__title main__title-white">TEXT TO TAKEOFF</h2>
+      <Mapbox></Mapbox>
+    </main>
+  );
 }
 
 export default Main;

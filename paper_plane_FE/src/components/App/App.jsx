@@ -3,6 +3,7 @@ import { useState } from "react";
 import "./App.css";
 
 import Header from "../Header/Header";
+import Main from "../Main/Main";
 import Mapbox from "../../utils/mapBoxApi";
 
 function App() {
@@ -10,7 +11,7 @@ function App() {
     <div className="page">
       <div className="page_content">
         <Header></Header>
-        <Mapbox></Mapbox>
+        <Main></Main>
       </div>
     </div>
   );
