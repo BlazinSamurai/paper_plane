@@ -84,7 +84,7 @@ function Mapbox() {
 
   return (
     <div
-      style={{ height: "300px", maxWidth: "100vw", top: "130px" }}
+      style={{ height: "300px", maxWidth: "100vw", top: "-185px" }}
       ref={mapContainerRef}
       className="map-container"
     />

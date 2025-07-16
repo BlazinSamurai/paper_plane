@@ -9,6 +9,7 @@ function Main() {
     <main className="main">
       <h2 className="main__title">Take your travel plans from</h2>
       <h2 className="main__title main__title-white">TEXT TO TAKEOFF</h2>
+      <div className="main__cloud"></div>
       <Mapbox></Mapbox>
     </main>
   );

@@ -1,9 +1,45 @@
+@font-face {
+  font-family: "Konkhmer Sleokchher";
+  src: url(/src/vendor/konkhmer-sleokchher_5.2.6/webfonts/konkhmer-sleokchher-khmer-400-normal.woff);
+}
+
 .main {
-  background: linear-gradient(
-    transparent 0px,
-    #1b2d51 190px,
-    #1b2d51,
-    transparent
-  );
-  height: 1000px;
+  background: linear-gradient(#ffffff 8px, #010c1b 500px, #010c1b, #ffffff);
+  position: relative;
+}
+
+.main__title {
+  position: relative;
+  z-index: 5;
+  padding: 0 70px 0;
+  margin: 0;
+  font-family: Konkhmer Sleokchher;
+  color: #000;
+  max-width: 1300px;
+  min-width: 300px;
+  height: 56px;
+  font-size: 35px;
+  text-align: center;
+  line-height: 50px;
+}
+
+.main__title-white {
+  color: #fff;
+  height: 142px;
+  font-size: 88px;
+  line-height: 150px;
+  text-shadow: -8px 7px 11px #000;
+}
+
+.main__cloud {
+  position: relative;
+  top: -204px;
+  z-index: 4;
+  background-image: url("../../Clouds/cloudBody.svg");
+  background-size: 100%;
+  width: auto;
+  height: 981px;
+  background-position: center;
+  background-repeat: no-repeat;
+  overflow: visible;
 }
