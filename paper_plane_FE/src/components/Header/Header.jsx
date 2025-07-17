@@ -1,27 +1,46 @@
+import { useContext, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 
 import "./Header.css";
 
-import logo from "../../assets/blue_pp_icon.png";
+import logo from "../../images/blue_pp_icon.svg";
 
-function Header() {
+function Header({ isOpen, openLoginModal, openSignupModal, closeActiveModal }) {
   return (
     <header className="header">
-      <div className="header-nav-bar">
-        <div className="header-nav-bar__logo-container">
-          <Link to={"/"}>
+      <Link to={"/"}>
+        <button onClick={closeActiveModal} type="button">
+          {" "}
+          <div className="header-nav-bar__logo-container">
             <img src={logo} alt="Logo" className="header-nav-bar__icon" />
             <h1 className="header-nav-bar__name">Paper Plane</h1>
-          </Link>
-        </div>
-        <div className="header-nav-bar__account-container">
-          <Link to={"/login"}>
+          </div>
+        </button>
+      </Link>
+      <div
+        className={
+          `${isOpen && "header-nav-bar__no-container"}` ||
+          "header-nav-bar__account-container"
+        }
+      >
+        <Link to={"/login"}>
+          <button
+            onClick={openLoginModal}
+            type="button"
+            className="header__login-btn"
+          >
             <h2 className="header-nav-bar__login">Login</h2>
-          </Link>
-          <Link to={"/signup"}>
+          </button>
+        </Link>
+        <Link to={"/signup"}>
+          <button
+            onClick={openSignupModal}
+            type="button"
+            className="header__signup-btn"
+          >
             <h2 className="header-nav-bar__signUp">Free Sign up!</h2>
-          </Link>
-        </div>
+          </button>
+        </Link>
       </div>
     </header>
   );

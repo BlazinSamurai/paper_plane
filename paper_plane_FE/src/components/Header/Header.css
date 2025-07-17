@@ -13,11 +13,14 @@ a:link {
   text-decoration: none;
 }
 
-.header {
-  background-color: #ffffff;
+button {
+  border: none;
+  background: none;
+  padding: 0;
 }
 
-.header-nav-bar {
+.header {
+  background-color: #ffffff;
   padding: 20px 70px 0;
   height: 72px;
   width: auto;
@@ -29,6 +32,7 @@ a:link {
 .header-nav-bar__logo-container {
   width: 273px;
   height: 38px;
+  display: flex;
 }
 
 .header-nav-bar__icon {
@@ -46,7 +50,12 @@ a:link {
   color: #000000;
 }
 
+.header-nav-bar__no-container {
+  visibility: hidden;
+}
+
 .header-nav-bar__account-container {
+  visibility: visible;
   padding: 0 33px 17px 0;
   display: flex;
   column-gap: 48.5px;
