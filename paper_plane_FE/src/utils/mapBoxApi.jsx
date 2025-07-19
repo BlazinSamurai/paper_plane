@@ -27,9 +27,9 @@ function Mapbox() {
       .setLngLat([12.65147, 55.608166])
       .addTo(mapRef.current);
 
-    mapRef.current.on("style.load", () => {
-      mapRef.current.setFog({});
-    });
+    // mapRef.current.on("style.load", () => {
+    //   mapRef.current.setFog({});
+    // });
 
     const secondsPerRevolution = 120;
     const maxSpinZoom = 5;
