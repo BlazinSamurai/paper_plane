@@ -1,32 +1,68 @@
 import React, { useState, useEffect } from "react";
 
+import cloudBG from "../../images/Clouds/singleMCloud.svg";
+
 import "./ModalWithForm.css";
 
-function ModalWithForm({ isOpen, title }) {
-  const [modal, setModal] = useState("");
-  // This const is used to check if the login or signup modal are opened
-  const [newTrip, setNewTrip] = useState("");
+function ModalWithForm({
+  isOpen,
+  sideBarTitle,
+  sideBarText,
+  formTitle,
+  children,
+  buttonText,
+}) {
+  const [modal, setModal] = useState(isOpen);
+  // This const is used to check if the login or signup modal are
+  // opened
+  const [newTrip, setNewTrip] = useState(Boolean);
 
   useEffect(() => {
-    if (isOpen === "signUp" || "login") {
+    if (modal === "signup" || "login") {
       setNewTrip(false);
-    }
-  });
+    } else setNewTrip(true);
+  }, [modal]);
 
-  // Dependency array: effect re-runs when isOpen changes
-  useEffect(() => {
-    setModal(isOpen);
-  }, [isOpen]);
-
-  console.log(`isOpen from modalWForm: ${modal}.`);
+  // console.log(`isOpen from modalWForm: ${modal}.`);
+  // console.log(`newTrip: ${newTrip}.`);
   return (
     <div>
       {!newTrip ? (
-        <div className="modal__background">
-          <h2 className="modal__title">{title}</h2>
+        <div className="modal__whole-page">
+          <div className="modal__background-gradient">
+            <img
+              src={cloudBG}
+              alt="Cloud Background"
+              className="modal__background-image"
+            />
+            <div className="modal__backdrop"></div>
+            <div className="modal__form-container">
+              <div className="modal__sideBar">
+                <h2 className="modal__sideBar-title">{sideBarTitle}</h2>
+                <div
+                  className={`${
+                    modal === "signup" && "modal__sideBar-text-signup"
+                  } ${modal === "login" && "modal__sideBar-text-login"}`}
+                >
+                  {sideBarText}
+                </div>
+              </div>
+              <div className="modal__divider"></div>
+              <form action="" className="modal__form">
+                <h2 className="modal__form-title">{formTitle}</h2>
+                <div className="modal__form-body">{children}</div>
+                <div className="modal__form-button">{buttonText}</div>
+              </form>
+            </div>
+          </div>
         </div>
       ) : (
-        <div className="modal"></div>
+        <div className="modal__popup">
+          <form className="modal__form">
+            <h2 className="modal__form-title">{formTitle}</h2>
+            <div className="modal__form-body">{children}</div>
+          </form>
+        </div>
       )}
     </div>
   );

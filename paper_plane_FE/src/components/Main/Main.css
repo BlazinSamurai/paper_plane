@@ -6,6 +6,8 @@
 .main {
   background: linear-gradient(#ffffff 8px, #010c1b 500px, #010c1b, #ffffff);
   position: relative;
+  /* Might come back to change the look of the site
+  background-color: #000; */
 }
 
 .main__title {
@@ -31,6 +33,7 @@
   text-shadow: -8px 7px 11px #000;
 }
 
+/* Might get rid of this style */
 .main__cloud {
   position: relative;
   top: -204px;

@@ -9,7 +9,8 @@ const SignupModal = ({ isOpen, handleSignup }) => {
   const [password, setPassword] = useState("");
 
   const handleUserNameChange = (e) => {
-    setUserName(e.targert.value);
+    e.preventDefault();
+    setUserName(e.target.value);
   };
   const handleProfilePicChange = (e) => {
     setProfilePic(e.target.value);
@@ -29,9 +30,65 @@ const SignupModal = ({ isOpen, handleSignup }) => {
   //   console.log(`isOpen from signUpModal: ${isOpen}.`);
 
   return (
-    <ModalWithForm isOpen={isOpen} title="Create an account">
-      <label htmlFor="Create_UserName" className="modal__label">
-        Hello
+    <ModalWithForm
+      isOpen={isOpen}
+      sideBarTitle="Welcome Traveler!"
+      sideBarText="SIGN UP for FREE!"
+      formTitle="Create an account"
+      buttonText="Create Account"
+    >
+      <label htmlFor="signup_userName">
+        <input
+          type="text"
+          className="modal__form-body-input"
+          minLength="1"
+          maxLength="20"
+          id="signup_userName"
+          placeholder="UserName"
+          value={userName}
+          onChange={handleUserNameChange}
+          required
+        />
+      </label>
+      <label htmlFor="signup_email">
+        <input
+          name="email"
+          type="email"
+          className="modal__form-body-input"
+          minLength="1"
+          id="signup_email"
+          placeholder="Email"
+          value={email}
+          onChange={handleEmailChange}
+          required
+        />
+      </label>
+      <label htmlFor="signup_password">
+        <input
+          name="password"
+          type="password"
+          className="modal__form-body-input"
+          minLength="8"
+          max="20"
+          id="signup_password"
+          placeholder="Password"
+          value={password}
+          onChange={handlePasswordChange}
+          required
+        />
+      </label>
+      <label htmlFor="signup_profilePic">
+        <input
+          name="profilePic"
+          type="url"
+          className="modal__form-body-input"
+          minLength="1"
+          id="signup_profilePic"
+          placeholder="Profile Pic"
+          value={profilePic}
+          onChange={handleProfilePicChange}
+          required
+        />
       </label>
     </ModalWithForm>
   );

@@ -27,9 +27,15 @@ button {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  visibility: hidden;
+}
+
+.header__no-show {
+  visibility: hidden;
 }
 
 .header-nav-bar__logo-container {
+  visibility: visible;
   width: 273px;
   height: 38px;
   display: flex;
@@ -48,10 +54,6 @@ button {
   font-size: 28px;
   font-family: Emblema One;
   color: #000000;
-}
-
-.header-nav-bar__no-container {
-  visibility: hidden;
 }
 
 .header-nav-bar__account-container {

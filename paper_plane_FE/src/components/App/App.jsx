@@ -6,15 +6,11 @@ import "./App.css";
 import Header from "../Header/Header";
 import Main from "../Main/Main";
 import SignupModal from "../SignupModal/SignupModal";
+import LoginModal from "../Login/LoginModal";
 import ProtectedRoute from "../ProtectedRoute/ProtectRoute";
 
 function App() {
   const [activeModal, setActiveModal] = useState("");
-  const [userData] = useState({
-    userName: "",
-    profilePic: "",
-    email: "",
-  });
 
   const closeActiveModal = () => {
     setActiveModal("");
@@ -43,7 +39,10 @@ function App() {
             path="/signup"
             element={<SignupModal isOpen={activeModal}></SignupModal>}
           />
-          <Route path="/login" />
+          <Route
+            path="/login"
+            element={<LoginModal isOpen={activeModal}></LoginModal>}
+          />
         </Routes>
       </div>
     </div>
