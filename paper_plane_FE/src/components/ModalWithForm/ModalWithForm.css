@@ -8,7 +8,6 @@
   src: url(/src/vendor/konkhmer-sleokchher_5.2.6/webfonts/konkhmer-sleokchher-khmer-400-normal.woff);
 }
 
-/* form works when this style is not comment out */
 .modal__whole-page {
   position: relative;
   z-index: 1;
@@ -23,7 +22,6 @@
   z-index: 5;
   padding: 90px;
   overflow: hidden;
-  /* form doesn't work when styles are not commented out */
 }
 
 .modal__background-image {
@@ -157,10 +155,10 @@
 }
 
 /* This class is for 'Popup' modals */
-.modal__popup {
+/* .modal__popup {
 }
 
 @media screen and (max-width: 1024px) {
   .modal__background-image {
   }
-}
+} */
