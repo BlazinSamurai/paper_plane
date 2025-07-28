@@ -1,5 +1,6 @@
 import { useContext, useEffect, useState } from "react";
 import { Routes, Route, Navigate } from "react-router-dom";
+import { signUp, login } from "../../utils/auth";
 
 import "./App.css";
 
@@ -24,6 +25,28 @@ function App() {
     setActiveModal("signup");
   };
 
+  const handleLoginSubmit = (email, password) => {
+    // If username or password empty, return without sending a request.
+    if (!email || !password) {
+      return;
+    }
+
+    console.log("Inside handleLoginSubmit from app.jsx.");
+    login({ email, password })
+      .then((data) => {
+        console.log(`login data:${data}.`);
+      })
+      .catch(console.error);
+  };
+
+  const handleSignupSubmit = (userName, profilePic, email, password) => {
+    signUp({ userName, profilePic, email, password })
+      .then((user) => {
+        console.log(user);
+      })
+      .catch(console.error);
+  };
+
   return (
     <div className="page">
       <div className="page_content">
@@ -34,14 +57,24 @@ function App() {
           closeActiveModal={closeActiveModal}
         />
         <Routes>
-          <Route path="/" element={<Main></Main>} />
+          <Route path="/" element={<Main />} />
           <Route
             path="/signup"
-            element={<SignupModal isOpen={activeModal}></SignupModal>}
+            element={
+              <SignupModal
+                isOpen={activeModal}
+                signupHandler={handleSignupSubmit}
+              />
+            }
           />
           <Route
             path="/login"
-            element={<LoginModal isOpen={activeModal}></LoginModal>}
+            element={
+              <LoginModal
+                isOpen={activeModal}
+                loginHandler={handleLoginSubmit}
+              />
+            }
           />
         </Routes>
       </div>

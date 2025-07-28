@@ -2,14 +2,14 @@ import React, { useState } from "react";
 
 import ModalWithForm from "../ModalWithForm/ModalWithForm";
 
-const LoginModal = ({ isOpen, handleLogin }) => {
+const LoginModal = ({ isOpen, loginHandler }) => {
   const [userName, setUserName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
   // Might need to combine these two???
   const handleUserNameChange = (e) => {
-    setUserName(e.targert.value);
+    setUserName(e.target.value);
   };
   const handleEmailChange = (e) => {
     setEmail(e.target.value);
@@ -18,9 +18,10 @@ const LoginModal = ({ isOpen, handleLogin }) => {
     setPassword(e.target.value);
   };
 
-  const handleSignupSubmit = (e) => {
+  const handleLoginSubmit = (e) => {
+    console.log("Inside handleLoginSubmit on loginModal.jsx.");
     e.preventDefault();
-    handleSignup(userName, email, password);
+    loginHandler(email, password);
   };
   return (
     // <ModalWithForm isOpen={isOpen} title="Login">
@@ -30,6 +31,7 @@ const LoginModal = ({ isOpen, handleLogin }) => {
       sideBarText="Traveler!"
       formTitle="Login"
       buttonText="Submit"
+      onSubmit={handleLoginSubmit}
     >
       <label htmlFor="login_username-email">
         <input
@@ -40,8 +42,8 @@ const LoginModal = ({ isOpen, handleLogin }) => {
           id="login_username-email"
           placeholder="Username or Email"
           // not sure if I can put two here
-          value={userName}
-          onChange={handleUserNameChange}
+          value={email}
+          onChange={handleEmailChange}
           required
         />
       </label>

@@ -2,7 +2,7 @@ import React, { useState } from "react";
 
 import ModalWithForm from "../ModalWithForm/ModalWithForm";
 
-const SignupModal = ({ isOpen, handleSignup }) => {
+const SignupModal = ({ isOpen, signupHandler }) => {
   const [userName, setUserName] = useState("");
   const [profilePic, setProfilePic] = useState("");
   const [email, setEmail] = useState("");
@@ -24,7 +24,7 @@ const SignupModal = ({ isOpen, handleSignup }) => {
 
   const handleSignupSubmit = (e) => {
     e.preventDefault();
-    handleSignup(userName, profilePic, email, password);
+    signupHandler(userName, profilePic, email, password);
   };
 
   //   console.log(`isOpen from signUpModal: ${isOpen}.`);
@@ -36,6 +36,7 @@ const SignupModal = ({ isOpen, handleSignup }) => {
       sideBarText="SIGN UP for FREE!"
       formTitle="Create an account"
       buttonText="Create Account"
+      onSubmit={handleSignupSubmit}
     >
       <label htmlFor="signup_userName">
         <input

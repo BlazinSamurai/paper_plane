@@ -11,6 +11,7 @@ function ModalWithForm({
   formTitle,
   children,
   buttonText,
+  onSubmit,
 }) {
   const [modal, setModal] = useState(isOpen);
   // This const is used to check if the login or signup modal are
@@ -51,7 +52,13 @@ function ModalWithForm({
               <form action="" className="modal__form">
                 <h2 className="modal__form-title">{formTitle}</h2>
                 <div className="modal__form-body">{children}</div>
-                <div className="modal__form-button">{buttonText}</div>
+                <button
+                  onClick={onSubmit}
+                  type="submit"
+                  className="modal__form-button"
+                >
+                  {buttonText}
+                </button>
               </form>
             </div>
           </div>
