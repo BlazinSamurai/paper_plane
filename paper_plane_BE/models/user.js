@@ -9,17 +9,6 @@ const userSchema = new mongoose.Schema({
     minlength: 1,
     maxlength: 20,
   },
-  profilePic: {
-    type: String,
-    unique: true,
-    require: [true, "The profile picture field is required."],
-    validate: {
-      validator(value) {
-        return validator.isURL(value);
-      },
-      message: "You must enter a valid email address.",
-    },
-  },
   email: {
     type: String,
     unique: true,
@@ -35,6 +24,17 @@ const userSchema = new mongoose.Schema({
     type: String,
     required: [true, "The password field is required."],
     select: false,
+  },
+  profilePic: {
+    type: String,
+    unique: true,
+    require: [true, "The profile picture field is required."],
+    validate: {
+      validator(value) {
+        return validator.isURL(value);
+      },
+      message: "You must enter a valid email address.",
+    },
   },
 });
 
