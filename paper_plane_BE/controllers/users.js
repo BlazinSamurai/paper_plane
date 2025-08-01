@@ -4,6 +4,7 @@ const User = require("../models/user");
 const { JWT_SECRET } = require("../utils/config");
 const { OKAY_STATUS } = require("../utils/errors");
 const { BadRequestError } = require("../utils/errors/badRequestError");
+const { NotFoundError } = require("../utils/errors/notFoundError");
 const { ConflictError } = require("../utils/errors/conflictError");
 const { UnauthorizedError } = require("../utils/errors/UnauthorizedError");
 
@@ -49,6 +50,8 @@ const createUser = (req, res, next) => {
 const login = (req, res, next) => {
   const { email, password } = req.body;
 
+  console.log(`from login: ${req}.`);
+
   if (!email || !password) {
     return next(new BadRequestError("Email and Password fields are required."));
   }
@@ -75,7 +78,28 @@ const login = (req, res, next) => {
     });
 };
 
+const getUser = (req, res, next) => {
+  // console.log(`from getUser: ${req._id}.`);
+  User.findById(req.user._id)
+    .orFail()
+    // method is used to throw
+    // an error if a query doesn't return any documents
+    .then((user) => {
+      res.status(OKAY_STATUS).send(user);
+    })
+    .catch((err) => {
+      if (err.name === "DocumentNotFoundError") {
+        return next(new NotFoundError(err.message));
+      }
+      if (err.name === "CastError") {
+        return next(new BadRequestError(err.message));
+      }
+      return next(err);
+    });
+};
+
 module.exports = {
   createUser,
   login,
+  getUser,
 };

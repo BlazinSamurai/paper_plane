@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 
 import cloudBG from "../../images/Clouds/singleMCloud.svg";
 
@@ -13,19 +14,17 @@ function ModalWithForm({
   buttonText,
   onSubmit,
 }) {
-  const [modal, setModal] = useState(isOpen);
+  const [route, setRoute] = useState(isOpen);
   // This const is used to check if the login or signup modal are
   // opened
   const [newTrip, setNewTrip] = useState(Boolean);
 
   useEffect(() => {
-    if (modal === "signup" || "login") {
+    if (route === "signup" || "login") {
       setNewTrip(false);
     } else setNewTrip(true);
-  }, [modal]);
+  }, [route]);
 
-  // console.log(`isOpen from modalWForm: ${modal}.`);
-  // console.log(`newTrip: ${newTrip}.`);
   return (
     <div>
       {!newTrip ? (
@@ -42,14 +41,15 @@ function ModalWithForm({
                 <h2 className="modal__sideBar-title">{sideBarTitle}</h2>
                 <div
                   className={`${
-                    modal === "signup" && "modal__sideBar-text-signup"
-                  } ${modal === "login" && "modal__sideBar-text-login"}`}
+                    route === "signup" && "modal__sideBar-text-signup"
+                  } ${route === "login" && "modal__sideBar-text-login"}`}
                 >
                   {sideBarText}
                 </div>
               </div>
               <div className="modal__divider"></div>
-              <form action="" className="modal__form">
+              {/* <form action="" className="modal__form"> */}
+              <form className="modal__form">
                 <h2 className="modal__form-title">{formTitle}</h2>
                 <div className="modal__form-body">{children}</div>
                 <button

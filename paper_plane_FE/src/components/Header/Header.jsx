@@ -5,44 +5,74 @@ import "./Header.css";
 
 import logo from "../../images/blue_pp_icon.svg";
 
-// Header becomes very D.R.Y with the commented lines being uncommented
-function Header({ isOpen, openLoginModal, openSignupModal, closeActiveModal }) {
+function Header({
+  openHomePageRoute,
+  openLoginRoute,
+  openSignupRoute,
+  closeActiveRoute,
+}) {
+  const [headerVisibility, setHeaderVisibility] = useState(Boolean);
+
+  useEffect(() => {
+    console.log("openHomePageRoute: " + openHomePageRoute);
+    if (openHomePageRoute === false) {
+      setHeaderVisibility(false);
+      console.log("header visibility is false.");
+    } else setHeaderVisibility(true);
+  }, [openHomePageRoute]);
+
   return (
-    // <header className={`${isOpen && "header__no-show"}` || "header"}>
     <header className={"header"}>
       <Link to={"/"}>
-        <button onClick={closeActiveModal} type="button">
+        <button onClick={closeActiveRoute} type="button">
           {" "}
-          {/* <div className={`${isOpen && "header__no-show"}` || "header-nav-bar__logo-container"}> */}
           <div className="header-nav-bar__logo-container">
-            <img src={logo} alt="Logo" className="header-nav-bar__icon" />
-            <h1 className="header-nav-bar__name">Paper Plane</h1>
+            <img
+              src={logo}
+              alt="Logo"
+              className={
+                headerVisibility ? "header__no-show" : "header-nav-bar__icon"
+              }
+            />
+            <h1
+              className={
+                headerVisibility ? "header__no-show" : "header-nav-bar__name"
+              }
+            >
+              Paper Plane
+            </h1>
           </div>
         </button>
       </Link>
-      {/* <div
-        className={
-          `${isOpen && "header__no-show"}` ||
-          "header-nav-bar__account-container"
-        }
-      > */}
       <div className="header-nav-bar__account-container">
         <Link to={"/login"}>
           <button
-            onClick={openLoginModal}
+            onClick={openLoginRoute}
             type="button"
             className="header__login-btn"
           >
-            <h2 className="header-nav-bar__login">Login</h2>
+            <h2
+              className={
+                headerVisibility ? "header__no-show" : "header-nav-bar__login"
+              }
+            >
+              Login
+            </h2>
           </button>
         </Link>
         <Link to={"/signup"}>
           <button
-            onClick={openSignupModal}
+            onClick={openSignupRoute}
             type="button"
             className="header__signup-btn"
           >
-            <h2 className="header-nav-bar__signUp">Free Sign up!</h2>
+            <h2
+              className={
+                headerVisibility ? "header__no-show" : "header-nav-bar__signup"
+              }
+            >
+              Free Sign up!
+            </h2>
           </button>
         </Link>
       </div>

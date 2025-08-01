@@ -19,12 +19,11 @@ const LoginModal = ({ isOpen, loginHandler }) => {
   };
 
   const handleLoginSubmit = (e) => {
-    console.log("Inside handleLoginSubmit on loginModal.jsx.");
+    // console.log("Inside handleLoginSubmit on loginModal.jsx.");
     e.preventDefault();
     loginHandler(email, password);
   };
   return (
-    // <ModalWithForm isOpen={isOpen} title="Login">
     <ModalWithForm
       isOpen={isOpen}
       sideBarTitle="Welcome Back"

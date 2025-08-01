@@ -42,4 +42,15 @@ function login(info) {
   });
 }
 
-export { signUp, login };
+function getUserInfo(token) {
+  return request(`${baseUrl}/users/me`, {
+    method: "GET",
+    headers: {
+      Accept: "application/json",
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${token}`,
+    },
+  });
+}
+
+export { signUp, login, getUserInfo };

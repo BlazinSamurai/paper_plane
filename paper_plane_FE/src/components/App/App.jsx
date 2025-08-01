@@ -1,6 +1,11 @@
 import { useContext, useEffect, useState } from "react";
-import { Routes, Route, Navigate } from "react-router-dom";
-import { signUp, login } from "../../utils/auth";
+import { Routes, Route, useNavigate } from "react-router-dom";
+import { signUp, login, getUserInfo } from "../../utils/auth";
+import { setToken, getToken } from "../../utils/token";
+import {
+  CurrentUserContext,
+  CurrentUserProvider,
+} from "../../Context/CurrentUserContext";
 
 import "./App.css";
 
@@ -8,53 +13,104 @@ import Header from "../Header/Header";
 import Main from "../Main/Main";
 import SignupModal from "../SignupModal/SignupModal";
 import LoginModal from "../Login/LoginModal";
+import HomePage from "../HomePage/HomePage";
 import ProtectedRoute from "../ProtectedRoute/ProtectRoute";
 
-function App() {
-  const [activeModal, setActiveModal] = useState("");
+function AppContent() {
+  const [activeRoute, setActiveRoute] = useState("");
+  const { currentUser, isLoggedIn, setCurrentUser, setIsLoggedIn } =
+    useContext(CurrentUserContext);
 
-  const closeActiveModal = () => {
-    setActiveModal("");
+  const navigate = useNavigate();
+
+  const handleRouteChange = (newRoute) => {
+    setActiveRoute(newRoute);
   };
 
-  const openLoginModal = () => {
-    setActiveModal("login");
+  const closeActiveRoute = () => {
+    setActiveRoute("");
   };
 
-  const openSignupModal = () => {
-    setActiveModal("signup");
+  const openLoginRoute = () => {
+    setActiveRoute("login");
   };
 
+  const openSignupRoute = () => {
+    setActiveRoute("signup");
+  };
+
+  // First time User login in handler
   const handleLoginSubmit = (email, password) => {
     // If username or password empty, return without sending a request.
     if (!email || !password) {
       return;
     }
 
-    console.log("Inside handleLoginSubmit from app.jsx.");
     login({ email, password })
       .then((data) => {
-        console.log(`login data:${data}.`);
+        getUserInfo(data.token)
+          .then((info) => {
+            setCurrentUser(info);
+            setToken(data.token);
+            setIsLoggedIn(true);
+            navigate("/homepage");
+          })
+          .catch(console.error);
       })
       .catch(console.error);
+  };
+
+  // Return user login handler
+  const handleLogin = (token, user) => {
+    setCurrentUser(user);
+    setToken(token);
+    setIsLoggedIn(true);
+    navigate("/homepage");
   };
 
   const handleSignupSubmit = (userName, profilePic, email, password) => {
     signUp({ userName, profilePic, email, password })
       .then((user) => {
-        console.log(user);
+        // console.log(user);
+        setCurrentUser(user);
+        setIsLoggedIn(true);
+        navigate("/homepage");
       })
       .catch(console.error);
   };
+
+  const handleLogout = () => {
+    setCurrentUser(null);
+    setIsLoggedIn(false);
+    setToken(null);
+    navigate("/");
+  };
+
+  // checks if there is a user logged in
+  useEffect(() => {
+    const jwt = getToken();
+
+    if (!jwt) {
+      setCurrentUser(null);
+      setIsLoggedIn(false);
+      return;
+    } else {
+      getUserInfo(jwt)
+        .then((data) => {
+          handleLogin(jwt, data);
+        })
+        .catch(console.error);
+    }
+  }, []);
 
   return (
     <div className="page">
       <div className="page_content">
         <Header
-          isOpen={activeModal}
-          openLoginModal={openLoginModal}
-          openSignupModal={openSignupModal}
-          closeActiveModal={closeActiveModal}
+          openHomePageRoute={isLoggedIn}
+          openLoginRoute={openLoginRoute}
+          openSignupRoute={openSignupRoute}
+          closeActiveRoute={closeActiveRoute}
         />
         <Routes>
           <Route path="/" element={<Main />} />
@@ -62,7 +118,7 @@ function App() {
             path="/signup"
             element={
               <SignupModal
-                isOpen={activeModal}
+                isOpen={activeRoute}
                 signupHandler={handleSignupSubmit}
               />
             }
@@ -71,14 +127,32 @@ function App() {
             path="/login"
             element={
               <LoginModal
-                isOpen={activeModal}
+                isOpen={activeRoute}
                 loginHandler={handleLoginSubmit}
               />
             }
           />
+          <Route
+            path="/homepage"
+            element={
+              <ProtectedRoute isLoggedIn={isLoggedIn}>
+                <HomePage onLogout={handleLogout} />
+              </ProtectedRoute>
+            }
+          />
+          {/* Need to add ,path="*", to catch-all route. */}
         </Routes>
       </div>
     </div>
+  );
+}
+
+// Wrap the entire App component
+function App() {
+  return (
+    <CurrentUserProvider>
+      <AppContent />
+    </CurrentUserProvider>
   );
 }
 
