@@ -14,10 +14,8 @@ function Header({
   const [headerVisibility, setHeaderVisibility] = useState(Boolean);
 
   useEffect(() => {
-    console.log("openHomePageRoute: " + openHomePageRoute);
     if (openHomePageRoute === false) {
       setHeaderVisibility(false);
-      console.log("header visibility is false.");
     } else setHeaderVisibility(true);
   }, [openHomePageRoute]);
 

@@ -48,7 +48,6 @@ function ModalWithForm({
                 </div>
               </div>
               <div className="modal__divider"></div>
-              {/* <form action="" className="modal__form"> */}
               <form className="modal__form">
                 <h2 className="modal__form-title">{formTitle}</h2>
                 <div className="modal__form-body">{children}</div>

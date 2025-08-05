@@ -50,8 +50,6 @@ const createUser = (req, res, next) => {
 const login = (req, res, next) => {
   const { email, password } = req.body;
 
-  console.log(`from login: ${req}.`);
-
   if (!email || !password) {
     return next(new BadRequestError("Email and Password fields are required."));
   }
@@ -79,7 +77,6 @@ const login = (req, res, next) => {
 };
 
 const getUser = (req, res, next) => {
-  // console.log(`from getUser: ${req._id}.`);
   User.findById(req.user._id)
     .orFail()
     // method is used to throw

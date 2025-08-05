@@ -41,7 +41,6 @@ function AppContent() {
 
   // First time User login in handler
   const handleLoginSubmit = (email, password) => {
-    // If username or password empty, return without sending a request.
     if (!email || !password) {
       return;
     }
@@ -71,7 +70,6 @@ function AppContent() {
   const handleSignupSubmit = (userName, profilePic, email, password) => {
     signUp({ userName, profilePic, email, password })
       .then((user) => {
-        // console.log(user);
         setCurrentUser(user);
         setIsLoggedIn(true);
         navigate("/homepage");

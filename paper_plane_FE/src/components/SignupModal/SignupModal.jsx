@@ -27,8 +27,6 @@ const SignupModal = ({ isOpen, signupHandler }) => {
     signupHandler(userName, profilePic, email, password);
   };
 
-  //   console.log(`isOpen from signUpModal: ${isOpen}.`);
-
   return (
     <ModalWithForm
       isOpen={isOpen}

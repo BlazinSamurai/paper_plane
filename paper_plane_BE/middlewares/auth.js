@@ -6,12 +6,9 @@ const { UnauthorizedError } = require("../utils/errors/UnauthorizedError");
 
 const handleAuthError = (res, req, next) => {
   next(new UnauthorizedError(`Authorization Error: Unauthorized `));
-  console.log(req);
 };
 
 const extractBearerToken = (header) => {
-  // console.log(`given header: ${header}.`);
-  // console.log("Token extraction starting . . .");
   return header.replace("Bearer ", "");
 };
 
@@ -20,9 +17,7 @@ const extractBearerToken = (header) => {
 // to the user object and call next()
 
 module.exports = (req, res, next) => {
-  // console.log(req.headers);
   const { authorization } = req.headers;
-  // console.log(`authorization: ${authorization}.`);
 
   if (!authorization || !authorization.startsWith("Bearer ")) {
     console.error("Authorization header missing or incorrectly formatted.");
@@ -32,16 +27,13 @@ module.exports = (req, res, next) => {
 
   // getting the token
   const token = extractBearerToken(authorization);
-  // console.log(`token: ${token}.`);
   let payload;
-  // console.log(`payload: ${payload}.`);
 
   try {
     // trying to verify the token
     payload = jwt.verify(token, JWT_SECRET);
   } catch (err) {
     handleAuthError(req, res, next);
-    // console.log(err);
     return;
   }
 

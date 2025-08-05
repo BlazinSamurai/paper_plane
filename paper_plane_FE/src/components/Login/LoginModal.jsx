@@ -19,7 +19,6 @@ const LoginModal = ({ isOpen, loginHandler }) => {
   };
 
   const handleLoginSubmit = (e) => {
-    // console.log("Inside handleLoginSubmit on loginModal.jsx.");
     e.preventDefault();
     loginHandler(email, password);
   };
