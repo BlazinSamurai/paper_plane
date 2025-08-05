@@ -2,7 +2,14 @@ import React, { useState } from "react";
 
 import ModalWithForm from "../ModalWithForm/ModalWithForm";
 
-const SignupModal = ({ isOpen, signupHandler }) => {
+const SignupModal = ({
+  isOpen,
+  signupHandler,
+  openHomePageRoute,
+  openLoginRoute,
+  openSignupRoute,
+  closeActiveRoute,
+}) => {
   const [userName, setUserName] = useState("");
   const [profilePic, setProfilePic] = useState("");
   const [email, setEmail] = useState("");
@@ -30,6 +37,9 @@ const SignupModal = ({ isOpen, signupHandler }) => {
   return (
     <ModalWithForm
       isOpen={isOpen}
+      openLoginRoute={openLoginRoute}
+      openSignupRoute={openSignupRoute}
+      closeActiveRoute={closeActiveRoute}
       sideBarTitle="Welcome Traveler!"
       sideBarText="SIGN UP for FREE!"
       formTitle="Create an account"

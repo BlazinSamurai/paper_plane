@@ -9,7 +9,6 @@ import {
 
 import "./App.css";
 
-import Header from "../Header/Header";
 import Main from "../Main/Main";
 import SignupModal from "../SignupModal/SignupModal";
 import LoginModal from "../Login/LoginModal";
@@ -104,20 +103,26 @@ function AppContent() {
   return (
     <div className="page">
       <div className="page_content">
-        <Header
-          openHomePageRoute={isLoggedIn}
-          openLoginRoute={openLoginRoute}
-          openSignupRoute={openSignupRoute}
-          closeActiveRoute={closeActiveRoute}
-        />
         <Routes>
-          <Route path="/" element={<Main />} />
+          <Route
+            path="/"
+            element={
+              <Main
+                openLoginRoute={openLoginRoute}
+                openSignupRoute={openSignupRoute}
+                closeActiveRoute={closeActiveRoute}
+              />
+            }
+          />
           <Route
             path="/signup"
             element={
               <SignupModal
                 isOpen={activeRoute}
                 signupHandler={handleSignupSubmit}
+                openLoginRoute={openLoginRoute}
+                openSignupRoute={openSignupRoute}
+                closeActiveRoute={closeActiveRoute}
               />
             }
           />
@@ -127,6 +132,9 @@ function AppContent() {
               <LoginModal
                 isOpen={activeRoute}
                 loginHandler={handleLoginSubmit}
+                openLoginRoute={openLoginRoute}
+                openSignupRoute={openSignupRoute}
+                closeActiveRoute={closeActiveRoute}
               />
             }
           />

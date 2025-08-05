@@ -1,0 +1,59 @@
+@font-face {
+  font-family: "Emblema One";
+  src: url(/src/vendor/Emblema_One/EmblemaOne-Regular.ttf);
+}
+
+@font-face {
+  font-family: "Konkhmer Sleokchher";
+  src: url(/src/vendor/konkhmer-sleokchher_5.2.6/webfonts/konkhmer-sleokchher-khmer-400-normal.woff);
+}
+
+.sidebar {
+  display: flex;
+  flex-direction: column;
+}
+
+.sidebar__display-info {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.sidebar__logo-container {
+  width: 273px;
+  height: 38px;
+  display: flex;
+}
+
+.sidebar__logo-icon {
+  width: 43px;
+  height: 38px;
+}
+
+.sidebar__logo-name {
+  margin: 0;
+  width: 233px;
+  height: 30px;
+  line-height: 30px;
+  font-size: 28px;
+  font-family: Emblema One;
+  color: #000000;
+}
+
+.sidebar__display-info_avatar {
+  max-width: 166px;
+  max-height: 125px;
+  border-radius: 63px;
+}
+
+.sidebar__display-info_username {
+  margin: 0;
+  width: 285px;
+  height: 60px;
+  font-family: Konkhmer Sleokchher;
+  font-size: 50px;
+  color: #4fc2f8;
+}
+
+.sidebar__logout-btn {
+}

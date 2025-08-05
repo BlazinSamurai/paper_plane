@@ -2,7 +2,14 @@ import React, { useState } from "react";
 
 import ModalWithForm from "../ModalWithForm/ModalWithForm";
 
-const LoginModal = ({ isOpen, loginHandler }) => {
+const LoginModal = ({
+  isOpen,
+  loginHandler,
+  openHomePageRoute,
+  openLoginRoute,
+  openSignupRoute,
+  closeActiveRoute,
+}) => {
   const [userName, setUserName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -25,6 +32,9 @@ const LoginModal = ({ isOpen, loginHandler }) => {
   return (
     <ModalWithForm
       isOpen={isOpen}
+      openLoginRoute={openLoginRoute}
+      openSignupRoute={openSignupRoute}
+      closeActiveRoute={closeActiveRoute}
       sideBarTitle="Welcome Back"
       sideBarText="Traveler!"
       formTitle="Login"

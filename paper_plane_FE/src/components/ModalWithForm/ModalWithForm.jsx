@@ -5,8 +5,13 @@ import cloudBG from "../../images/Clouds/singleMCloud.svg";
 
 import "./ModalWithForm.css";
 
+import Header from "../Header/Header";
+
 function ModalWithForm({
   isOpen,
+  openLoginRoute,
+  openSignupRoute,
+  closeActiveRoute,
   sideBarTitle,
   sideBarText,
   formTitle,
@@ -29,6 +34,11 @@ function ModalWithForm({
     <div>
       {!newTrip ? (
         <div className="modal__whole-page">
+          <Header
+            openLoginRoute={openLoginRoute}
+            openSignupRoute={openSignupRoute}
+            closeActiveRoute={closeActiveRoute}
+          ></Header>
           <div className="modal__background-gradient">
             <img
               src={cloudBG}

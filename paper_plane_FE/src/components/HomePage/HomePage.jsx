@@ -1,15 +1,18 @@
 //This is the Home Page
 import "./HomePage.css";
 
+import SideBar from "../SideBar/SideBar";
+
 function HomePage({ onLogout }) {
   return (
-    <div className="homePage">
-      <div className="homePage__container">
-        <section className="homePage__sidebar"></section>
-        <section className="homePage__tripCreation">
+    <div className="home-page">
+      <div className="home-page__container">
+        <section className="home-page__sidebar">
+          <SideBar onLogout={onLogout}></SideBar>
+        </section>
+        <section className="home-page__trip-creation">
           <h3>Welcome to the Home Page</h3>
         </section>
-        <button onClick={onLogout}>Log Out</button>
       </div>
     </div>
   );
