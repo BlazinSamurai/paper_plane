@@ -15,11 +15,11 @@ function SideBar({ onLogout }) {
           <h1 className={"sidebar__logo-name"}>Paper Plane</h1>
         </div>
         <img
-          className="sidebar__display-info_avatar"
+          className="sidebar__display-info-avatar"
           src={currentUser.profilePic}
           alt={"Pic"}
         />
-        <p className="sidebar__display-info_username">
+        <p className="sidebar__display-info-username">
           {" "}
           {currentUser.userName}
         </p>

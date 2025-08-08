@@ -3,7 +3,7 @@ import mapboxgl from "mapbox-gl";
 
 import "mapbox-gl/dist/mapbox-gl.css";
 
-function Mapbox() {
+function Mapbox(isLoggedIn) {
   const mapContainerRef = useRef();
   const mapRef = useRef();
 
@@ -84,7 +84,11 @@ function Mapbox() {
 
   return (
     <div
-      style={{ height: "300px", maxWidth: "100vw", top: "-185px" }}
+      style={
+        isLoggedIn
+          ? { height: "300px", maxWidth: "100vw" }
+          : { height: "300px", maxWidth: "100vw", top: "-185px" }
+      }
       ref={mapContainerRef}
       className="map-container"
     />

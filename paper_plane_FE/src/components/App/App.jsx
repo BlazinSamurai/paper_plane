@@ -142,7 +142,7 @@ function AppContent() {
             path="/homepage"
             element={
               <ProtectedRoute isLoggedIn={isLoggedIn}>
-                <HomePage onLogout={handleLogout} />
+                <HomePage isLoggedIn={isLoggedIn} onLogout={handleLogout} />
               </ProtectedRoute>
             }
           />

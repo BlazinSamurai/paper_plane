@@ -17,11 +17,14 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  max-height: 644px;
+  height: 100vh;
 }
 
 .sidebar__logo-container {
-  width: 273px;
+  /* width: 273px;
   height: 38px;
+  display: flex; */
   display: flex;
 }
 
@@ -31,29 +34,55 @@
 }
 
 .sidebar__logo-name {
-  margin: 0;
+  /* margin: 0;
   width: 233px;
   height: 30px;
   line-height: 30px;
   font-size: 28px;
   font-family: Emblema One;
+  color: #000000; */
+  margin: 0;
+  font-size: 35px;
+  font-family: Emblema One;
   color: #000000;
 }
 
-.sidebar__display-info_avatar {
-  max-width: 166px;
-  max-height: 125px;
-  border-radius: 63px;
+/* If you want avatar img to be bigger use the style
+  clip-art: 50%; */
+.sidebar__display-info-avatar {
+  /* width: 120px;
+  height: 120px;
+  border-radius: 60px;
+  margin: 48px 0; */
+  width: 160px;
+  height: 160px;
+  clip-path: circle(50%);
+  margin: 25px 0 15px;
 }
 
-.sidebar__display-info_username {
-  margin: 0;
+.sidebar__display-info-username {
+  /* margin: 0;
   width: 285px;
   height: 60px;
   font-family: Konkhmer Sleokchher;
   font-size: 50px;
   color: #4fc2f8;
+  overflow: hidden;
+  text-overflow: ellipsis; */
+  margin: 0;
+  width: 285px;
+  height: 60px;
+  font-family: Konkhmer Sleokchher;
+  font-size: 30px;
+  color: #4fc2f8;
+  overflow: hidden;
+  line-height: normal;
+  text-overflow: ellipsis;
+  text-align: center;
 }
 
 .sidebar__logout-btn {
+  font-family: Konkhmer Sleokchher;
+  font-size: 15px;
+  color: #000;
 }
