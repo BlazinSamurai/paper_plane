@@ -5,7 +5,6 @@ import ModalWithForm from "../ModalWithForm/ModalWithForm";
 const LoginModal = ({
   isOpen,
   loginHandler,
-  openHomePageRoute,
   openLoginRoute,
   openSignupRoute,
   closeActiveRoute,
@@ -27,6 +26,7 @@ const LoginModal = ({
 
   const handleLoginSubmit = (e) => {
     e.preventDefault();
+    console.log("login inside login.");
     loginHandler(email, password);
   };
   return (

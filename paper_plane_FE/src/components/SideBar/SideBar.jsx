@@ -4,6 +4,7 @@ import { CurrentUserContext } from "../../Context/CurrentUserContext";
 import "./SideBar.css";
 
 import logo from "../../images/blue_pp_icon.svg";
+import defaultUserIcon from "../../images/default_user_icon.jpg";
 
 function SideBar({ onLogout }) {
   const { currentUser } = useContext(CurrentUserContext);
@@ -16,8 +17,15 @@ function SideBar({ onLogout }) {
         </div>
         <img
           className="sidebar__display-info-avatar"
-          src={currentUser.profilePic}
-          alt={"Pic"}
+          //Need to fix this logic later
+          //You can pass in a URL that doesn't provide a URL but that doesn't
+          //result in a 'false' value so default icon is not used and goes
+          //straight to "alt"
+          // src={
+          //   currentUser.profilePic ? currentUser.profilePic : defaultUserIcon
+          // }
+          src={defaultUserIcon}
+          alt={"User Icon"}
         />
         <p className="sidebar__display-info-username">
           {" "}

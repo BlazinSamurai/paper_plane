@@ -13,9 +13,6 @@ p {
   margin: 0;
 }
 
-.home-page {
-}
-
 .home-page__container {
   display: flex;
   justify-content: space-evenly;

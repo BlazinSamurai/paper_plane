@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
 
 import cloudBG from "../../images/Clouds/singleMCloud.svg";
+import closeIcon from "../../images/close_icon.png";
 
 import "./ModalWithForm.css";
 
@@ -11,7 +11,10 @@ function ModalWithForm({
   isOpen,
   openLoginRoute,
   openSignupRoute,
+  handleTripModal,
   closeActiveRoute,
+  isLoggedIn,
+  onLogout,
   sideBarTitle,
   sideBarText,
   formTitle,
@@ -20,19 +23,50 @@ function ModalWithForm({
   onSubmit,
 }) {
   const [route, setRoute] = useState(isOpen);
-  // This const is used to check if the login or signup modal are
-  // opened
   const [newTrip, setNewTrip] = useState(Boolean);
+  // variable is called 'userSign' because a user can "signin" or "signup"
+  // and sign is short hand for both
+  const [userSign, setUserSign] = useState(Boolean);
+  const [visibility, setVisibility] = useState(true);
+
+  function handleClosePopup() {
+    setRoute("");
+    setNewTrip(false);
+    setUserSign(false);
+    setVisibility(false);
+    handleTripModal(false);
+  }
+
+  // delete later
+  const doNothing = (e) => {
+    e.preventDefault();
+    console.log("Do Nothing!");
+  };
 
   useEffect(() => {
-    if (route === "signup" || "login") {
+    if (route === "login" || route === "signup") {
       setNewTrip(false);
-    } else setNewTrip(true);
+      setUserSign(true);
+      setVisibility(true);
+      return;
+    }
+    if (route === "newTrip") {
+      setNewTrip(true);
+      setUserSign(false);
+      setVisibility(true);
+      return;
+    }
+    if (route === "" || isOpen === "") {
+      setNewTrip(false);
+      setUserSign(false);
+      setVisibility(false);
+      return;
+    }
   }, [route]);
 
   return (
-    <div>
-      {!newTrip ? (
+    <div className={visibility ? "" : "modal__hidden"}>
+      {userSign ? (
         <div className="modal__whole-page">
           <Header
             openLoginRoute={openLoginRoute}
@@ -58,14 +92,10 @@ function ModalWithForm({
                 </div>
               </div>
               <div className="modal__divider"></div>
-              <form className="modal__form">
+              <form onSubmit={onSubmit} className="modal__form">
                 <h2 className="modal__form-title">{formTitle}</h2>
                 <div className="modal__form-body">{children}</div>
-                <button
-                  onClick={onSubmit}
-                  type="submit"
-                  className="modal__form-button"
-                >
+                <button type="submit" className="modal__form-button">
                   {buttonText}
                 </button>
               </form>
@@ -73,12 +103,29 @@ function ModalWithForm({
           </div>
         </div>
       ) : (
+        ""
+      )}
+      {newTrip ? (
         <div className="modal__popup">
-          <form className="modal__form">
-            <h2 className="modal__form-title">{formTitle}</h2>
-            <div className="modal__form-body">{children}</div>
+          {/* Waiting to get approve of project so far so work
+              on backend for new trip submission. */}
+          <form onSubmit={doNothing} className="modal__popup-form">
+            <div className="modal__popup-header-container">
+              <button
+                onClick={handleClosePopup}
+                type="button"
+                className="modal__popup-close-btn"
+              />
+              <h2 className="modal__popup-title">{formTitle}</h2>
+            </div>
+            <div className="modal__popup-body">{children}</div>
+            <button type="submit" className="modal__popup-button">
+              {buttonText}
+            </button>
           </form>
         </div>
+      ) : (
+        ""
       )}
     </div>
   );

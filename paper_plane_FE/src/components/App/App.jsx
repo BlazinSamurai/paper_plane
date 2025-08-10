@@ -13,6 +13,7 @@ import Main from "../Main/Main";
 import SignupModal from "../SignupModal/SignupModal";
 import LoginModal from "../Login/LoginModal";
 import HomePage from "../HomePage/HomePage";
+import NewTrip from "../NewTripModal/NewTripModal";
 import ProtectedRoute from "../ProtectedRoute/ProtectRoute";
 
 function AppContent() {
@@ -36,6 +37,10 @@ function AppContent() {
 
   const openSignupRoute = () => {
     setActiveRoute("signup");
+  };
+
+  const openNewTripModal = () => {
+    setActiveRoute("newTrip");
   };
 
   // First time User login in handler
@@ -142,13 +147,19 @@ function AppContent() {
             path="/homepage"
             element={
               <ProtectedRoute isLoggedIn={isLoggedIn}>
-                <HomePage isLoggedIn={isLoggedIn} onLogout={handleLogout} />
+                <HomePage
+                  isLoggedIn={isLoggedIn}
+                  onLogout={handleLogout}
+                  closeActiveRoute={closeActiveRoute}
+                />
               </ProtectedRoute>
             }
           />
           {/* Need to add ,path="*", to catch-all route. */}
         </Routes>
       </div>
+      {/* Cant put this here, trust bro 
+      <NewTrip isOpen={activeRoute} closeActiveRoute={closeActiveRoute} /> */}
     </div>
   );
 }

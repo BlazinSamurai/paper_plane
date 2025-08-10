@@ -8,7 +8,17 @@
   src: url(/src/vendor/konkhmer-sleokchher_5.2.6/webfonts/konkhmer-sleokchher-khmer-400-normal.woff);
 }
 
+.modal {
+  visibility: visible;
+}
+
+.modal__hidden {
+  visibility: hidden;
+  display: none;
+}
+
 .modal__whole-page {
+  visibility: visible;
   position: relative;
   z-index: 1;
 }
@@ -142,6 +152,10 @@
   position: relative;
 }
 
+.modal__form-body-date {
+  width: 345px;
+}
+
 .modal__form-button {
   color: #fff;
   font-family: Konkhmer Sleokchher;
@@ -155,9 +169,77 @@
 }
 
 /* This class is for 'Popup' modals */
-/* .modal__popup {
+.modal__popup {
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-color: rgb(0 0 0 / 74%);
+  width: 100vw;
+  height: 100vh;
+  z-index: 99;
 }
 
+.modal__popup-form {
+  position: relative;
+  margin: auto;
+  top: 60px;
+  background-color: #fff;
+  border-radius: 20px;
+  width: 900px;
+  height: 420px;
+}
+
+.modal__popup-header-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.modal__popup-close-btn {
+  background-image: url("../../images/close_icon.png");
+  width: 20px;
+  height: 20px;
+  display: flex;
+  align-self: flex-end;
+  position: relative;
+  top: 15px;
+  right: 15px;
+}
+
+.modal__popup-title {
+  font-family: Konkhmer Sleokchher;
+  font-size: 32px;
+  color: #000;
+  margin: 0;
+  padding: 12px 0 42px 57px;
+}
+
+.modal__popup-body {
+  display: flex;
+  flex-direction: column;
+  row-gap: 40px;
+  text-align: center;
+}
+
+.modal__popup-dates-container {
+  display: flex;
+  column-gap: 90px;
+  justify-content: center;
+}
+
+.modal__popup-button {
+  color: #fff;
+  font-family: Konkhmer Sleokchher;
+  font-size: 30px;
+  background-color: #4fc2f8;
+  border-radius: 20px;
+  height: 40px;
+  width: 300px;
+  margin: 25px auto 0;
+  display: flex;
+  justify-content: center;
+}
+
+/*
 @media screen and (max-width: 1024px) {
   .modal__background-image {
   }
