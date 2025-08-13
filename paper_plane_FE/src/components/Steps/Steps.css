@@ -1,0 +1,166 @@
+@font-face {
+  font-family: "Emblema One";
+  src: url(/src/vendor/Emblema_One/EmblemaOne-Regular.ttf);
+}
+
+@font-face {
+  font-family: "Konkhmer Sleokchher";
+  src: url(/src/vendor/konkhmer-sleokchher_5.2.6/webfonts/konkhmer-sleokchher-khmer-400-normal.woff);
+}
+
+.steps {
+  height: 900px;
+  position: relative;
+  top: 241px;
+  background: #4fc2f8;
+}
+
+.steps__title {
+  margin: 0;
+  width: 300px;
+  height: 80px;
+  font-family: Konkhmer Sleokchher;
+  font-size: 67px;
+  font-weight: normal;
+  text-align: center;
+  color: #fff;
+  position: relative;
+  top: 130px;
+  left: 582px;
+}
+
+.steps__container {
+  display: flex;
+}
+
+.step__one-container {
+  z-index: 1;
+}
+
+.step__one-container:hover {
+  z-index: 3;
+}
+
+.step__one-title {
+  width: 360px;
+  height: 79px;
+  font-family: Konkhmer Sleokchher;
+  font-size: 36px;
+  line-height: 90px;
+  text-align: center;
+  color: #fff;
+  position: relative;
+  top: 222px;
+  left: 69px;
+  rotate: -20deg;
+}
+
+.step__one-backdrop {
+  width: 400px;
+  height: 450px;
+  background-color: black;
+  border-radius: 20px;
+  position: relative;
+  top: 200px;
+  rotate: -20deg;
+  left: 152px;
+}
+
+.step__one-backdrop:hover {
+  background-color: #59d3ff;
+}
+
+.step__one-img {
+  width: 380px;
+  height: 431px;
+  position: relative;
+  top: 9px;
+  left: 10px;
+  border-radius: 20px;
+}
+
+.step__two-container {
+  z-index: 2;
+}
+
+.step__two-title {
+  width: 375px;
+  height: 79px;
+  font-family: Konkhmer Sleokchher;
+  font-size: 36px;
+  line-height: 90px;
+  text-align: center;
+  color: #fff;
+  position: relative;
+  top: 136px;
+  left: 133px;
+}
+
+.step__two-backdrop {
+  width: 400px;
+  height: 450px;
+  background-color: black;
+  border-radius: 20px;
+  position: relative;
+  top: 129px;
+  left: 121px;
+}
+
+.step__two-backdrop:hover {
+  background-color: #59d3ff;
+}
+
+.step__two-img {
+  width: 380px;
+  height: 431px;
+  position: relative;
+  top: 9px;
+  left: 10px;
+  border-radius: 20px;
+}
+
+.step__three-container {
+  z-index: 1;
+}
+
+.step__three-container:hover {
+  z-index: 3;
+}
+
+.step__three-title {
+  width: 360px;
+  height: 79px;
+  font-family: Konkhmer Sleokchher;
+  font-size: 36px;
+  line-height: 90px;
+  text-align: center;
+  color: #fff;
+  position: relative;
+  top: 220px;
+  left: 213px;
+  rotate: 20deg;
+}
+
+.step__three-backdrop {
+  width: 400px;
+  height: 450px;
+  background-color: black;
+  border-radius: 20px;
+  position: relative;
+  top: 200px;
+  rotate: 20deg;
+  left: 107px;
+}
+
+.step__three-backdrop:hover {
+  background-color: #59d3ff;
+}
+
+.step__three-img {
+  width: 380px;
+  height: 431px;
+  position: relative;
+  top: 9px;
+  left: 10px;
+  border-radius: 20px;
+}

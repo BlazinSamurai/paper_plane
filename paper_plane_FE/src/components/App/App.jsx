@@ -116,6 +116,7 @@ function AppContent() {
                 openLoginRoute={openLoginRoute}
                 openSignupRoute={openSignupRoute}
                 closeActiveRoute={closeActiveRoute}
+                isLoggedIn={isLoggedIn}
               />
             }
           />

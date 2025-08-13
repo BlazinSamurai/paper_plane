@@ -18,13 +18,13 @@ function SideBar({ onLogout }) {
         <img
           className="sidebar__display-info-avatar"
           //Need to fix this logic later
-          //You can pass in a URL that doesn't provide a URL but that doesn't
+          //You can pass in a URL that doesn't provide a image but that doesn't
           //result in a 'false' value so default icon is not used and goes
           //straight to "alt"
-          // src={
-          //   currentUser.profilePic ? currentUser.profilePic : defaultUserIcon
-          // }
-          src={defaultUserIcon}
+          src={
+            currentUser.profilePic ? currentUser.profilePic : defaultUserIcon
+          }
+          // src={defaultUserIcon}
           alt={"User Icon"}
         />
         <p className="sidebar__display-info-username">

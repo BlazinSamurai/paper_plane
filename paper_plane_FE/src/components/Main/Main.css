@@ -4,14 +4,14 @@
 }
 
 .main {
-  background: linear-gradient(#ffffff 8px, #010c1b 500px, #010c1b, #ffffff);
+  background: linear-gradient(#fff 0%, #fff 10%, #4fc2f8, #000 39%, #000);
   position: relative;
-  /* Might come back to change the look of the site
-  background-color: #000; */
+  height: 1264px;
 }
 
 .main__title {
   position: relative;
+  top: 65px;
   z-index: 5;
   padding: 0 70px 0;
   margin: 0;

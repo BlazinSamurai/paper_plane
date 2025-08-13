@@ -3,7 +3,11 @@ import mapboxgl from "mapbox-gl";
 
 import "mapbox-gl/dist/mapbox-gl.css";
 
-function Mapbox(isLoggedIn) {
+// Using Styled Components
+import styled from "styled-components";
+
+function Mapbox({ isLoggedIn }) {
+  console.log(isLoggedIn);
   const mapContainerRef = useRef();
   const mapRef = useRef();
 
@@ -19,13 +23,14 @@ function Mapbox(isLoggedIn) {
       projection: "globe",
     });
 
-    new mapboxgl.Marker()
-      .setLngLat([12.554729, 55.70651])
-      .addTo(mapRef.current);
+    // Might use markers later but not right now.
+    // new mapboxgl.Marker()
+    //   .setLngLat([12.554729, 55.70651])
+    //   .addTo(mapRef.current);
 
-    new mapboxgl.Marker({ color: "black", rotation: 45 })
-      .setLngLat([12.65147, 55.608166])
-      .addTo(mapRef.current);
+    // new mapboxgl.Marker({ color: "black", rotation: 45 })
+    //   .setLngLat([12.65147, 55.608166])
+    //   .addTo(mapRef.current);
 
     // mapRef.current.on("style.load", () => {
     //   mapRef.current.setFog({});
@@ -87,7 +92,13 @@ function Mapbox(isLoggedIn) {
       style={
         isLoggedIn
           ? { height: "300px", maxWidth: "100vw" }
-          : { height: "300px", maxWidth: "100vw", top: "-185px" }
+          : {
+              height: "733px",
+              maxWidth: "1350px",
+              margin: "auto",
+              position: "relative",
+              top: "240px",
+            }
       }
       ref={mapContainerRef}
       className="map-container"
