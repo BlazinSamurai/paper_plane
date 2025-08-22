@@ -8,6 +8,8 @@ import defaultUserIcon from "../../images/default_user_icon.jpg";
 
 function SideBar({ onLogout }) {
   const { currentUser } = useContext(CurrentUserContext);
+
+  console.log("currentUser inside 'SideBar.jsx': ", currentUser);
   return (
     <div className="sidebar">
       <div className="sidebar__display-info">
@@ -21,15 +23,16 @@ function SideBar({ onLogout }) {
           //You can pass in a URL that doesn't provide a image but that doesn't
           //result in a 'false' value so default icon is not used and goes
           //straight to "alt"
-          src={
-            currentUser.profilePic ? currentUser.profilePic : defaultUserIcon
-          }
+          // src={
+          //   currentUser.profilePic ? currentUser.profilePic : defaultUserIcon
+          // }
           // src={defaultUserIcon}
+          src={currentUser.tempPic ? currentUser.tempPic : defaultUserIcon}
           alt={"User Icon"}
         />
         <p className="sidebar__display-info-username">
           {" "}
-          {currentUser.userName}
+          {currentUser.tempName}
         </p>
       </div>
       <button onClick={onLogout} className="sidebar__logout-btn">

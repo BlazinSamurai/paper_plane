@@ -18,6 +18,12 @@ import ProtectedRoute from "../ProtectedRoute/ProtectRoute";
 
 function AppContent() {
   const [activeRoute, setActiveRoute] = useState("");
+  const [tempUser, setTempUser] = useState({
+    tempName: "",
+    tempPic: "",
+    tempEmail: "",
+    tempPW: "",
+  });
   const { currentUser, isLoggedIn, setCurrentUser, setIsLoggedIn } =
     useContext(CurrentUserContext);
 
@@ -49,18 +55,34 @@ function AppContent() {
       return;
     }
 
-    login({ email, password })
-      .then((data) => {
-        getUserInfo(data.token)
-          .then((info) => {
-            setCurrentUser(info);
-            setToken(data.token);
-            setIsLoggedIn(true);
-            navigate("/homepage");
-          })
-          .catch(console.error);
-      })
-      .catch(console.error);
+    // logic for backend
+    // login({ email, password })
+    //   .then((data) => {
+    //     getUserInfo(data.token)
+    //       .then((info) => {
+    //         setCurrentUser(info);
+    //         setToken(data.token);
+    //         setIsLoggedIn(true);
+    //         navigate("/homepage");
+    //       })
+    //       .catch(console.error);
+    //   })
+    //   .catch(console.error);
+
+    console.log("currentUser from 'loginHandler': ", currentUser);
+    console.log("tempUser from 'loginHandler': ", tempUser);
+
+    if (email === tempUser.tempEmail) {
+      if (password === tempUser.tempPW) {
+        setCurrentUser(tempUser);
+        setIsLoggedIn(true);
+        navigate("/homepage");
+      } else {
+        alert("Incorrect: Password or Email.");
+      }
+    } else {
+      alert("Incorrect: Password or Email.");
+    }
   };
 
   // Return user login handler
@@ -72,13 +94,24 @@ function AppContent() {
   };
 
   const handleSignupSubmit = (userName, profilePic, email, password) => {
-    signUp({ userName, profilePic, email, password })
-      .then((user) => {
-        setCurrentUser(user);
-        setIsLoggedIn(true);
-        navigate("/homepage");
-      })
-      .catch(console.error);
+    // Used to implement a backend
+    // signUp({ userName, profilePic, email, password })
+    //   .then((user) => {
+    //     setCurrentUser(user);
+    //     setIsLoggedIn(true);
+    //     navigate("/homepage");
+    //   })
+    //   .catch(console.error);
+
+    setTempUser({
+      tempName: userName,
+      tempPic: profilePic,
+      tempEmail: email,
+      tempPW: password,
+    });
+    setCurrentUser(tempUser);
+    setIsLoggedIn(true);
+    navigate("/homepage");
   };
 
   const handleLogout = () => {
@@ -88,22 +121,27 @@ function AppContent() {
     navigate("/");
   };
 
-  // checks if there is a user logged in
   useEffect(() => {
-    const jwt = getToken();
+    console.log(tempUser);
+    setCurrentUser(tempUser);
+  }, [tempUser]);
 
-    if (!jwt) {
-      setCurrentUser(null);
-      setIsLoggedIn(false);
-      return;
-    } else {
-      getUserInfo(jwt)
-        .then((data) => {
-          handleLogin(jwt, data);
-        })
-        .catch(console.error);
-    }
-  }, []);
+  // checks if there is a user logged in
+  // useEffect(() => {
+  //   const jwt = getToken();
+
+  //   if (!jwt) {
+  //     setCurrentUser(null);
+  //     setIsLoggedIn(false);
+  //     return;
+  //   } else {
+  //     getUserInfo(jwt)
+  //       .then((data) => {
+  //         handleLogin(jwt, data);
+  //       })
+  //       .catch(console.error);
+  //   }
+  // }, []);
 
   return (
     <div className="page">

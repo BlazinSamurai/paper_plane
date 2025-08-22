@@ -26,7 +26,6 @@ const LoginModal = ({
 
   const handleLoginSubmit = (e) => {
     e.preventDefault();
-    console.log("login inside login.");
     loginHandler(email, password);
   };
   return (

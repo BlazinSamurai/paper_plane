@@ -1,11 +1,11 @@
 @font-face {
   font-family: "Emblema One";
-  src: url(/src/vendor/Emblema_One/EmblemaOne-Regular.ttf);
+  src: url(../../../fonts/Emblema_One/EmblemaOne-Regular.ttf);
 }
 
 @font-face {
   font-family: "Konkhmer Sleokchher";
-  src: url(/src/vendor/konkhmer-sleokchher_5.2.6/webfonts/konkhmer-sleokchher-khmer-400-normal.woff);
+  src: url(../../../fonts/konkhmer-sleokchher_5.2.6/webfonts/konkhmer-sleokchher-khmer-400-normal.woff);
 }
 
 .modal {
