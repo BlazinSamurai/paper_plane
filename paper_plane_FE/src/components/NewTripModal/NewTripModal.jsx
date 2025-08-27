@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import { useState } from "react";
 
 import ModalWithForm from "../ModalWithForm/ModalWithForm";
 
@@ -43,7 +43,7 @@ const NewTrip = ({
       <label htmlFor="newTrip_destination">
         <input
           type="text"
-          className="modal__form-body-input"
+          className="modal__form-body-input modal__form-body-input-popup"
           minLength="1"
           max="20"
           id="newTrip_destination"
@@ -56,7 +56,7 @@ const NewTrip = ({
       <label htmlFor="newTrip_name">
         <input
           type="text"
-          className="modal__form-body-input"
+          className="modal__form-body-input modal__form-body-input-popup "
           minLength="1"
           max="20"
           id="newTrip_name"
@@ -69,7 +69,7 @@ const NewTrip = ({
         <label htmlFor="newTrip_startDate">
           <input
             type="text"
-            className="modal__form-body-input modal__form-body-date"
+            className="modal__form-body-input modal__form-body-input-popup modal__form-body-date"
             minLength="1"
             max="20"
             id="newTrip_startDate"
@@ -82,7 +82,7 @@ const NewTrip = ({
         <label htmlFor="newTrip_endDate">
           <input
             type="text"
-            className="modal__form-body-input modal__form-body-date"
+            className="modal__form-body-input modal__form-body-input-popup modal__form-body-date"
             minLength="1"
             max="20"
             id="newTrip_endDate"

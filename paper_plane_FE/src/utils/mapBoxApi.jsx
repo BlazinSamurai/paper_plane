@@ -1,10 +1,7 @@
-import React, { useEffect, useRef } from "react";
+import { useEffect, useRef } from "react";
 import mapboxgl from "mapbox-gl";
 
 import "mapbox-gl/dist/mapbox-gl.css";
-
-// Using Styled Components
-import styled from "styled-components";
 
 function Mapbox({ isLoggedIn }) {
   console.log(isLoggedIn);
@@ -91,11 +88,11 @@ function Mapbox({ isLoggedIn }) {
     <div
       style={
         isLoggedIn
-          ? { height: "300px", maxWidth: "100vw" }
+          ? { height: "300px", maxWidth: "100vw", margin: "0 20px 0 15px" }
           : {
               height: "733px",
               maxWidth: "1350px",
-              margin: "auto",
+              margin: "0 20px 0 25px",
               position: "relative",
               top: "240px",
             }

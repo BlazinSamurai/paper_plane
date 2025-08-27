@@ -1,8 +1,6 @@
 //This is the Landing Page
 import "./Main.css";
 
-import { useContext } from "react";
-
 import Header from "../Header/Header";
 import Mapbox from "../../utils/mapBoxApi";
 import Steps from "../Steps/Steps";

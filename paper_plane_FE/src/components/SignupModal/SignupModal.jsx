@@ -1,11 +1,10 @@
-import React, { useState } from "react";
+import { useState } from "react";
 
 import ModalWithForm from "../ModalWithForm/ModalWithForm";
 
 const SignupModal = ({
   isOpen,
   signupHandler,
-  openHomePageRoute,
   openLoginRoute,
   openSignupRoute,
   closeActiveRoute,

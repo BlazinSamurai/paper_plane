@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 
 import ModalWithForm from "../ModalWithForm/ModalWithForm";
 
@@ -9,24 +9,21 @@ const LoginModal = ({
   openSignupRoute,
   closeActiveRoute,
 }) => {
-  const [userName, setUserName] = useState("");
-  const [email, setEmail] = useState("");
+  const [value, setValue] = useState("");
+
   const [password, setPassword] = useState("");
 
-  // Might need to combine these two???
-  const handleUserNameChange = (e) => {
-    setUserName(e.target.value);
+  const handleValueChange = (e) => {
+    setValue(e.target.value);
   };
-  const handleEmailChange = (e) => {
-    setEmail(e.target.value);
-  };
+
   const handlePasswordChange = (e) => {
     setPassword(e.target.value);
   };
 
   const handleLoginSubmit = (e) => {
     e.preventDefault();
-    loginHandler(email, password);
+    loginHandler(value, password);
   };
   return (
     <ModalWithForm
@@ -49,8 +46,8 @@ const LoginModal = ({
           id="login_username-email"
           placeholder="Username or Email"
           // not sure if I can put two here
-          value={email}
-          onChange={handleEmailChange}
+          value={value}
+          onChange={handleValueChange}
           required
         />
       </label>

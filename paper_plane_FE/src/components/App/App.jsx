@@ -1,7 +1,6 @@
 import { useContext, useEffect, useState } from "react";
 import { Routes, Route, useNavigate } from "react-router-dom";
-import { signUp, login, getUserInfo } from "../../utils/auth";
-import { setToken, getToken } from "../../utils/token";
+import { setToken } from "../../utils/token";
 import {
   CurrentUserContext,
   CurrentUserProvider,
@@ -13,7 +12,6 @@ import Main from "../Main/Main";
 import SignupModal from "../SignupModal/SignupModal";
 import LoginModal from "../Login/LoginModal";
 import HomePage from "../HomePage/HomePage";
-import NewTrip from "../NewTripModal/NewTripModal";
 import ProtectedRoute from "../ProtectedRoute/ProtectRoute";
 
 function AppContent() {
@@ -24,14 +22,10 @@ function AppContent() {
     tempEmail: "",
     tempPW: "",
   });
-  const { currentUser, isLoggedIn, setCurrentUser, setIsLoggedIn } =
+  const { isLoggedIn, setCurrentUser, setIsLoggedIn } =
     useContext(CurrentUserContext);
 
   const navigate = useNavigate();
-
-  const handleRouteChange = (newRoute) => {
-    setActiveRoute(newRoute);
-  };
 
   const closeActiveRoute = () => {
     setActiveRoute("");
@@ -45,13 +39,9 @@ function AppContent() {
     setActiveRoute("signup");
   };
 
-  const openNewTripModal = () => {
-    setActiveRoute("newTrip");
-  };
-
   // First time User login in handler
-  const handleLoginSubmit = (email, password) => {
-    if (!email || !password) {
+  const handleLoginSubmit = (value, password) => {
+    if (!value || !password) {
       return;
     }
 
@@ -69,10 +59,7 @@ function AppContent() {
     //   })
     //   .catch(console.error);
 
-    console.log("currentUser from 'loginHandler': ", currentUser);
-    console.log("tempUser from 'loginHandler': ", tempUser);
-
-    if (email === tempUser.tempEmail) {
+    if (value === tempUser.tempEmail || value === tempUser.tempName) {
       if (password === tempUser.tempPW) {
         setCurrentUser(tempUser);
         setIsLoggedIn(true);
@@ -86,12 +73,13 @@ function AppContent() {
   };
 
   // Return user login handler
-  const handleLogin = (token, user) => {
-    setCurrentUser(user);
-    setToken(token);
-    setIsLoggedIn(true);
-    navigate("/homepage");
-  };
+  // FOR BACKEND USE
+  // const handleLogin = (token, user) => {
+  //   setCurrentUser(user);
+  //   setToken(token);
+  //   setIsLoggedIn(true);
+  //   navigate("/homepage");
+  // };
 
   const handleSignupSubmit = (userName, profilePic, email, password) => {
     // Used to implement a backend

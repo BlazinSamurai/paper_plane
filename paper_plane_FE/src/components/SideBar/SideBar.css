@@ -22,9 +22,6 @@
 }
 
 .sidebar__logo-container {
-  /* width: 273px;
-  height: 38px;
-  display: flex; */
   display: flex;
 }
 
@@ -34,26 +31,15 @@
 }
 
 .sidebar__logo-name {
-  /* margin: 0;
-  width: 233px;
-  height: 30px;
-  line-height: 30px;
-  font-size: 28px;
-  font-family: Emblema One;
-  color: #000000; */
   margin: 0;
   font-size: 35px;
-  font-family: Emblema One;
+  font-family: Emblema One, fantasy, sans-serif;
   color: #000000;
 }
 
 /* If you want avatar img to be bigger use the style
   clip-art: 50%; */
 .sidebar__display-info-avatar {
-  /* width: 120px;
-  height: 120px;
-  border-radius: 60px;
-  margin: 48px 0; */
   width: 160px;
   height: 160px;
   clip-path: circle(50%);
@@ -61,18 +47,10 @@
 }
 
 .sidebar__display-info-username {
-  /* margin: 0;
-  width: 285px;
-  height: 60px;
-  font-family: Konkhmer Sleokchher;
-  font-size: 50px;
-  color: #4fc2f8;
-  overflow: hidden;
-  text-overflow: ellipsis; */
   margin: 0;
   width: 285px;
   height: 60px;
-  font-family: Konkhmer Sleokchher;
+  font-family: Konkhmer Sleokchher, fantasy, sans-serif;
   font-size: 30px;
   color: #4fc2f8;
   overflow: hidden;
@@ -82,7 +60,28 @@
 }
 
 .sidebar__logout-btn {
-  font-family: Konkhmer Sleokchher;
+  font-family: Konkhmer Sleokchher, fantasy, sans-serif;
   font-size: 15px;
   color: #000;
+}
+
+@media screen and (max-width: 975px) {
+  .sidebar__logo-name {
+    font-size: 20px;
+  }
+}
+
+@media screen and (max-width: 425px) {
+  .sidebar__logo-container {
+    width: 100px;
+  }
+
+  .sidebar__logo-name {
+    font-size: 20px;
+  }
+
+  .sidebar__display-info-avatar {
+    width: 100px;
+    height: 100px;
+  }
 }

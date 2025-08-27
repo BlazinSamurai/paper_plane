@@ -1,7 +1,6 @@
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 
 import cloudBG from "../../images/Clouds/singleMCloud.svg";
-import closeIcon from "../../images/close_icon.png";
 
 import "./ModalWithForm.css";
 
@@ -13,8 +12,6 @@ function ModalWithForm({
   openSignupRoute,
   handleTripModal,
   closeActiveRoute,
-  isLoggedIn,
-  onLogout,
   sideBarTitle,
   sideBarText,
   formTitle,

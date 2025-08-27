@@ -38,6 +38,7 @@ p {
   flex-direction: column;
   justify-content: space-around;
   align-items: center;
+  padding: 5px;
 }
 
 .home-page__search-bar-group {
@@ -48,7 +49,7 @@ p {
 }
 
 .home-page__create-title {
-  font-family: Konkhmer Sleokchher;
+  font-family: Konkhmer Sleokchher, fantasy, sans-serif;
   font-size: 43px;
   color: #fff;
 }
@@ -61,14 +62,14 @@ p {
   width: 792px;
   height: 40px;
   color: #fff;
-  font-family: Konkhmer Sleokchher;
+  font-family: Konkhmer Sleokchher, fantasy, sans-serif;
   text-align: center;
   font-size: 30px;
   cursor: pointer;
 }
 
 .home-page__text {
-  font-family: Konkhmer Sleokchher;
+  font-family: Konkhmer Sleokchher, fantasy, sans-serif;
   font-size: 30px;
   color: #fff;
 }
@@ -85,11 +86,43 @@ p {
 
 .home-page__globe-title {
   height: 65px;
-  font-family: Konkhmer Sleokchher;
+  font-family: Konkhmer Sleokchher, fantasy, sans-serif;
   font-size: 43px;
   color: #fff;
 }
 
 .home-page__mapbox {
   width: 100%;
+}
+
+@media screen and (max-width: 1255px) {
+  .home-page__create-btn {
+    width: 500px;
+  }
+
+  .home-page__globe-title {
+    font-size: 30px;
+  }
+}
+
+@media screen and (max-width: 980px) {
+  .home-page__sidebar {
+    width: 209px;
+    padding: 20px;
+  }
+
+  .home-page__create-btn {
+    width: 300px;
+  }
+
+  .home-page__globe-title {
+    font-size: 20px;
+  }
+}
+
+@media screen and (max-width: 425px) {
+  .home-page__sidebar {
+    width: 98px;
+    padding: 20px;
+  }
 }

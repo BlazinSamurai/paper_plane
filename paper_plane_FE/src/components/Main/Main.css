@@ -15,7 +15,7 @@
   z-index: 5;
   padding: 0 70px 0;
   margin: 0;
-  font-family: Konkhmer Sleokchher;
+  font-family: Konkhmer Sleokchher, fantasy, sans-serif;
   color: #000;
   max-width: 1300px;
   min-width: 300px;
@@ -45,4 +45,22 @@
   background-position: center;
   background-repeat: no-repeat;
   overflow: visible;
+}
+
+@media screen and (max-width: 768px) {
+  .main__title-white {
+    font-size: 60px;
+  }
+}
+
+@media screen and (max-width: 475px) {
+  .main__title {
+    font-size: 28px;
+    padding: 0;
+  }
+
+  .main__title-white {
+    line-height: 100px;
+    font-size: 50px;
+  }
 }

@@ -26,7 +26,7 @@
 /* This class is for signup/login modals */
 .modal__background-gradient {
   background: linear-gradient(#ffffff, #4fc2f8 300px, #ffffff);
-  max-height: 450px;
+  max-height: 560px;
   height: 100vh;
   position: relative;
   z-index: 5;
@@ -36,7 +36,7 @@
 
 .modal__background-image {
   position: relative;
-  top: 100px;
+  top: 168px;
   left: 100px;
   z-index: 10;
   scale: 3.9;
@@ -75,7 +75,7 @@
 }
 
 .modal__sideBar-title {
-  font-family: Konkhmer Sleokchher;
+  font-family: Konkhmer Sleokchher, fantasy, sans-serif;
   font-weight: normal;
   font-size: 28px;
   margin: 0;
@@ -86,7 +86,7 @@
 }
 
 .modal__sideBar-text-signup {
-  font-family: Emblema One;
+  font-family: Emblema One, fantasy, sans-serif;
   font-size: 68px;
   color: #4fc2f8;
   width: 322px;
@@ -95,7 +95,7 @@
 }
 
 .modal__sideBar-text-login {
-  font-family: Emblema One;
+  font-family: Emblema One, fantasy, sans-serif;
   font-size: 60px;
   color: #4fc2f8;
   width: 322px;
@@ -118,7 +118,7 @@
 
 .modal__form-title {
   margin: 0;
-  font-family: Konkhmer Sleokchher;
+  font-family: Konkhmer Sleokchher, fantasy, sans-serif;
   font-weight: normal;
   font-size: 28px;
   line-height: 50px;
@@ -138,14 +138,14 @@
   width: 792px;
   height: 40px;
   color: #fff;
-  font-family: Konkhmer Sleokchher;
+  font-family: Konkhmer Sleokchher, fantasy, sans-serif;
   text-align: center;
   font-size: 30px;
 }
 
 .modal__form-body-input::placeholder {
   color: #000;
-  font-family: Konkhmer Sleokchher;
+  font-family: Konkhmer Sleokchher, fantasy, sans-serif;
   text-align: center;
   font-size: 30px;
   height: 37px;
@@ -158,17 +158,17 @@
 
 .modal__form-button {
   color: #fff;
-  font-family: Konkhmer Sleokchher;
+  font-family: Konkhmer Sleokchher, fantasy, sans-serif;
   text-align: center;
   font-size: 30px;
   background-color: #4fc2f8;
   border-radius: 20px;
-  height: 40px;
+  padding: 7px;
   width: 300px;
   margin: 15px auto 0;
 }
 
-/* This class is for 'Popup' modals */
+/* Class listed below are for the 'Popup' modal(s) */
 .modal__popup {
   position: absolute;
   top: 0;
@@ -206,7 +206,7 @@
 }
 
 .modal__popup-title {
-  font-family: Konkhmer Sleokchher;
+  font-family: Konkhmer Sleokchher, fantasy, sans-serif;
   font-size: 32px;
   color: #000;
   margin: 0;
@@ -228,7 +228,7 @@
 
 .modal__popup-button {
   color: #fff;
-  font-family: Konkhmer Sleokchher;
+  font-family: Konkhmer Sleokchher, fantasy, sans-serif;
   font-size: 30px;
   background-color: #4fc2f8;
   border-radius: 20px;
@@ -239,8 +239,256 @@
   justify-content: center;
 }
 
-/*
-@media screen and (max-width: 1024px) {
-  .modal__background-image {
+@media screen and (max-width: 1409px) {
+  .modal__sideBar {
+    align-items: center;
   }
-} */
+
+  .modal__sideBar-title {
+    font-size: 28px;
+  }
+
+  .modal__sideBar-text-login {
+    font-size: 50px;
+  }
+
+  .modal__form-container {
+    width: 718px;
+    column-gap: 7px;
+  }
+
+  .modal__form-body-input {
+    width: 375px;
+  }
+
+  /* Class listed below are for the 'Popup' modal(s) */
+  .modal__popup-body {
+    row-gap: 10px;
+  }
+
+  .modal__popup-dates-container {
+    flex-direction: column;
+    row-gap: 10px;
+    column-gap: 0px;
+  }
+
+  .modal__form-body-input-popup {
+    width: 660px;
+  }
+}
+
+@media screen and (max-width: 994px) {
+  .modal__sideBar {
+    width: 200px;
+  }
+
+  .modal__form {
+    width: 300px;
+  }
+
+  .modal__form-title {
+    font-size: 20px;
+  }
+
+  .modal__form-body {
+    row-gap: 3px;
+  }
+
+  .modal__sideBar-title {
+    font-size: 20px;
+  }
+
+  .modal__sideBar-text-signup {
+    font-size: 56px;
+    max-width: 207px;
+  }
+
+  .modal__sideBar-text-login {
+    font-size: 35px;
+  }
+
+  .modal__form-container {
+    width: 455px;
+    justify-content: normal;
+  }
+
+  .modal__form-body-input {
+    width: 226px;
+  }
+
+  .modal__form-button {
+    font-size: 20px;
+  }
+
+  .modal__form-body-input::placeholder {
+    font-size: 20px;
+  }
+
+  .modal__form-button {
+    width: 200px;
+  }
+
+  /* Class listed below are for the 'Popup' modal(s) */
+  .modal__popup {
+    height: 702px;
+  }
+
+  .modal__popup-form {
+    width: 500px;
+  }
+
+  .modal__popup-dates-container {
+    column-gap: 10px;
+  }
+
+  .modal__form-body-input-popup {
+    width: 300px;
+  }
+}
+
+@media screen and (max-width: 732px) {
+  .modal__background-gradient {
+    padding: 15px;
+  }
+
+  .modal__sideBar {
+    width: 100px;
+  }
+
+  .modal__form {
+    width: 150px;
+  }
+
+  .modal__form-title {
+    font-size: 12px;
+  }
+
+  .modal__sideBar-title {
+    font-size: 12px;
+    max-width: 150px;
+  }
+
+  .modal__sideBar-text-signup {
+    font-size: 35px;
+    max-width: 120px;
+  }
+
+  .modal__sideBar-text-login {
+    font-size: 24px;
+    max-width: 120px;
+    padding-right: 28px;
+  }
+
+  .modal__form-container {
+    width: 269px;
+  }
+
+  .modal__form-body-input {
+    width: 148px;
+  }
+
+  .modal__form-body-input::placeholder {
+    align-items: center;
+    font-size: 15px;
+  }
+
+  .modal__form-button {
+    width: 148px;
+    font-size: 15px;
+  }
+
+  /* Class listed below are for the 'Popup' modal(s) */
+  .modal__popup {
+    width: 448px;
+  }
+
+  .modal__popup-form {
+    width: 300px;
+  }
+
+  .modal__popup-body {
+    row-gap: 5px;
+  }
+
+  .modal__popup-dates-container {
+    flex-direction: column;
+    row-gap: 5px;
+    column-gap: 0px;
+  }
+
+  .modal__popup-button {
+    font-size: 15px;
+    width: 148px;
+    height: 0;
+    padding: 20px;
+    align-items: center;
+  }
+
+  .modal__form-body-input-popup {
+    width: 200px;
+  }
+}
+
+@media screen and (max-width: 394px) {
+  .modal__form-title {
+    font-size: 10px;
+  }
+
+  .modal__sideBar-title {
+    font-size: 10px;
+    width: 100px;
+  }
+
+  .modal__sideBar-text-signup {
+    font-size: 33px;
+    max-width: 110px;
+    padding-left: 8px;
+  }
+
+  .modal__sideBar-text-login {
+    font-size: 19px;
+    max-width: 100px;
+    padding: 0;
+    text-shadow: -1px 1px 2px black;
+  }
+
+  .modal__form-container {
+    width: 226px;
+    height: 382px;
+    padding: 0;
+  }
+
+  .modal__form-body-input {
+    font-size: 11px;
+    width: 100px;
+  }
+
+  .modal__form-body-input::placeholder {
+    font-size: 11px;
+  }
+
+  .modal__form-button {
+    width: 100px;
+  }
+
+  /* Class listed below are for the 'Popup' modal(s) */
+  .modal__form-body-input-popup {
+    width: 220px;
+  }
+}
+
+@media screen and (max-width: 375px) {
+  .modal__form-container {
+    width: 281px;
+  }
+
+  .modal__form-body {
+    align-items: center;
+  }
+}
+
+@media screen and (max-width: 320px) {
+  .modal__form-container {
+    width: 226px;
+  }
+}
