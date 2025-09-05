@@ -38,23 +38,48 @@ const userSchema = new mongoose.Schema({
   },
 });
 
-userSchema.statics.findUserByCredentials = function findUserByCredentials(
-  email,
-  password
-) {
+userSchema.statics.findUserByEmail = function findUserByEmail(email, password) {
   // trying to find the user by email
   return this.findOne({ email })
     .select("+password")
     .then((user) => {
       // not found - rejecting the promise
       if (!user) {
-        return Promise.reject(new Error("Incorrect email or password"));
+        return Promise.reject(
+          new Error("Invalid: Email or password combination.")
+        );
       }
       // found - comparing hashes
       return bcrypt.compare(password, user.password).then((matched) => {
         if (!matched) {
           // the hashes didn't match, rejecting the promise
-          return Promise.reject(new Error("Incorrect email or password"));
+          return Promise.reject(new Error("Incorrect email or password."));
+        }
+        // authentication successful
+        return user; // now user is available
+      });
+    });
+};
+
+userSchema.statics.findUserByUsername = function findUserByUsername(
+  userName,
+  password
+) {
+  // trying to find the user by username
+  return this.findOne({ userName })
+    .select("+password")
+    .then((user) => {
+      // not found - rejecting the promise
+      if (!user) {
+        return Promise.reject(
+          new Error("Invalid: userName and password combination.")
+        );
+      }
+      // found - comparing hashes
+      return bcrypt.compare(password, user.password).then((matched) => {
+        if (!matched) {
+          // the hashes didn't match, rejecting the promise
+          return Promise.reject(new Error("Invalid userName or password."));
         }
         // authentication successful
         return user; // now user is available

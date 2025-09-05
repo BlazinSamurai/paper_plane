@@ -9,7 +9,6 @@ import defaultUserIcon from "../../images/default_user_icon.jpg";
 function SideBar({ onLogout }) {
   const { currentUser } = useContext(CurrentUserContext);
 
-  console.log("currentUser inside 'SideBar.jsx': ", currentUser);
   return (
     <div className="sidebar">
       <div className="sidebar__display-info">
@@ -27,12 +26,14 @@ function SideBar({ onLogout }) {
           //   currentUser.profilePic ? currentUser.profilePic : defaultUserIcon
           // }
           // src={defaultUserIcon}
-          src={currentUser.tempPic ? currentUser.tempPic : defaultUserIcon}
+          src={
+            currentUser.profilePic ? currentUser.profilePic : defaultUserIcon
+          }
           alt={"User Icon"}
         />
         <p className="sidebar__display-info-username">
           {" "}
-          {currentUser.tempName}
+          {currentUser.userName}
         </p>
       </div>
       <button onClick={onLogout} className="sidebar__logout-btn">

@@ -21,8 +21,8 @@ function ModalWithForm({
 }) {
   const [route, setRoute] = useState(isOpen);
   const [newTrip, setNewTrip] = useState(Boolean);
-  // variable is called 'userSign' because a user can "signin" or "signup"
-  // and sign is short hand for both
+  // variable is called 'userSign' because a user
+  // can "signin" or "signup" and sign is short hand for both
   const [userSign, setUserSign] = useState(Boolean);
   const [visibility, setVisibility] = useState(true);
 

@@ -45,7 +45,6 @@ const LoginModal = ({
           max="20"
           id="login_username-email"
           placeholder="Username or Email"
-          // not sure if I can put two here
           value={value}
           onChange={handleValueChange}
           required

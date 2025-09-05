@@ -46,15 +46,47 @@ const createUser = (req, res, next) => {
     });
 };
 
-// login
-const login = (req, res, next) => {
+// login VIA USERNAME
+const loginViaUsername = (req, res, next) => {
+  const { userName, password } = req.body;
+
+  if (!userName || !password) {
+    return next(
+      new BadRequestError("Username and Password fields are required.")
+    );
+  }
+
+  return User.findUserByUsername(userName, password)
+    .then((user) => {
+      // authentication successful!
+      // the controller should create a JSON web token (JWT) that expires after a week
+      // JWT_SECRET contains a value of your secret key for the signature
+      // Once the JWT has been created, it should be sent to the client.
+      const token = jwt.sign({ _id: user._id }, JWT_SECRET, {
+        expiresIn: "7d",
+      });
+      res.send({ token });
+    })
+    .catch((err) => {
+      if (err.name === "ReferenceError") {
+        return next(new BadRequestError(err.message));
+      }
+      if (err.message === "Incorrect Username or password") {
+        return next(new UnauthorizedError(err.message));
+      }
+      return next(err);
+    });
+};
+
+// login VIA EMAIL
+const loginViaEmail = (req, res, next) => {
   const { email, password } = req.body;
 
   if (!email || !password) {
     return next(new BadRequestError("Email and Password fields are required."));
   }
 
-  return User.findUserByCredentials(email, password)
+  return User.findUserByEmail(email, password)
     .then((user) => {
       // authentication successful!
       // the controller should create a JSON web token (JWT) that expires after a week
@@ -97,6 +129,7 @@ const getUser = (req, res, next) => {
 
 module.exports = {
   createUser,
-  login,
+  loginViaUsername,
+  loginViaEmail,
   getUser,
 };

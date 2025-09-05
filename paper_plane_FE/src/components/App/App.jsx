@@ -1,6 +1,12 @@
 import { useContext, useEffect, useState } from "react";
 import { Routes, Route, useNavigate } from "react-router-dom";
-import { setToken } from "../../utils/token";
+import { setToken, getToken } from "../../utils/token";
+import {
+  signUp,
+  loginViaUsername,
+  loginViaEmail,
+  getUserInfo,
+} from "../../utils/auth";
 import {
   CurrentUserContext,
   CurrentUserProvider,
@@ -16,15 +22,8 @@ import ProtectedRoute from "../ProtectedRoute/ProtectRoute";
 
 function AppContent() {
   const [activeRoute, setActiveRoute] = useState("");
-  const [tempUser, setTempUser] = useState({
-    tempName: "",
-    tempPic: "",
-    tempEmail: "",
-    tempPW: "",
-  });
   const { isLoggedIn, setCurrentUser, setIsLoggedIn } =
     useContext(CurrentUserContext);
-
   const navigate = useNavigate();
 
   const closeActiveRoute = () => {
@@ -41,65 +40,55 @@ function AppContent() {
 
   // First time User login in handler
   const handleLoginSubmit = (value, password) => {
-    if (!value || !password) {
-      return;
-    }
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/; // Basic email regex
 
-    // logic for backend
-    // login({ email, password })
-    //   .then((data) => {
-    //     getUserInfo(data.token)
-    //       .then((info) => {
-    //         setCurrentUser(info);
-    //         setToken(data.token);
-    //         setIsLoggedIn(true);
-    //         navigate("/homepage");
-    //       })
-    //       .catch(console.error);
-    //   })
-    //   .catch(console.error);
-
-    if (value === tempUser.tempEmail || value === tempUser.tempName) {
-      if (password === tempUser.tempPW) {
-        setCurrentUser(tempUser);
-        setIsLoggedIn(true);
-        navigate("/homepage");
-      } else {
-        alert("Incorrect: Password or Email.");
-      }
+    if (emailRegex.test(value)) {
+      // Input is likely an email
+      loginViaEmail({ value, password })
+        .then((data) => {
+          getUserInfo(data.token)
+            .then((info) => {
+              setCurrentUser(info);
+              setToken(data.token);
+              setIsLoggedIn(true);
+              navigate("/homepage");
+            })
+            .catch(console.error("Incorrect: Email or Password."));
+        })
+        .catch(console.error("Incorrect: Email and Password combination."));
     } else {
-      alert("Incorrect: Password or Email.");
+      // Input is likely a username
+      loginViaUsername({ value, password })
+        .then((data) => {
+          getUserInfo(data.token)
+            .then((info) => {
+              setCurrentUser(info);
+              setToken(data.token);
+              setIsLoggedIn(true);
+              navigate("/homepage");
+            })
+            .catch(console.error("Incorrect: Username or Password."));
+        })
+        .catch(console.error("Incorrect: Username and Password combination."));
     }
   };
 
   // Return user login handler
-  // FOR BACKEND USE
-  // const handleLogin = (token, user) => {
-  //   setCurrentUser(user);
-  //   setToken(token);
-  //   setIsLoggedIn(true);
-  //   navigate("/homepage");
-  // };
-
-  const handleSignupSubmit = (userName, profilePic, email, password) => {
-    // Used to implement a backend
-    // signUp({ userName, profilePic, email, password })
-    //   .then((user) => {
-    //     setCurrentUser(user);
-    //     setIsLoggedIn(true);
-    //     navigate("/homepage");
-    //   })
-    //   .catch(console.error);
-
-    setTempUser({
-      tempName: userName,
-      tempPic: profilePic,
-      tempEmail: email,
-      tempPW: password,
-    });
-    setCurrentUser(tempUser);
+  const handleLogin = (token, user) => {
+    setCurrentUser(user);
+    setToken(token);
     setIsLoggedIn(true);
     navigate("/homepage");
+  };
+
+  const handleSignupSubmit = (userName, profilePic, email, password) => {
+    signUp({ userName, profilePic, email, password })
+      .then((user) => {
+        setCurrentUser(user);
+        setIsLoggedIn(true);
+        navigate("/homepage");
+      })
+      .catch(console.error);
   };
 
   const handleLogout = () => {
@@ -109,27 +98,22 @@ function AppContent() {
     navigate("/");
   };
 
-  useEffect(() => {
-    console.log(tempUser);
-    setCurrentUser(tempUser);
-  }, [tempUser]);
-
   // checks if there is a user logged in
-  // useEffect(() => {
-  //   const jwt = getToken();
+  useEffect(() => {
+    const jwt = getToken();
 
-  //   if (!jwt) {
-  //     setCurrentUser(null);
-  //     setIsLoggedIn(false);
-  //     return;
-  //   } else {
-  //     getUserInfo(jwt)
-  //       .then((data) => {
-  //         handleLogin(jwt, data);
-  //       })
-  //       .catch(console.error);
-  //   }
-  // }, []);
+    if (!jwt) {
+      setCurrentUser(null);
+      setIsLoggedIn(false);
+      return;
+    } else {
+      getUserInfo(jwt)
+        .then((data) => {
+          handleLogin(jwt, data);
+        })
+        .catch(console.error);
+    }
+  }, []);
 
   return (
     <div className="page">

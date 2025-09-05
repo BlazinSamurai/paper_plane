@@ -29,14 +29,28 @@ function signUp(info) {
 }
 
 // POST /login for user authorization
-function login(info) {
-  return request(`${baseUrl}/login`, {
+function loginViaUsername(info) {
+  return request(`${baseUrl}/loginViaUsername`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
     },
     body: JSON.stringify({
-      email: info.email,
+      userName: info.value,
+      password: info.password,
+    }),
+  });
+}
+
+// POST /login for user authorization
+function loginViaEmail(info) {
+  return request(`${baseUrl}/loginViaEmail`, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({
+      email: info.value,
       password: info.password,
     }),
   });
@@ -53,4 +67,4 @@ function getUserInfo(token) {
   });
 }
 
-export { signUp, login, getUserInfo };
+export { signUp, loginViaUsername, loginViaEmail, getUserInfo };
