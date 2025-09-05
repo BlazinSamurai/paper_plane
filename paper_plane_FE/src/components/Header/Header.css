@@ -1,0 +1,110 @@
+@font-face {
+  font-family: "Emblema One";
+  /* src: url(/src/vendor/Emblema_One/EmblemaOne-Regular.ttf); */
+  src: url(../../../fonts/Emblema_One/EmblemaOne-Regular.ttf);
+}
+
+@font-face {
+  font-family: "Konkhmer Sleokchher";
+  /* src: url(/src/vendor/konkhmer-sleokchher_5.2.6/webfonts/konkhmer-sleokchher-khmer-400-normal.woff); */
+  src: url(../../../fonts/konkhmer-sleokchher_5.2.6/webfonts/konkhmer-sleokchher-khmer-400-normal.woff);
+}
+
+a:link {
+  display: flex;
+  text-decoration: none;
+}
+
+button {
+  border: none;
+  background: none;
+  padding: 0;
+}
+
+.header {
+  background-color: #ffffff;
+  padding: 20px 70px 0;
+  height: 72px;
+  width: auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.header-navbar__logo-container {
+  visibility: visible;
+  width: 273px;
+  height: 38px;
+  display: flex;
+}
+
+.header-navbar__icon {
+  width: 43px;
+  height: 38px;
+}
+
+.header-navbar__name {
+  margin: 0;
+  width: 233px;
+  height: 30px;
+  line-height: 30px;
+  font-size: 28px;
+  font-family: Emblema One, fantasy, sans-serif;
+  color: #000000;
+}
+
+.header-navbar__account-container {
+  visibility: visible;
+  padding: 0 33px 17px 0;
+  display: flex;
+  column-gap: 48.5px;
+}
+
+.header-navbar__login {
+  margin: 0;
+  font-family: Konkhmer Sleokchher, fantasy, sans-serif;
+  color: #000000;
+  font-weight: 400;
+  font-size: 15px;
+}
+
+.header-navbar__signup {
+  margin: 0;
+  font-family: Konkhmer Sleokchher, fantasy, sans-serif;
+  color: #4fc2f8;
+  font-weight: 400;
+  font-size: 15px;
+}
+
+@media screen and (max-width: 499px) {
+  .header-navbar__logo-container {
+    width: 150px;
+  }
+
+  .header-navbar__account-container {
+    padding: 0;
+  }
+
+  .header-navbar__icon {
+    width: 35px;
+  }
+
+  .header-navbar__name {
+    width: 100px;
+    font-size: 13px;
+  }
+
+  .header-navbar__login {
+    font-size: 12px;
+  }
+
+  .header-navbar__signup {
+    font-size: 12px;
+  }
+}
+
+@media screen and (max-width: 475px) {
+  .header {
+    padding: 20px 5px 0;
+  }
+}

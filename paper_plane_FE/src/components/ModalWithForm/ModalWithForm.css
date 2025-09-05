@@ -1,0 +1,494 @@
+@font-face {
+  font-family: "Emblema One";
+  src: url(../../../fonts/Emblema_One/EmblemaOne-Regular.ttf);
+}
+
+@font-face {
+  font-family: "Konkhmer Sleokchher";
+  src: url(../../../fonts/konkhmer-sleokchher_5.2.6/webfonts/konkhmer-sleokchher-khmer-400-normal.woff);
+}
+
+.modal {
+  visibility: visible;
+}
+
+.modal__hidden {
+  visibility: hidden;
+  display: none;
+}
+
+.modal__whole-page {
+  visibility: visible;
+  position: relative;
+  z-index: 1;
+}
+
+/* This class is for signup/login modals */
+.modal__background-gradient {
+  background: linear-gradient(#ffffff, #4fc2f8 300px, #ffffff);
+  max-height: 560px;
+  height: 100vh;
+  position: relative;
+  z-index: 5;
+  padding: 90px;
+  overflow: hidden;
+}
+
+.modal__background-image {
+  position: relative;
+  top: 168px;
+  left: 100px;
+  z-index: 10;
+  scale: 3.9;
+}
+
+.modal__backdrop {
+  background-color: #808080;
+  position: relative;
+  max-width: 1382px;
+  height: 450px;
+  box-sizing: border-box;
+  border-radius: 20px;
+  opacity: 46%;
+  z-index: 15;
+  bottom: 203px;
+  padding: 34px 31px;
+}
+
+.modal__form-container {
+  background-color: #fff;
+  position: relative;
+  z-index: 20;
+  width: 1136px;
+  height: 284px;
+  bottom: 620px;
+  left: 32px;
+  display: flex;
+  justify-content: space-between;
+  padding: 49px 31px;
+}
+
+.modal__sideBar {
+  display: flex;
+  flex-direction: column;
+  column-gap: 14px;
+}
+
+.modal__sideBar-title {
+  font-family: Konkhmer Sleokchher, fantasy, sans-serif;
+  font-weight: normal;
+  font-size: 28px;
+  margin: 0;
+  width: 322px;
+  height: 50px;
+  line-height: 50px;
+  text-align: center;
+}
+
+.modal__sideBar-text-signup {
+  font-family: Emblema One, fantasy, sans-serif;
+  font-size: 68px;
+  color: #4fc2f8;
+  width: 322px;
+  text-align: center;
+  text-shadow: #808080 -4px 4px 5px;
+}
+
+.modal__sideBar-text-login {
+  font-family: Emblema One, fantasy, sans-serif;
+  font-size: 60px;
+  color: #4fc2f8;
+  width: 322px;
+  text-align: center;
+  text-shadow: #808080 -4px 4px 5px;
+}
+
+.modal__divider {
+  background-color: #4fc2f8;
+  width: 5px;
+  position: relative;
+}
+
+.modal__form {
+  display: flex;
+  flex-direction: column;
+  width: 792px;
+  height: 50px;
+}
+
+.modal__form-title {
+  margin: 0;
+  font-family: Konkhmer Sleokchher, fantasy, sans-serif;
+  font-weight: normal;
+  font-size: 28px;
+  line-height: 50px;
+}
+
+.modal__form-body {
+  display: flex;
+  flex-direction: column;
+  row-gap: 15px;
+}
+
+.modal__form-body-input {
+  background-color: #808080;
+  opacity: 30%;
+  border: none;
+  border-radius: 25px;
+  width: 792px;
+  height: 40px;
+  color: #fff;
+  font-family: Konkhmer Sleokchher, fantasy, sans-serif;
+  text-align: center;
+  font-size: 30px;
+}
+
+.modal__form-body-input::placeholder {
+  color: #000;
+  font-family: Konkhmer Sleokchher, fantasy, sans-serif;
+  text-align: center;
+  font-size: 30px;
+  height: 37px;
+  position: relative;
+}
+
+.modal__form-body-date {
+  width: 345px;
+}
+
+.modal__form-button {
+  color: #fff;
+  font-family: Konkhmer Sleokchher, fantasy, sans-serif;
+  text-align: center;
+  font-size: 30px;
+  background-color: #4fc2f8;
+  border-radius: 20px;
+  padding: 7px;
+  width: 300px;
+  margin: 15px auto 0;
+}
+
+/* Class listed below are for the 'Popup' modal(s) */
+.modal__popup {
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-color: rgb(0 0 0 / 74%);
+  width: 100vw;
+  height: 100vh;
+  z-index: 99;
+}
+
+.modal__popup-form {
+  position: relative;
+  margin: auto;
+  top: 60px;
+  background-color: #fff;
+  border-radius: 20px;
+  width: 900px;
+  height: 420px;
+}
+
+.modal__popup-header-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.modal__popup-close-btn {
+  background-image: url("../../images/close_icon.png");
+  width: 20px;
+  height: 20px;
+  display: flex;
+  align-self: flex-end;
+  position: relative;
+  top: 15px;
+  right: 15px;
+}
+
+.modal__popup-title {
+  font-family: Konkhmer Sleokchher, fantasy, sans-serif;
+  font-size: 32px;
+  color: #000;
+  margin: 0;
+  padding: 12px 0 42px 57px;
+}
+
+.modal__popup-body {
+  display: flex;
+  flex-direction: column;
+  row-gap: 40px;
+  text-align: center;
+}
+
+.modal__popup-dates-container {
+  display: flex;
+  column-gap: 90px;
+  justify-content: center;
+}
+
+.modal__popup-button {
+  color: #fff;
+  font-family: Konkhmer Sleokchher, fantasy, sans-serif;
+  font-size: 30px;
+  background-color: #4fc2f8;
+  border-radius: 20px;
+  height: 40px;
+  width: 300px;
+  margin: 25px auto 0;
+  display: flex;
+  justify-content: center;
+}
+
+@media screen and (max-width: 1409px) {
+  .modal__sideBar {
+    align-items: center;
+  }
+
+  .modal__sideBar-title {
+    font-size: 28px;
+  }
+
+  .modal__sideBar-text-login {
+    font-size: 50px;
+  }
+
+  .modal__form-container {
+    width: 718px;
+    column-gap: 7px;
+  }
+
+  .modal__form-body-input {
+    width: 375px;
+  }
+
+  /* Class listed below are for the 'Popup' modal(s) */
+  .modal__popup-body {
+    row-gap: 10px;
+  }
+
+  .modal__popup-dates-container {
+    flex-direction: column;
+    row-gap: 10px;
+    column-gap: 0px;
+  }
+
+  .modal__form-body-input-popup {
+    width: 660px;
+  }
+}
+
+@media screen and (max-width: 994px) {
+  .modal__sideBar {
+    width: 200px;
+  }
+
+  .modal__form {
+    width: 300px;
+  }
+
+  .modal__form-title {
+    font-size: 20px;
+  }
+
+  .modal__form-body {
+    row-gap: 3px;
+  }
+
+  .modal__sideBar-title {
+    font-size: 20px;
+  }
+
+  .modal__sideBar-text-signup {
+    font-size: 56px;
+    max-width: 207px;
+  }
+
+  .modal__sideBar-text-login {
+    font-size: 35px;
+  }
+
+  .modal__form-container {
+    width: 455px;
+    justify-content: normal;
+  }
+
+  .modal__form-body-input {
+    width: 226px;
+  }
+
+  .modal__form-button {
+    font-size: 20px;
+  }
+
+  .modal__form-body-input::placeholder {
+    font-size: 20px;
+  }
+
+  .modal__form-button {
+    width: 200px;
+  }
+
+  /* Class listed below are for the 'Popup' modal(s) */
+  .modal__popup {
+    height: 702px;
+  }
+
+  .modal__popup-form {
+    width: 500px;
+  }
+
+  .modal__popup-dates-container {
+    column-gap: 10px;
+  }
+
+  .modal__form-body-input-popup {
+    width: 300px;
+  }
+}
+
+@media screen and (max-width: 732px) {
+  .modal__background-gradient {
+    padding: 15px;
+  }
+
+  .modal__sideBar {
+    width: 100px;
+  }
+
+  .modal__form {
+    width: 150px;
+  }
+
+  .modal__form-title {
+    font-size: 12px;
+  }
+
+  .modal__sideBar-title {
+    font-size: 12px;
+    max-width: 150px;
+  }
+
+  .modal__sideBar-text-signup {
+    font-size: 35px;
+    max-width: 120px;
+  }
+
+  .modal__sideBar-text-login {
+    font-size: 24px;
+    max-width: 120px;
+    padding-right: 28px;
+  }
+
+  .modal__form-container {
+    width: 269px;
+  }
+
+  .modal__form-body-input {
+    width: 148px;
+  }
+
+  .modal__form-body-input::placeholder {
+    align-items: center;
+    font-size: 15px;
+  }
+
+  .modal__form-button {
+    width: 148px;
+    font-size: 15px;
+  }
+
+  /* Class listed below are for the 'Popup' modal(s) */
+  .modal__popup {
+    width: 448px;
+  }
+
+  .modal__popup-form {
+    width: 300px;
+  }
+
+  .modal__popup-body {
+    row-gap: 5px;
+  }
+
+  .modal__popup-dates-container {
+    flex-direction: column;
+    row-gap: 5px;
+    column-gap: 0px;
+  }
+
+  .modal__popup-button {
+    font-size: 15px;
+    width: 148px;
+    height: 0;
+    padding: 20px;
+    align-items: center;
+  }
+
+  .modal__form-body-input-popup {
+    width: 200px;
+  }
+}
+
+@media screen and (max-width: 394px) {
+  .modal__form-title {
+    font-size: 10px;
+  }
+
+  .modal__sideBar-title {
+    font-size: 10px;
+    width: 100px;
+  }
+
+  .modal__sideBar-text-signup {
+    font-size: 33px;
+    max-width: 110px;
+    padding-left: 8px;
+  }
+
+  .modal__sideBar-text-login {
+    font-size: 19px;
+    max-width: 100px;
+    padding: 0;
+    text-shadow: -1px 1px 2px black;
+  }
+
+  .modal__form-container {
+    width: 226px;
+    height: 382px;
+    padding: 0;
+  }
+
+  .modal__form-body-input {
+    font-size: 11px;
+    width: 100px;
+  }
+
+  .modal__form-body-input::placeholder {
+    font-size: 11px;
+  }
+
+  .modal__form-button {
+    width: 100px;
+  }
+
+  /* Class listed below are for the 'Popup' modal(s) */
+  .modal__form-body-input-popup {
+    width: 220px;
+  }
+}
+
+@media screen and (max-width: 375px) {
+  .modal__form-container {
+    width: 281px;
+  }
+
+  .modal__form-body {
+    align-items: center;
+  }
+}
+
+@media screen and (max-width: 320px) {
+  .modal__form-container {
+    width: 226px;
+  }
+}
