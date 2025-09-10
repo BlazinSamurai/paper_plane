@@ -34,12 +34,6 @@ function ModalWithForm({
     handleTripModal(false);
   }
 
-  // delete later
-  const doNothing = (e) => {
-    e.preventDefault();
-    console.log("Do Nothing!");
-  };
-
   useEffect(() => {
     if (route === "login" || route === "signup") {
       setNewTrip(false);
@@ -106,7 +100,7 @@ function ModalWithForm({
         <div className="modal__popup">
           {/* Waiting to get approve of project so far so work
               on backend for new trip submission. */}
-          <form onSubmit={doNothing} className="modal__popup-form">
+          <form onSubmit={onSubmit} className="modal__popup-form">
             <div className="modal__popup-header-container">
               <button
                 onClick={handleClosePopup}

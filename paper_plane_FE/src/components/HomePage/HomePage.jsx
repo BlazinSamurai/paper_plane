@@ -8,12 +8,23 @@ import Mapbox from "../../utils/mapBoxApi";
 
 import NewTrip from "../NewTripModal/NewTripModal";
 
-function HomePage({ isLoggedIn, onLogout, closeActiveRoute }) {
+function HomePage({ isLoggedIn, onLogout, closeActiveRoute, addNewTrip }) {
   const [tripModal, setTripModal] = useState(false);
 
   function openTripModal() {
     setTripModal(true);
   }
+
+  const handleNewTripSubmit = (
+    e,
+    destination,
+    tripName,
+    startDate,
+    endDate
+  ) => {
+    addNewTrip(e, destination, tripName, startDate, endDate);
+    setTripModal(false);
+  };
 
   return (
     <div className="home-page">
@@ -37,8 +48,7 @@ function HomePage({ isLoggedIn, onLogout, closeActiveRoute }) {
                 isOpen="newTrip"
                 handleTripModal={setTripModal}
                 closeActiveRoute={closeActiveRoute}
-                isLoggedIn={isLoggedIn}
-                onLogout={onLogout}
+                handleNewTripSubmit={handleNewTripSubmit}
               />
             ) : (
               ""

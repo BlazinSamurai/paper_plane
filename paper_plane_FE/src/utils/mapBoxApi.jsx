@@ -4,7 +4,6 @@ import mapboxgl from "mapbox-gl";
 import "mapbox-gl/dist/mapbox-gl.css";
 
 function Mapbox({ isLoggedIn }) {
-  console.log(isLoggedIn);
   const mapContainerRef = useRef();
   const mapRef = useRef();
 

@@ -67,4 +67,11 @@ function getUserInfo(token) {
   });
 }
 
-export { signUp, loginViaUsername, loginViaEmail, getUserInfo };
+export {
+  baseUrl,
+  request,
+  signUp,
+  loginViaUsername,
+  loginViaEmail,
+  getUserInfo,
+};

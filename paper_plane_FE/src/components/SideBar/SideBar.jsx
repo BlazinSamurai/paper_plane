@@ -22,10 +22,6 @@ function SideBar({ onLogout }) {
           //You can pass in a URL that doesn't provide a image but that doesn't
           //result in a 'false' value so default icon is not used and goes
           //straight to "alt"
-          // src={
-          //   currentUser.profilePic ? currentUser.profilePic : defaultUserIcon
-          // }
-          // src={defaultUserIcon}
           src={
             currentUser.profilePic ? currentUser.profilePic : defaultUserIcon
           }

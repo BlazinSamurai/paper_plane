@@ -6,8 +6,7 @@ const NewTrip = ({
   isOpen,
   handleTripModal,
   closeActiveRoute,
-  isLoggedIn,
-  onLogout,
+  handleNewTripSubmit,
 }) => {
   const [destination, setDestination] = useState("");
   const [tripName, setTripName] = useState("");
@@ -30,15 +29,18 @@ const NewTrip = ({
     setEndDate(e.target.value);
   };
 
+  const handleNewTripModal = (e) => {
+    handleNewTripSubmit(e, destination, tripName, startDate, endDate);
+  };
+
   return (
     <ModalWithForm
       isOpen={isOpen}
       handleTripModal={handleTripModal}
       closeActiveRoute={closeActiveRoute}
-      isLoggedIn={isLoggedIn}
-      onLogout={onLogout}
       formTitle="Create New Trip!"
       buttonText="Create Trip"
+      onSubmit={handleNewTripModal}
     >
       <label htmlFor="newTrip_destination">
         <input
@@ -50,7 +52,7 @@ const NewTrip = ({
           placeholder="Destination"
           value={destination}
           onChange={handleDestinationChange}
-          //   required
+          required
         />
       </label>
       <label htmlFor="newTrip_name">
@@ -76,7 +78,7 @@ const NewTrip = ({
             placeholder="Start Date"
             value={startDate}
             onChange={handleStartDateChange}
-            // required
+            required
           />
         </label>
         <label htmlFor="newTrip_endDate">
@@ -89,7 +91,7 @@ const NewTrip = ({
             placeholder="End Date"
             value={endDate}
             onChange={handleEndDateChange}
-            // required
+            required
           />
         </label>
       </div>

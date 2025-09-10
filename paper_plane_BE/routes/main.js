@@ -1,5 +1,7 @@
 const router = require("express").Router();
+const auth = require("../middlewares/auth");
 const userRouter = require("./users");
+const tripRouter = require("./trips");
 // const {
 //   validateUserLogin,
 //   validateUserInfo,
@@ -9,16 +11,22 @@ const {
   loginViaEmail,
   createUser,
 } = require("../controllers/users");
+const { createTrip } = require("../controllers/trips");
 const { NotFoundError } = require("../utils/errors/notFoundError");
 
-//will eventually need validation for create and login
 router.post("/signup", createUser);
 
 router.post("/loginViaUsername", loginViaUsername);
 
 router.post("/loginViaEmail", loginViaEmail);
 
+// C.R.U.D
+// CREATE
+router.post("/createTrip", auth, createTrip);
+
 router.use("/users", userRouter);
+
+router.use("/trips", tripRouter);
 
 router.use((req, res, next) => {
   next(new NotFoundError("Router not found."));

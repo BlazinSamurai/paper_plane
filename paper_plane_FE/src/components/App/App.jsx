@@ -7,6 +7,7 @@ import {
   loginViaEmail,
   getUserInfo,
 } from "../../utils/auth";
+import { createTrip, getTrips } from "../../utils/trips";
 import {
   CurrentUserContext,
   CurrentUserProvider,
@@ -22,6 +23,7 @@ import ProtectedRoute from "../ProtectedRoute/ProtectRoute";
 
 function AppContent() {
   const [activeRoute, setActiveRoute] = useState("");
+  const [tempTrip, setTempTrip] = useState([]);
   const { isLoggedIn, setCurrentUser, setIsLoggedIn } =
     useContext(CurrentUserContext);
   const navigate = useNavigate();
@@ -98,6 +100,19 @@ function AppContent() {
     navigate("/");
   };
 
+  const addNewTrip = (e, destination, tripName, startDate, endDate) => {
+    e.preventDefault(e);
+    const jwt = getToken();
+
+    createTrip({ destination, tripName, startDate, endDate }, jwt)
+      .then((newTripInfo) => {
+        console.log(newTripInfo);
+      })
+      .catch((e) => {
+        console.error(e);
+      });
+  };
+
   // checks if there is a user logged in
   useEffect(() => {
     const jwt = getToken();
@@ -162,6 +177,7 @@ function AppContent() {
                   isLoggedIn={isLoggedIn}
                   onLogout={handleLogout}
                   closeActiveRoute={closeActiveRoute}
+                  addNewTrip={addNewTrip}
                 />
               </ProtectedRoute>
             }
