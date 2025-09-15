@@ -59,6 +59,27 @@
   text-align: center;
 }
 
+.sidebar__trips-section {
+  margin: 0;
+  padding: 0;
+  max-height: 250px;
+  overflow: scroll;
+}
+
+.sidebar__display-toggle-btn-container {
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.sidebar__calendar-button {
+  width: 35px;
+  padding-bottom: 10px;
+}
+
+.sidebar__earth-button {
+  max-width: 35px;
+}
+
 .sidebar__logout-btn {
   font-family: Konkhmer Sleokchher, fantasy, sans-serif;
   font-size: 15px;

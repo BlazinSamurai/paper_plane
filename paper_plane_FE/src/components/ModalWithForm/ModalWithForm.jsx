@@ -22,15 +22,15 @@ function ModalWithForm({
   const [route, setRoute] = useState(isOpen);
   const [newTrip, setNewTrip] = useState(Boolean);
   // variable is called 'userSign' because a user
-  // can "signin" or "signup" and sign is short hand for both
+  // can "signin" or "signup" and the word sign is
+  // in both word so sign will be used to be short
+  // hand for signin and signup
   const [userSign, setUserSign] = useState(Boolean);
-  const [visibility, setVisibility] = useState(true);
 
   function handleClosePopup() {
     setRoute("");
     setNewTrip(false);
     setUserSign(false);
-    setVisibility(false);
     handleTripModal(false);
   }
 
@@ -38,25 +38,17 @@ function ModalWithForm({
     if (route === "login" || route === "signup") {
       setNewTrip(false);
       setUserSign(true);
-      setVisibility(true);
       return;
     }
     if (route === "newTrip") {
       setNewTrip(true);
       setUserSign(false);
-      setVisibility(true);
-      return;
-    }
-    if (route === "" || isOpen === "") {
-      setNewTrip(false);
-      setUserSign(false);
-      setVisibility(false);
       return;
     }
   }, [route]);
 
   return (
-    <div className={visibility ? "" : "modal__hidden"}>
+    <div>
       {userSign ? (
         <div className="modal__whole-page">
           <Header
@@ -98,8 +90,6 @@ function ModalWithForm({
       )}
       {newTrip ? (
         <div className="modal__popup">
-          {/* Waiting to get approve of project so far so work
-              on backend for new trip submission. */}
           <form onSubmit={onSubmit} className="modal__popup-form">
             <div className="modal__popup-header-container">
               <button

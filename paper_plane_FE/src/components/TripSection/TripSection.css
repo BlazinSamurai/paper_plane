@@ -1,0 +1,41 @@
+@font-face {
+  font-family: "Emblema One";
+  src: url(../../../fonts/Emblema_One/EmblemaOne-Regular.ttf);
+}
+
+@font-face {
+  font-family: "Konkhmer Sleokchher";
+  src: url(../../../fonts/konkhmer-sleokchher_5.2.6/webfonts/konkhmer-sleokchher-khmer-400-normal.woff);
+}
+
+.trips {
+  padding-bottom: 10px;
+}
+
+.trips__container {
+  background-color: #d9d9d9;
+  border-radius: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.trips__container_white {
+  background-color: #fff;
+}
+
+.trips__destination {
+  font-family: Konkhmer Sleokchher, fantasy, sans-serif;
+}
+
+.trips__trip-name {
+  font-family: Konkhmer Sleokchher, fantasy, sans-serif;
+}
+
+.trips__start-date {
+  font-family: Konkhmer Sleokchher, fantasy, sans-serif;
+}
+
+.trips__end-date {
+  font-family: Konkhmer Sleokchher, fantasy, sans-serif;
+}

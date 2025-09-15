@@ -21,7 +21,14 @@ const createTrip = (req, res, next) => {
 };
 
 const getTrips = (req, res, next) => {
-  console.log("Hello from getTrips inside trips.js on the BE!");
+  Trip.find({})
+    .then((data) => {
+      res.status(OKAY_STATUS).send(data);
+    })
+    .catch((e) => {
+      console.error(e);
+      return next(e);
+    });
 };
 
 module.exports = { createTrip, getTrips };

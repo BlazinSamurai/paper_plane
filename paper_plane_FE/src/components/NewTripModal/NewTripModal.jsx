@@ -75,7 +75,7 @@ const NewTrip = ({
             minLength="1"
             max="20"
             id="newTrip_startDate"
-            placeholder="Start Date"
+            placeholder="Start Date(MMDDYYYY)"
             value={startDate}
             onChange={handleStartDateChange}
             required
@@ -88,7 +88,7 @@ const NewTrip = ({
             minLength="1"
             max="20"
             id="newTrip_endDate"
-            placeholder="End Date"
+            placeholder="End Date(MMDDYYYY)"
             value={endDate}
             onChange={handleEndDateChange}
             required

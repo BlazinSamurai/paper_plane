@@ -1,14 +1,29 @@
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 import { CurrentUserContext } from "../../Context/CurrentUserContext";
 
 import "./SideBar.css";
 
 import logo from "../../images/blue_pp_icon.svg";
 import defaultUserIcon from "../../images/default_user_icon.jpg";
+import calendar from "../../images/calendar.svg";
+import earth from "../../images/earth.png";
 
-function SideBar({ onLogout }) {
+import TripSection from "../TripSection/TripSection";
+
+function SideBar({ itinerary, onLogout, calendarView, setCalendarView }) {
   const { currentUser } = useContext(CurrentUserContext);
 
+  function displayCalendarView() {
+    setCalendarView(true);
+  }
+
+  function displayCreateTripView() {
+    setCalendarView(false);
+  }
+
+  useEffect(() => {
+    console.log(calendarView);
+  }, []);
   return (
     <div className="sidebar">
       <div className="sidebar__display-info">
@@ -31,6 +46,32 @@ function SideBar({ onLogout }) {
           {" "}
           {currentUser.userName}
         </p>
+        {!calendarView && (
+          <ul className="sidebar__trips-section">
+            {itinerary.map((trip) => {
+              const isOwn = currentUser
+                ? trip.owner === currentUser._id
+                : false;
+              {
+                return (
+                  isOwn && <TripSection trip={trip} itineraryView={false} />
+                );
+              }
+            })}
+          </ul>
+        )}
+      </div>
+      <div className="sidebar__display-toggle-btn-container">
+        <button onClick={displayCalendarView}>
+          <img
+            className="sidebar__calendar-button"
+            src={calendar}
+            alt="calendar icon"
+          />
+        </button>
+        <button onClick={displayCreateTripView}>
+          <img className="sidebar__earth-button" src={earth} alt="earth icon" />
+        </button>
       </div>
       <button onClick={onLogout} className="sidebar__logout-btn">
         Log Out

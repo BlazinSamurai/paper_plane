@@ -19,14 +19,8 @@ function createTrip(info, token) {
   });
 }
 
-function getTrips(info) {
-  return request(`${baseUrl}/trips`, {
-    method: "GET",
-    header: {
-      Accept: "application/json",
-      "Content-Type": "application/json",
-    },
-  });
+function getTrips() {
+  return request(`${baseUrl}/trips`);
 }
 
 export { createTrip, getTrips };

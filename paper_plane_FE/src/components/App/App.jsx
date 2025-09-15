@@ -1,5 +1,5 @@
 import { useContext, useEffect, useState } from "react";
-import { Routes, Route, useNavigate } from "react-router-dom";
+import { Routes, Route, useNavigate, Navigate } from "react-router-dom";
 import { setToken, getToken } from "../../utils/token";
 import {
   signUp,
@@ -94,19 +94,21 @@ function AppContent() {
   };
 
   const handleLogout = () => {
+    navigate("/");
     setCurrentUser(null);
     setIsLoggedIn(false);
     setToken(null);
-    navigate("/");
+    console.log(tempTrip);
   };
 
   const addNewTrip = (e, destination, tripName, startDate, endDate) => {
-    e.preventDefault(e);
+    e.preventDefault();
     const jwt = getToken();
 
     createTrip({ destination, tripName, startDate, endDate }, jwt)
       .then((newTripInfo) => {
-        console.log(newTripInfo);
+        // console.log(newTripInfo);
+        setTempTrip([newTripInfo, ...tempTrip]);
       })
       .catch((e) => {
         console.error(e);
@@ -128,6 +130,14 @@ function AppContent() {
         })
         .catch(console.error);
     }
+  }, []);
+
+  useEffect(() => {
+    getTrips()
+      .then((data) => {
+        setTempTrip([...data]);
+      })
+      .catch(console.error);
   }, []);
 
   return (
@@ -178,15 +188,23 @@ function AppContent() {
                   onLogout={handleLogout}
                   closeActiveRoute={closeActiveRoute}
                   addNewTrip={addNewTrip}
+                  itinerary={tempTrip}
                 />
               </ProtectedRoute>
             }
           />
-          {/* Need to add ,path="*", to catch-all route. */}
+          <Route
+            // path="*" often acts as a catch-all route.
+            // This means that it will match any URL that
+            // doesn't match any other defined routes
+            path="*"
+            element={
+              // condition ? expressionIfTrue : expressionIfFalse
+              isLoggedIn ? <Navigate to="/homepage" /> : <Navigate to="/" />
+            }
+          />
         </Routes>
       </div>
-      {/* Cant put this here, trust bro 
-      <NewTrip isOpen={activeRoute} closeActiveRoute={closeActiveRoute} /> */}
     </div>
   );
 }

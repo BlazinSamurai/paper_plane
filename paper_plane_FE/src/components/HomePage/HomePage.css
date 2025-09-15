@@ -31,6 +31,20 @@ p {
   position: relative;
 }
 
+.home-page__itinerary-title {
+  font-family: Konkhmer Sleokchher, fantasy, sans-serif;
+  font-size: 43px;
+  color: #fff;
+  padding-bottom: 10px;
+}
+
+.home-page__trips-section {
+  background-color: #d9d9d9;
+  width: 1090px;
+  margin: 0;
+  padding: 40px;
+}
+
 .home-page__trip-creation {
   width: 1090px;
   background-color: #d9d9d9;
