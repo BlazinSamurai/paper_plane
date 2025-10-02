@@ -24,7 +24,7 @@
 
 **Features**
 
-**_Landing Page_**
+_Landing Page_
 
 - Free Account Creation
 - Login using email or username
@@ -42,12 +42,58 @@ _Profile Page_
 
 ## Future Additions
 
-### UI/UX
+**Landing Page**
+
+_UI/UX_
 
 - Cloud animation for smooth transition from top of landing page to globe section
+- When clicking on "Steps" redirect user to sign up page
 
-### Features
+_Features_
 
 - A.I. or "Smart Bar" to allow a user to create a trip by simply typing in a prompt
 
+**Home Page**
+
+_UI/UX_
+
+- Sort trips
+- Allow users to add a cover image to trips for better looking itinerary
+
+_Features_
+
+- Apply more features to Globe to allow user to explore globe with better detail
+- Set reminders for upcoming trips
+- Allow users to delete trips or adjust the dates
+
 ## Images of Application
+
+**Landing Page, Top**
+![](/paper_plane_FE/src/images/Paper_Plane_ss/landing_top.png)
+
+**Landing Page, Globe Section**
+![](/paper_plane_FE/src/images/Paper_Plane_ss/landing_globe.png)
+
+**Landing Page, Step Section**
+![](/paper_plane_FE/src/images/Paper_Plane_ss/landing_steps.png)
+
+**Sign Up Page**
+![](/paper_plane_FE/src/images/signup_route.png)
+
+**Login Page**
+![](/paper_plane_FE/src/images/Paper_Plane_ss/login_page.png)
+
+**Home Page**
+![](/paper_plane_FE/src/images/Paper_Plane_ss/home_page.png)
+
+**Itinerary View with no trips**
+![](/paper_plane_FE/src/images/Paper_Plane_ss/itinerary_view_wo_trip.png)
+
+**New Trip Modal**
+![](/paper_plane_FE/src/images/Paper_Plane_ss/new_trip_modal.png)
+
+**Home Page with trip added**
+![](/paper_plane_FE/src/images/Paper_Plane_ss/home_view_w_trip.png)
+
+**Itinerary View with trips**
+![](/paper_plane_FE/src/images/Paper_Plane_ss/itinerary_view_w_trip.png)
