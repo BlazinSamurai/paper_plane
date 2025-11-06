@@ -9,6 +9,8 @@
     "lint": "eslint . --ext js,jsx --report-unused-disable-directives --max-warnings 0",
     "preview": "vite preview"
   },
+  "homepage": "https://paperplane.csproject.org",
+  "deploy": "npm run build && scp -r ./dist/* damianlavin75@paperplane.csproject.org:/home/damianlavin75/frontend",
   "dependencies": {
     "@emotion/react": "^11.14.0",
     "@emotion/styled": "^11.14.1",

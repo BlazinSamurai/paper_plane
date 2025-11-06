@@ -18,6 +18,7 @@ function ModalWithForm({
   children,
   buttonText,
   onSubmit,
+  isValid,
 }) {
   const [route, setRoute] = useState(isOpen);
   const [newTrip, setNewTrip] = useState(Boolean);
@@ -78,7 +79,16 @@ function ModalWithForm({
               <form onSubmit={onSubmit} className="modal__form">
                 <h2 className="modal__form-title">{formTitle}</h2>
                 <div className="modal__form-body">{children}</div>
-                <button type="submit" className="modal__form-button">
+                <button
+                  type="submit"
+                  disabled={!isValid}
+                  className={
+                    isValid
+                      ? "modal__form-button"
+                      : "modal__form-invalid-button"
+                  }
+                  // className="modal__form-button"
+                >
                   {buttonText}
                 </button>
               </form>

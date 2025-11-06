@@ -36,6 +36,7 @@ const LoginModal = ({
       formTitle="Login"
       buttonText="Submit"
       onSubmit={handleLoginSubmit}
+      isValid={true}
     >
       <label htmlFor="login_username-email">
         <input
