@@ -21,7 +21,7 @@ function Main({
       <h2 className="main__title">Plan your next trip &</h2>
       <h2 className="main__title main__title-white">EXPLORE THE GLOBE</h2>
       {/* <div className="main__cloud"></div> */}
-      <Mapbox isLoggedIn={isLoggedIn}></Mapbox>
+      {/* <Mapbox isLoggedIn={isLoggedIn}></Mapbox> */}
       <Steps></Steps>
     </main>
   );
