@@ -1,13 +1,11 @@
 //This is the Home Page
-import { useContext, useEffect, useState } from "react";
+import { useContext, useEffect, useRef, useState } from "react";
 import { CurrentUserContext } from "../../Context/CurrentUserContext";
 
 import "./HomePage.css";
 
 import SideBar from "../SideBar/SideBar";
 import TripSection from "../TripSection/TripSection";
-import Mapbox from "../../utils/mapBoxApi";
-
 import NewTrip from "../NewTripModal/NewTripModal";
 
 // A custom hook to sync state with localStorage
@@ -53,6 +51,32 @@ function HomePage({
     addNewTrip(e, destination, tripName, startDate, endDate);
     setTripModal(false);
   };
+
+  // useRef to hold the map instance or the map container element
+  const mapRef = useRef(null);
+
+  useEffect(() => {
+    // This function will run only once after the initial render
+    async function initMap() {
+      // Check if the map has already been initialized or if the
+      // container exists
+      if (mapRef.current && !mapRef.current.hasChildNodes()) {
+        // Ensure it's not already populated
+        const { Map3DElement } = await google.maps.importLibrary("maps3d");
+        const map = new Map3DElement({
+          center: { lat: 11.5238, lng: -10, altitude: 573 },
+          heading: 0,
+          range: 30000000,
+          mode: "HYBRID",
+          gestureHandling: "COOPERATIVE",
+        });
+        // Append the map to the ref's current DOM node
+        mapRef.current.append(map);
+      }
+    }
+
+    initMap();
+  }, [calendarView]);
 
   return (
     <div className="home-page">
@@ -103,12 +127,18 @@ function HomePage({
               )}
             </div>
             <p className="home-page__text">or</p>
-            <div className="home-page__mapbox-group">
+            <div className="home-page__googleMap-group">
               <h3 className="home-page__globe-title">
                 Explore the Globe, and click a destination!
               </h3>
-              <div className="home-page__mapbox">
-                <Mapbox isLoggedIn={isLoggedIn}></Mapbox>
+              <div className="home-page__googleMap">
+                <div
+                  id="gmp-map-3d"
+                  ref={mapRef}
+                  style={{ height: "100%", width: "100%" }}
+                >
+                  {/* The map will be appended here by the useEffect hook */}
+                </div>
               </div>
             </div>
           </section>
