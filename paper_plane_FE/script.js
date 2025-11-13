@@ -74,4 +74,5 @@ function showPlaceDetails(placeId, position) {
   });
 }
 
-initMap();
+// initMap();
+export { initMap };
