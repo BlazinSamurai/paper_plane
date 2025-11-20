@@ -30,8 +30,9 @@ function HomePage({
   itinerary,
 }) {
   const { currentUser } = useContext(CurrentUserContext);
-  const [tripModal, setTripModal] = useState(false);
-  const [givenTripModal, setGivenTripModal] = useState(false);
+  const [openTripModal, setOpenTripModal] = useState("");
+  const [googleTripModal, setGoogleTripModal] = useState(false);
+  const [createTripModal, setCreateTripModal] = useState(false);
   const [destinationGiven, setDestinationGiven] = useState("");
   const [tempKey, setTempKey] = useState("");
 
@@ -44,9 +45,17 @@ function HomePage({
   // useRef to hold the map instance or the map container element
   const mapRef = useRef(null);
 
-  function openTripModal() {
-    // console.log("inside openTripModal");
-    setTripModal(true);
+  // function handleCreateTripModal() {
+  //   setCreateTripModal(true);
+  // }
+
+  //   const sayHello = () => {
+  //   console.log("hello");
+  //   setCreateTripModal(true);
+  // };
+
+  function handleCreateTripClick() {
+    setCreateTripModal(true);
   }
 
   function handleMapClicks() {
@@ -63,19 +72,24 @@ function HomePage({
       // console.log(spanShadow);
       // console.log(spanShadow.ariaLabel);
       setDestinationGiven(spanShadow.ariaLabel);
-
-      // createNewTrip({ destination: spanShadow.ariaLabel, key: newKey });
-      openTripModal();
-      // <NewTrip
-      //   isOpen="newTrip"
-      //   handleTripModal={setTripModal}
-      //   closeActiveRoute={closeActiveRoute}
-      //   handleNewTripSubmit={handleNewTripSubmit}
-      //   destinationNameGiven={"Google Maps"}
-      // />;
-      // mapRef.current.removeEventListener();
+      setGoogleTripModal(true);
     });
   }
+
+  // function handleOpenTripModal(modal) {
+  // console.log(googleTripModal, createTripModal);
+  // console.log(openTripModal);
+  // if (modal === "create") {
+  //   setCreateTripModal(true);
+  // }
+  // else if (createTripModal) {
+  //   setOpenTripModal("create");
+  // else {
+  //   setCreateTripModal(false);
+  //   setOpenTripModal("");
+  // }
+  // console.log(modal);
+  // }
 
   const handleNewTripSubmit = (
     e,
@@ -85,7 +99,7 @@ function HomePage({
     endDate
   ) => {
     addNewTrip(e, destination, tripName, startDate, endDate);
-    setTripModal(false);
+    // setOpenTripModal("");
   };
 
   // Original Code for adding a 3D Map in Javascript
@@ -216,6 +230,7 @@ function HomePage({
   //   // handleMapClicks();
   // }
 
+  // console.log(createTripModal);
   return (
     <div className="home-page">
       <div className="home-page__container">
@@ -247,23 +262,44 @@ function HomePage({
             <div className="home-page__search-bar-group">
               <h3 className="home-page__create-title">Create a Trip!</h3>
               <button
-                onClick={openTripModal}
+                // onClick handler causing a lot of issues.
+                // Looks like click handler get stuck inside
+                // infinity loop when passed 'sayHello()'
+                // but is fine when passed 'sayHello'
+                onClick={handleCreateTripClick}
                 type="button"
                 className="home-page__create-btn"
               >
                 Click here
               </button>
-              {tripModal ? (
+              {createTripModal ? (
                 <NewTrip
                   isOpen="newTrip"
-                  handleTripModal={setTripModal}
+                  handleTripModal={setCreateTripModal}
                   closeActiveRoute={closeActiveRoute}
                   handleNewTripSubmit={handleNewTripSubmit}
-                  destinationNameGiven={destinationGiven}
+                  destinationNameGiven={""}
                 />
               ) : (
-                ""
+                googleTripModal && (
+                  <NewTrip
+                    isOpen="newTrip"
+                    handleTripModal={setGoogleTripModal}
+                    closeActiveRoute={closeActiveRoute}
+                    handleNewTripSubmit={handleNewTripSubmit}
+                    destinationNameGiven={destinationGiven}
+                  />
+                )
               )}
+              {/* // setCreateTripModal(false)
+                // <NewTrip
+                //   isOpen="newTrip"
+                //   handleTripModal={setGoogleTripModal}
+                //   closeActiveRoute={closeActiveRoute}
+                //   handleNewTripSubmit={handleNewTripSubmit}
+                //   destinationNameGiven={destinationGiven}
+                // />
+              // )} */}
             </div>
             <p className="home-page__text">or</p>
             <div className="home-page__googleMap-group">

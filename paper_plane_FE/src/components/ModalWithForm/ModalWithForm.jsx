@@ -99,7 +99,7 @@ function ModalWithForm({
         ""
       )}
       {newTrip ? (
-        <div id="modalPopup" className="modal__popup">
+        <div className="modal__popup">
           <form onSubmit={onSubmit} className="modal__popup-form">
             <div className="modal__popup-header-container">
               <button
