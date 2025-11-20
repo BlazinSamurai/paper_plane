@@ -1,6 +1,4 @@
-/* * Always set the map height explicitly to define the size of the div element
- * that contains the map. 
- */
+/* _First Attempt. Works and styled, but 3D map doesn't have advance markers_ */
 #gmp-map-3d {
   height: 100%;
   overflow: hidden;
@@ -11,3 +9,56 @@ body {
   margin: 0;
   padding: 0;
 }
+
+/* _Second Attempt. Works, but uses a 2D map and needs to be styled_ */
+
+/* #gmp-map-3d {
+  height: 100%;
+  overflow: hidden;
+}
+html,
+body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+h1 {
+  font-size: 16px;
+  text-align: center;
+}
+
+gmp-map {
+  height: 500px;
+}
+
+gmp-place-details {
+  border-radius: 0px;
+  margin: 20px;
+  width: 400px;
+  height: 500px;
+  margin-top: 0px;
+}
+
+gmp-advanced-marker {
+  display: none;
+}
+
+.widget-container {
+  min-width: 400px;
+  overflow-y: none;
+  overflow-x: none;
+} */
+
+/* Third Attempt. */
+/* html,
+gmp-map-3d {
+  height: 100%;
+}
+
+html,
+body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+} */

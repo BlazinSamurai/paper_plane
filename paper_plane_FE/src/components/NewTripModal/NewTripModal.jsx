@@ -7,8 +7,9 @@ const NewTrip = ({
   handleTripModal,
   closeActiveRoute,
   handleNewTripSubmit,
+  destinationNameGiven,
 }) => {
-  const [destination, setDestination] = useState("");
+  const [destination, setDestination] = useState(destinationNameGiven);
   const [tripName, setTripName] = useState("");
   const [startDate, setStartDate] = useState("");
   const [endDate, setEndDate] = useState("");
@@ -32,7 +33,6 @@ const NewTrip = ({
   const handleNewTripModal = (e) => {
     handleNewTripSubmit(e, destination, tripName, startDate, endDate);
   };
-
   return (
     <ModalWithForm
       isOpen={isOpen}

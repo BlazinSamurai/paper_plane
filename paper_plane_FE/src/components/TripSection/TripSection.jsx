@@ -1,6 +1,6 @@
 import "./TripSection.css";
 
-function TripSection({ trip, itineraryView }) {
+function TripSection({ tripKey, trip, itineraryView }) {
   return (
     <div className="trips">
       <div

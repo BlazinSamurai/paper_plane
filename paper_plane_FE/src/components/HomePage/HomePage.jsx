@@ -31,14 +31,50 @@ function HomePage({
 }) {
   const { currentUser } = useContext(CurrentUserContext);
   const [tripModal, setTripModal] = useState(false);
+  const [givenTripModal, setGivenTripModal] = useState(false);
+  const [destinationGiven, setDestinationGiven] = useState("");
+  const [tempKey, setTempKey] = useState("");
+
   // Use the custom hook to manage the state
   const [calendarView, setCalendarView] = useLocalStorageState(
     "calendarView",
     false
   );
 
+  // useRef to hold the map instance or the map container element
+  const mapRef = useRef(null);
+
   function openTripModal() {
+    // console.log("inside openTripModal");
     setTripModal(true);
+  }
+
+  function handleMapClicks() {
+    mapRef.current.addEventListener("dblclick", (event) => {
+      // console.log(mapRef.current);
+      const mapElement = document.getElementById("gmp-map-3d").firstChild;
+      // console.log(mapElement);
+      const mapElementShadow = mapElement.querySelector("gmp-popover");
+      // console.log(mapElementShadow);
+      const newKey = mapElementShadow.getAttribute("position-anchor");
+      // console.log(newKey);
+      setTempKey(newKey);
+      const spanShadow = mapElementShadow.querySelector("span");
+      // console.log(spanShadow);
+      // console.log(spanShadow.ariaLabel);
+      setDestinationGiven(spanShadow.ariaLabel);
+
+      // createNewTrip({ destination: spanShadow.ariaLabel, key: newKey });
+      openTripModal();
+      // <NewTrip
+      //   isOpen="newTrip"
+      //   handleTripModal={setTripModal}
+      //   closeActiveRoute={closeActiveRoute}
+      //   handleNewTripSubmit={handleNewTripSubmit}
+      //   destinationNameGiven={"Google Maps"}
+      // />;
+      // mapRef.current.removeEventListener();
+    });
   }
 
   const handleNewTripSubmit = (
@@ -52,31 +88,133 @@ function HomePage({
     setTripModal(false);
   };
 
-  // useRef to hold the map instance or the map container element
-  const mapRef = useRef(null);
+  // Original Code for adding a 3D Map in Javascript
+  // but some reason creates 6 maps
+  // async function initMap() {
+  //   const { Map3DElement } = await google.maps.importLibrary("maps3d");
+  //   const map = new Map3DElement({
+  //     center: { lat: 11.5238, lng: -10, altitude: 573 },
+  //     mapId: "DEMO_MAP_ID",
+  //     heading: 0,
+  //     range: 30000000,
+  //     mode: "HYBRID",
+  //     gestureHandling: "COOPERATIVE",
+  //   });
+  //   document.body.append(map);
+  // }
+  // initMap();
+
+  //__________________ DOM manipulation stuff____________________________/
+  // const newDivContPlaceDetails = document.createElement("div");
+  // newDivContPlaceDetails.classList.add("widget-container");
+  // newDivContPlaceDetails.setAttribute(
+  //   "slot",
+  //   "control-inline-start-block-start"
+  // );
+  // newGmpMap3d.appendChild(newDivContPlaceDetails);
+  // console.log(document.getElementById("gmp-map-3d").firstChild);
+
+  // _________________________________________________________________________
+  // _________________________________________________________________________
+  // First ATTEMPT. Works and styled, but 3D map doesn't have advance markers
+  // _________________________________________________________________________
+  // _________________________________________________________________________
 
   useEffect(() => {
-    // This function will run only once after the initial render
     async function initMap() {
-      // Check if the map has already been initialized or if the
-      // container exists
-      if (mapRef.current && !mapRef.current.hasChildNodes()) {
-        // Ensure it's not already populated
-        const { Map3DElement } = await google.maps.importLibrary("maps3d");
-        const map = new Map3DElement({
-          center: { lat: 11.5238, lng: -10, altitude: 573 },
-          heading: 0,
-          range: 30000000,
-          mode: "HYBRID",
-          gestureHandling: "COOPERATIVE",
-        });
-        // Append the map to the ref's current DOM node
-        mapRef.current.append(map);
-      }
-    }
+      const { Map3DElement } = await google.maps.importLibrary("maps3d");
+      const map = new Map3DElement({
+        center: { lat: 11.5238, lng: -10, altitude: 573 },
+        mapId: "DEMO_MAP_ID",
+        heading: 0,
+        range: 30000000,
+        mode: "HYBRID",
+        gestureHandling: "COOPERATIVE",
+      });
 
+      mapRef.current.append(map);
+    }
     initMap();
-  }, [calendarView]);
+    handleMapClicks();
+  }, []);
+
+  // _________________________________________________________________________
+  // _________________________________________________________________________
+  // Second ATTEMPT, Works, but uses a 2D map and needs to be styled
+  // _________________________________________________________________________
+  // _________________________________________________________________________
+
+  // Use querySelector to select elements for interaction.
+  // const map = document.querySelector("gmp-map");
+  // const placeDetails = document.querySelector("gmp-place-details");
+  // const placeDetailsRequest = document.querySelector(
+  //   "gmp-place-details-place-request"
+  // );
+  // const marker = document.querySelector("gmp-advanced-marker");
+  // let center = { lat: 47.759737, lng: -122.250632 };
+  // async function initMap() {
+  //   // Request needed libraries.
+  //   await google.maps.importLibrary("maps");
+  //   await google.maps.importLibrary("marker");
+  //   await google.maps.importLibrary("places");
+  //   // Hides "Map" or "Satellite" view. True = visible, false = hiden
+  //   map.innerMap.setOptions({ mapTypeControl: true });
+  //   // Function to update map and marker based on place details
+  //   const updateMapAndMarker = () => {
+  //     if (placeDetails.place && placeDetails.place.location) {
+  //       let adjustedCenter = offsetLatLngRight(
+  //         placeDetails.place.location,
+  //         -0.005
+  //       );
+  //       map.innerMap.panTo(adjustedCenter);
+  //       map.innerMap.setZoom(16); // Set zoom after panning if needed
+  //       marker.position = placeDetails.place.location;
+  //       marker.collisionBehavior =
+  //         google.maps.CollisionBehavior.REQUIRED_AND_HIDES_OPTIONAL;
+  //       marker.style.display = "block";
+  //     }
+  //   };
+  //   // Set up map once widget is loaded.
+  //   placeDetails.addEventListener("gmp-load", (event) => {
+  //     updateMapAndMarker();
+  //   });
+  //   // Add an event listener to handle clicks.
+  //   map.innerMap.addListener("click", async (event) => {
+  //     marker.position = null;
+  //     event.stop();
+  //     if (event.placeId) {
+  //       // Fire when the user clicks a POI.
+  //       placeDetailsRequest.place = event.placeId;
+  //       updateMapAndMarker();
+  //     } else {
+  //       // Fire when the user clicks the map (not on a POI).
+  //       console.log("No place was selected.");
+  //       marker.style.display = "none";
+  //     }
+  //   });
+  // }
+  // // Helper function to offset marker placement for better visual appearance.
+  // function offsetLatLngRight(latLng, longitudeOffset) {
+  //   const newLng = latLng.lng() + longitudeOffset;
+  //   return new google.maps.LatLng(latLng.lat(), newLng);
+  // }
+  // initMap();
+
+  // async function initMap() {
+  //   const { Map3DElement } = await google.maps.importLibrary("maps3d");
+  //   const map = new Map3DElement({
+  //     center: { lat: 11.5238, lng: -10, altitude: 573 },
+  //     mapId: "DEMO_MAP_ID",
+  //     heading: 0,
+  //     range: 30000000,
+  //     mode: "HYBRID",
+  //     gestureHandling: "COOPERATIVE",
+  //   });
+
+  //   mapRef.current.append(map);
+  //   // console.log(mapRef.current);
+  //   // handleMapClicks();
+  // }
 
   return (
     <div className="home-page">
@@ -121,6 +259,7 @@ function HomePage({
                   handleTripModal={setTripModal}
                   closeActiveRoute={closeActiveRoute}
                   handleNewTripSubmit={handleNewTripSubmit}
+                  destinationNameGiven={destinationGiven}
                 />
               ) : (
                 ""

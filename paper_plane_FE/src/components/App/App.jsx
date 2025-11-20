@@ -98,7 +98,6 @@ function AppContent() {
     setCurrentUser(null);
     setIsLoggedIn(false);
     setToken(null);
-    console.log(tempTrip);
   };
 
   const addNewTrip = (e, destination, tripName, startDate, endDate) => {
@@ -107,7 +106,6 @@ function AppContent() {
 
     createTrip({ destination, tripName, startDate, endDate }, jwt)
       .then((newTripInfo) => {
-        // console.log(newTripInfo);
         setTempTrip([newTripInfo, ...tempTrip]);
       })
       .catch((e) => {

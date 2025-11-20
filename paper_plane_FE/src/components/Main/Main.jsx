@@ -26,7 +26,6 @@ function Main({
         const { Map3DElement } = await google.maps.importLibrary("maps3d");
         const map = new Map3DElement({
           center: { lat: 11.5238, lng: -10, altitude: 573 },
-
           heading: 0,
           range: 30000000,
           mode: "HYBRID",
@@ -40,14 +39,14 @@ function Main({
     initMap();
 
     // Optional: Cleanup function if you need to remove the map when the component unmounts
-    // return () => {
-    //   if (mapRef.current) {
-    //     // Remove any children (the map element) when the component unmounts
-    //     while (mapRef.current.firstChild) {
-    //       mapRef.current.removeChild(mapRef.current.firstChild);
-    //     }
-    //   }
-    // };
+    return () => {
+      if (mapRef.current) {
+        // Remove any children (the map element) when the component unmounts
+        while (mapRef.current.firstChild) {
+          mapRef.current.removeChild(mapRef.current.firstChild);
+        }
+      }
+    };
   }, []);
 
   return (
@@ -59,7 +58,6 @@ function Main({
       ></Header>
       <h2 className="main__title">Plan your next trip &</h2>
       <h2 className="main__title main__title-white">EXPLORE THE GLOBE</h2>
-
       <div
         id="gmp-map-3d"
         ref={mapRef}

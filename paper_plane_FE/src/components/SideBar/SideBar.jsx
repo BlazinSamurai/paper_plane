@@ -21,9 +21,9 @@ function SideBar({ itinerary, onLogout, calendarView, setCalendarView }) {
     setCalendarView(false);
   }
 
-  useEffect(() => {
-    console.log(calendarView);
-  }, []);
+  // useEffect(() => {
+  //   console.log(calendarView);
+  // }, []);
   return (
     <div className="sidebar">
       <div className="sidebar__display-info">
