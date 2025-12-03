@@ -1,0 +1,29 @@
+@font-face {
+  font-family: "Konkhmer Sleokchher";
+  src: url(../../../fonts/konkhmer-sleokchher_5.2.6/webfonts/konkhmer-sleokchher-khmer-400-normal.woff);
+}
+
+.footer {
+  background: #4fc2f8;
+  padding: 25px 20px 20px;
+  display: flex;
+  flex-direction: column;
+}
+
+.footer__divider {
+  border-bottom: 1px solid #fff;
+  flex-grow: 1;
+  margin: 0 10px;
+}
+
+.footer__info {
+  display: flex;
+  justify-content: space-between;
+  padding-top: 10px;
+}
+
+.footer__copyright,
+.footer__text {
+  font-family: Konkhmer Sleokchher, fantasy, sans-serif;
+  font-size: 10px;
+}

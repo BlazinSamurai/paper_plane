@@ -5,6 +5,7 @@ import React, { useEffect, useRef } from "react";
 
 import Header from "../Header/Header";
 import Steps from "../Steps/Steps";
+import Footer from "../Footer/Footer";
 
 function Main({
   openLoginRoute,
@@ -66,6 +67,7 @@ function Main({
         {/* The map will be appended here by the useEffect hook */}
       </div>
       <Steps></Steps>
+      <Footer></Footer>
     </main>
   );
 }

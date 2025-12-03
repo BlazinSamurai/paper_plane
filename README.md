@@ -44,6 +44,20 @@ _Profile Page_
 
 - Link to the application design and specs: [Here](https://www.figma.com/design/sgdiwYvzVA8UPOHRhwYMIs/TT_Final_Project?node-id=0-1&p=f&t=IPybZkdUfBPjB4pk-0)
 
+## Recent Additions
+
+**Landing Page**
+
+_UI/UX_
+
+- Added a Footer
+
+**Home Page**
+
+_Features_
+
+- Added a click feature to allow users to open "new trip" modal from the globe section.
+
 ## Future Additions
 
 **Landing Page**
@@ -66,7 +80,6 @@ _UI/UX_
 
 _Features_
 
-- Apply more features to Globe to allow user to explore globe with better detail
 - Set reminders for upcoming trips
 - Allow users to delete trips or adjust the dates
 
