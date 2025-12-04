@@ -51,16 +51,14 @@ function HomePage({
   function handleMapClicks() {
     mapRef.current.addEventListener("dblclick", () => {
       const mapElement = document.getElementById("gmp-map-3d").firstChild;
-
       const mapElementShadow = mapElement.querySelector("gmp-popover");
-
       const newKey = mapElementShadow.getAttribute("position-anchor");
-
       setTempKey(newKey);
       const spanShadow = mapElementShadow.querySelector("span");
       setDestinationGiven(spanShadow.ariaLabel);
       setGoogleTripModal(true);
     });
+    mapRef.current.removeEventListener("dblclick", () => {});
   }
 
   const handleNewTripSubmit = (
@@ -76,22 +74,24 @@ function HomePage({
   };
 
   useEffect(() => {
-    async function initMap() {
-      const { Map3DElement } = await google.maps.importLibrary("maps3d");
-      const map = new Map3DElement({
-        center: { lat: 11.5238, lng: -10, altitude: 573 },
-        mapId: "DEMO_MAP_ID",
-        heading: 0,
-        range: 30000000,
-        mode: "HYBRID",
-        gestureHandling: "COOPERATIVE",
-      });
+    if (!calendarView) {
+      async function initMap() {
+        const { Map3DElement } = await google.maps.importLibrary("maps3d");
+        const map = new Map3DElement({
+          center: { lat: 11.5238, lng: -10, altitude: 573 },
+          mapId: "DEMO_MAP_ID",
+          heading: 0,
+          range: 30000000,
+          mode: "HYBRID",
+          gestureHandling: "COOPERATIVE",
+        });
 
-      mapRef.current.append(map);
+        mapRef.current.append(map);
+      }
+      initMap();
+      handleMapClicks();
     }
-    initMap();
-    handleMapClicks();
-  }, []);
+  }, [calendarView]);
 
   return (
     <div className="home-page">

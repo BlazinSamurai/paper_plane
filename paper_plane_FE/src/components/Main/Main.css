@@ -3,10 +3,29 @@
   src: url(../../../fonts/konkhmer-sleokchher_5.2.6/webfonts/konkhmer-sleokchher-khmer-400-normal.woff);
 }
 
+@keyframes flyAcross {
+  0% {
+    transform: translateX(-100vw);
+    opacity: 0.5;
+  }
+  100% {
+    transform: translateX(100vw);
+    opacity: 1;
+  }
+}
+
 .main {
-  background: linear-gradient(#fff 0%, #fff 10%, #4fc2f8, #000 39%, #000);
+  background: linear-gradient(
+    #fff 0%,
+    #fff 10%,
+    #4fc2f8,
+    #4fc2f8,
+    #4fc2f8,
+    #4fc2f8
+  );
   position: relative;
-  height: 1264px;
+  /* height: 1264px; */
+  height: 100%;
 }
 
 .main__title {
@@ -33,18 +52,29 @@
   text-shadow: -8px 7px 11px #000;
 }
 
-/* Might get rid of this style */
-.main__cloud {
+.main__cloud-container {
+  width: 100%;
+  overflow: hidden;
   position: relative;
-  top: -204px;
-  z-index: 4;
-  background-image: url("../../images/Clouds/cloudBody.svg");
-  background-size: 100%;
-  width: auto;
-  height: 981px;
-  background-position: center;
-  background-repeat: no-repeat;
-  overflow: visible;
+  transition: opacity 1s;
+}
+
+.main__cloud-one {
+  width: 100vw;
+  position: relative;
+  opacity: 0;
+}
+
+.main__cloud-two {
+  width: 100vw;
+  position: absolute;
+  top: 5px;
+  left: -623px;
+}
+
+.main__cloud-three {
+  width: 100vw;
+  opacity: 0;
 }
 
 @media screen and (max-width: 768px) {
