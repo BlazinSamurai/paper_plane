@@ -33,7 +33,7 @@ function Main({
           mode: "HYBRID",
           gestureHandling: "COOPERATIVE",
         });
-        // Append the map to the ref's current DOM node
+        // Append the map to the node
         mapRef.current.append(map);
       }
     }
@@ -56,15 +56,7 @@ function Main({
   const titleRefOne = useRef(null);
   const titleRefTwo = useRef(null);
   const titleRefThree = useRef(null);
-  const mCloudRefThree = useRef(null);
-  const mCloudRefFour = useRef(null);
-  const mCloudRefFive = useRef(null);
-  const mCloudRefSix = useRef(null);
-  const mCloudRefTen = useRef(null);
-  const mCloudRefThirteen = useRef(null);
-  const sCloudRefFive = useRef(null);
-  const sCloudRefEight = useRef(null);
-  const sCloudRefNine = useRef(null);
+  const cloudRefThree = useRef(null);
 
   useEffect(() => {
     const observerCallback = (entries) => {
@@ -125,46 +117,17 @@ function Main({
     const titleOne = titleRefOne.current;
     const titleTwo = titleRefTwo.current;
     const titleThree = titleRefThree.current;
-    const medThree = mCloudRefThree.current;
-    const medFour = mCloudRefFour.current;
-    const medFive = mCloudRefFive.current;
-    const medSix = mCloudRefSix.current;
-    const medTen = mCloudRefTen.current;
-    const medThirteen = mCloudRefThirteen.current;
-    const smallFive = sCloudRefFive.current;
-    const smallEight = sCloudRefEight.current;
-    const smallNine = sCloudRefNine.current;
+    const cloudThree = cloudRefThree.current;
 
-    if (
-      titleOne ||
-      titleTwo ||
-      titleRefThree ||
-      medThree ||
-      medFour ||
-      medFive ||
-      medSix ||
-      medTen ||
-      medThirteen ||
-      smallFive ||
-      smallEight ||
-      smallNine
-    ) {
+    if (titleOne || titleTwo || titleRefThree || cloudThree) {
       observer.observe(titleOne);
       observer.observe(titleTwo);
       observer.observe(titleThree);
-      observer.observe(medThree);
-      observer.observe(medFour);
-      observer.observe(medFive);
-      observer.observe(medSix);
-      observer.observe(medTen);
-      observer.observe(medThirteen);
-      observer.observe(smallFive);
-      observer.observe(smallEight);
-      observer.observe(smallNine);
+      observer.observe(cloudThree);
     }
 
     return () => {
-      if (medThree) {
+      if (titleOne || titleTwo || titleThree || cloudThree) {
         observer.disconnect();
       }
     };
@@ -177,297 +140,56 @@ function Main({
         openSignupRoute={openSignupRoute}
         closeActiveRoute={closeActiveRoute}
       ></Header>
-      <h2 ref={titleRefOne} className="main__title main__title-white">
+      <h2 ref={titleRefOne} className="main__title main__title-welcome">
         Welcome Travelers!
       </h2>
 
-      {/* Start of clouds container */}
       <div id="cloudContainer" className="main__cloud-container">
         {/* The id are named from when the element code was added and not
             where the particular elements are placed on the page. */}
+        <img src={mediumCloud} id="cloud1" className=" main__cloud-1" />
         <img
           src={mediumCloud}
-          id="mCloud"
-          style={{
-            width: "99%",
-            opacity: "40%",
-            position: "absolute",
-            left: -550,
-          }}
-        />
-        <img
-          src={mediumCloud}
-          id="mCloudtwo"
-          style={{
-            position: "absolute",
-            width: "80%",
-            opacity: "50%",
-            top: 150,
-            zIndex: 103,
-          }}
+          id="cloud2"
+          className="main__cloud-animation main__cloud-2"
         />
         <img
           src={smallCloud}
-          id="sCloud"
-          style={{
-            position: "absolute",
-            width: "100%",
-            opacity: "40%",
-            top: 50,
-            zIndex: 103,
-          }}
+          ref={cloudRefThree}
+          id="cloud3"
+          className=" main__cloud-3"
         />
         <img
           src={mediumCloud}
-          id="mCloudthree"
-          ref={mCloudRefThree}
-          style={{
-            transition: "opacity 0.5s ease-in-out",
-            position: "absolute",
-            top: 200,
-            width: "70%",
-            rotate: "180deg",
-          }}
+          id="cloud4"
+          className="main__cloud-animation main__cloud-4"
         />
-        <img
-          src={mediumCloud}
-          id="mCloudFour"
-          ref={mCloudRefFour}
-          style={{
-            transition: "opacity 0.4s ease-in-out",
-            position: "absolute",
-            width: "90%",
-            top: 450,
-            right: -100,
-          }}
-        />
-        <img
-          src={smallCloud}
-          id="sCloudTwo"
-          style={{
-            position: "absolute",
-            width: "70%",
-            top: -100,
-            right: -550,
-            zIndex: 110,
-          }}
-        />
-        <img
-          src={smallCloud}
-          id="sCloudThree"
-          style={{
-            position: "absolute",
-            zIndex: 103,
-          }}
-        />
-        <img
-          src={mediumCloud}
-          id="mCloudFive"
-          ref={mCloudRefFive}
-          style={{
-            transition: "opacity 0.5s ease-in-out",
-            position: "absolute",
-            width: "90%",
-            top: 600,
-            left: -500,
-          }}
-        />
-        <img
-          src={mediumCloud}
-          id="mCloudSix"
-          ref={mCloudRefSix}
-          style={{
-            transition: "opacity 1.0s ease-in-out",
-            position: "absolute",
-            width: "100%",
-            top: 650,
-            left: -500,
-          }}
-        />
-        <img
-          src={smallCloud}
-          id="sCloudFour"
-          style={{
-            position: "absolute",
-            width: "100%",
-            opacity: "25%",
-            top: 650,
-            left: 200,
-            rotate: "180deg",
-            zIndex: 120,
-          }}
-        />
-        <img
-          src={smallCloud}
-          id="sCloudFive"
-          ref={sCloudRefFive}
-          style={{
-            position: "absolute",
-            transition: "opacity 0.5s ease-in-out",
-            width: "80%",
-            opacity: "55%",
-            top: 650,
-            left: 600,
-            zIndex: 130,
-          }}
-        />
-        <h2
-          ref={titleRefTwo}
-          className="main__title main__title-white main__title-globe"
-        >
+        <img src={mediumCloud} id="cloud5" className="main__cloud-5" />
+        <img src={smallCloud} id="cloud6" className="main__cloud-6" />
+        <img src={smallCloud} id="cloud7" className="main__cloud-7" />
+        <img src={mediumCloud} id="cloud8" className="main__cloud-8" />
+        <img src={mediumCloud} id="cloud9" className="main__cloud-9" />
+        <img src={smallCloud} id="cloud10" className="main__cloud-10" />
+        <img src={smallCloud} id="cloud11" className="main__cloud-11" />
+        <h2 ref={titleRefTwo} className="main__title">
           Start explore the world
         </h2>
-        <img
-          src={smallCloud}
-          id="sCloudSix"
-          style={{
-            position: "absolute",
-            width: "90%",
-            opacity: "25%",
-            top: 920,
-            right: 800,
-            rotate: "180deg",
-          }}
-        />
-        <img
-          src={mediumCloud}
-          id="mCloudSeven"
-          style={{
-            position: "absolute",
-            width: "100%",
-            top: 980,
-            right: 600,
-          }}
-        />
-        <img
-          src={mediumCloud}
-          id="mCloudEight"
-          style={{
-            position: "absolute",
-            width: "115%",
-            opacity: "50%",
-            top: 1100,
-            left: 1100,
-            rotate: "180deg",
-          }}
-        />
-        <img
-          src={smallCloud}
-          id="sCloudSeven"
-          style={{
-            position: "absolute",
-            width: "90%",
-            opacity: "25%",
-            top: 1100,
-            rotate: "180deg",
-          }}
-        />
-        <img
-          src={mediumCloud}
-          id="mCloudNine"
-          style={{
-            position: "absolute",
-            width: "115%",
-            opacity: "50%",
-            top: 1400,
-            rotate: "180deg",
-            zIndex: 140,
-          }}
-        />
-        <img
-          src={smallCloud}
-          id="sCloudEight"
-          ref={sCloudRefEight}
-          style={{
-            transition: "opacity 0.5s ease-in-out",
-            position: "absolute",
-            width: "55%",
-            top: 1200,
-            right: 110,
-          }}
-        />
-        <h2
-          ref={titleRefThree}
-          className="main__title main__title-white main__title-started"
-        >
-          To get started . . .
+        <img src={smallCloud} id="cloud12" className="main__cloud-12" />
+        <img src={mediumCloud} id="cloud13" className="main__cloud-13" />
+        <img src={mediumCloud} id="cloud14" className="main__cloud-14" />
+        <img src={smallCloud} id="cloud15" className="main__cloud-15" />
+        <img src={mediumCloud} id="cloud16" className="main__cloud-16" />
+        <img src={smallCloud} id="cloud17" className="main__cloud-17" />
+        <img src={mediumCloud} id="cloud18" className="main__cloud-18" />
+        <img src={mediumCloud} id="cloud19" className="main__cloud-19" />
+        <h2 ref={titleRefThree} className="main__title">
+          Lets get started . . .
         </h2>
-        <img
-          src={mediumCloud}
-          id="mCloudTen"
-          ref={mCloudRefTen}
-          style={{
-            transition: "opacity 0.5s ease-in-out",
-            position: "absolute",
-            width: "60%",
-            top: 1400,
-          }}
-        />
-        <img
-          src={mediumCloud}
-          id="mCloudEleven"
-          style={{
-            position: "absolute",
-            width: "90%",
-            opacity: "25%",
-            top: 1450,
-            left: -300,
-          }}
-        />
+        <img src={mediumCloud} id="cloud20" className="main__cloud-20" />
+        <img src={smallCloud} id="cloud21" className="main__cloud-21" />
+        <img src={mediumCloud} id="cloud22" className="main__cloud-22" />
+        <img src={smallCloud} id="cloud23" className="main__cloud-23" />
       </div>
-      {/* End of clouds container */}
-
-      <img
-        src={mediumCloud}
-        id="mCloudTwelve"
-        style={{
-          position: "absolute",
-          width: "100%",
-          opacity: "60%",
-          top: 2000,
-          right: -300,
-          zIndex: 180,
-        }}
-      />
-      <img
-        src={smallCloud}
-        id="sCloudNine"
-        ref={sCloudRefNine}
-        style={{
-          transition: "opacity 0.5s ease-in-out",
-          position: "absolute",
-          width: "75%",
-          top: 1900,
-          left: -100,
-          rotate: "180deg",
-          zIndex: 180,
-        }}
-      />
-      <img
-        src={mediumCloud}
-        id="mCloudThirteen"
-        ref={mCloudRefThirteen}
-        style={{
-          transition: "opacity 0.5s ease-in-out",
-          position: "absolute",
-          width: "65%",
-          top: 2100,
-          zIndex: 180,
-          left: 500,
-        }}
-      />
-      <img
-        src={smallCloud}
-        id="sCloudTen"
-        style={{
-          position: "absolute",
-          width: "75%",
-          opacity: "70%",
-          top: 2000,
-          left: -800,
-          zIndex: 100,
-        }}
-      />
 
       <Steps></Steps>
 

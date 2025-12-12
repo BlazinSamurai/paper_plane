@@ -169,10 +169,13 @@
 @media screen and (max-width: 1390px) and (min-width: 500px) {
   .steps {
     height: 1990px;
+    z-index: auto;
   }
 
   .steps__container {
     display: block;
+    position: relative;
+    z-index: 500;
   }
 
   .steps__title {
@@ -180,6 +183,8 @@
     margin-right: auto;
     left: 0;
     right: 0;
+    text-decoration: solid;
+    text-shadow: -8px 7px 5px #000;
   }
 
   .step__one-title {

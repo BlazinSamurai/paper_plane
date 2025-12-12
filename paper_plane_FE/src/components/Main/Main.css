@@ -3,88 +3,576 @@
   src: url(../../../fonts/konkhmer-sleokchher_5.2.6/webfonts/konkhmer-sleokchher-khmer-400-normal.woff);
 }
 
-@keyframes flyAcross {
+@keyframes moveCloudInfinite {
   0% {
-    transform: translateX(-100vw);
+    transform: translateX(-10vw);
+    opacity: 0;
+  }
+  25% {
     opacity: 0.5;
   }
+  50% {
+    opacity: 0.8; /* Slight fade in the middle */
+  }
   100% {
-    transform: translateX(100vw);
-    opacity: 1;
+    /* Move it 120 viewport widths to ensure it goes completely off-screen */
+    transform: translateX(100%);
+    opacity: 0;
   }
 }
 
 .main {
-  background: linear-gradient(#fff 2%, #4fc2f8, #4fc2f8, #4fc2f8, #4fc2f8);
-  height: 100%;
+  width: 100%;
+  max-height: 100%;
+  background: linear-gradient(#fff 2%, #4fc2f8, #4fc2f8, #4fc2f8);
+  position: relative;
 }
 
 .main__title {
-  top: 6px;
-  z-index: 5;
-  padding: 0 70px 0;
-  margin: 0;
   font-family: Konkhmer Sleokchher, fantasy, sans-serif;
-  color: #000;
-  max-width: 1300px;
-  min-width: 300px;
-  height: 56px;
-  font-size: 35px;
-  text-align: center;
-  line-height: 50px;
-  position: relative;
-  top: 200px;
-  transition: "opacity 0.5s ease-in-out";
-}
-
-.main__title-white {
   color: #fff;
   height: 142px;
   font-size: 88px;
   line-height: 150px;
   text-decoration: solid;
   text-shadow: -8px 7px 11px #000;
-  z-index: 101;
+  display: flex;
+  margin: 0;
 }
 
-.main__title-globe {
-  top: 700px;
+.main__title-welcome {
+  justify-content: center;
+  position: relative;
+  top: 300px;
+  transition: opacity 1.5s linear;
 }
-.main__title-started {
-  top: 1250px;
-  z-index: 130;
-}
+
+/* EXAMPLE CLASS
+  The below class is the "cloud" which is just a oval
+ .cloud {
+Assuming a white background for visibility
+    background: #fff; 
+    position: absolute;
+    border-radius: 50%;
+    opacity: 0.8;
+    Use transform for smooth movement
+    transform: translate(0, 0); 
+} 
+
+ Define different sizes/positions for variety
+.cloud-1 {
+    width: 120px;
+    height: 60px;
+    top: 20px;
+    Start off-screen to the left
+    left: -150px;
+    animation: moveClouds 25s linear infinite;
+    animation-delay: 0s;
+}*/
 
 .main__cloud-container {
   width: 100%;
-  height: 2000px;
+  max-height: 2000px;
   overflow: hidden;
   position: relative;
-  z-index: 100;
+  z-index: 20;
 }
 
-.main__cloud-one {
+.main__cloud-animation {
+  animation: moveCloudInfinite 25s linear infinite;
+  animation-delay: 0s;
+}
+
+/* Animation Sytles: 
+  Use transform for smooth movement
+  transform: translate(0, 0); 
+  opacity: 1; 
+*/
+
+/* Position Styles + Explantion:
+   top: 57vh; 5% of the viewport height from the top 
+   right: 62vw;  10% of the viewport width from the right 
+   width: 5vw;  The width scales with the screen size
+ */
+
+.main__cloud-1 {
   position: absolute;
-  top: 1797px;
+  top: 57vh;
+  right: 53vw;
+  width: 100%;
+  z-index: 221;
 }
 
-@media screen and (max-width: 768px) {
-  .main__title-white {
-    font-size: 60px;
+.main__cloud-2 {
+  position: absolute;
+  top: 57vh;
+  transform: translate(0, 0);
+  opacity: 1;
+}
+
+.main__cloud-3 {
+  position: absolute;
+  top: 75vh;
+  opacity: 85%;
+}
+
+.main__cloud-4 {
+  position: absolute;
+  top: 62vh;
+  right: 90vw;
+  width: 103%;
+  transform: translate(0, 0);
+  opacity: 1;
+}
+
+.main__cloud-5 {
+  visibility: hidden;
+}
+
+.main__cloud-6 {
+  visibility: hidden;
+}
+
+.main__cloud-7 {
+  visibility: hidden;
+}
+
+.main__cloud-8 {
+  visibility: hidden;
+}
+
+.main__cloud-9 {
+  visibility: hidden;
+}
+
+.main__cloud-10 {
+  visibility: hidden;
+}
+
+.main__cloud-11 {
+  visibility: hidden;
+}
+
+.main__cloud-12 {
+  visibility: hidden;
+}
+
+.main__cloud-13 {
+  visibility: hidden;
+}
+
+.main__cloud-14 {
+  visibility: hidden;
+}
+
+.main__cloud-15 {
+  visibility: hidden;
+}
+
+.main__cloud-16 {
+  visibility: hidden;
+}
+
+.main__cloud-17 {
+  visibility: hidden;
+}
+
+.main__cloud-18 {
+  visibility: hidden;
+}
+
+.main__cloud-19 {
+  visibility: hidden;
+}
+
+.main__cloud-20 {
+  visibility: hidden;
+}
+
+.main__cloud-21 {
+  visibility: hidden;
+}
+
+.main__cloud-22 {
+  visibility: hidden;
+}
+
+.main__cloud-23 {
+  visibility: hidden;
+}
+
+/* @media screen and (max-width: 1710px) and (min-width: 1301px) {
+  .main__cloud-1 {
+    visibility: hidden;
   }
 
-  .main__cloud-one {
+  .main__cloud-2 {
+    visibility: hidden;
+  }
+
+  .main__cloud-3 {
+    visibility: hidden;
+  }
+
+  .main__cloud-4 {
+    visibility: hidden;
+  }
+
+  .main__cloud-5 {
+    visibility: hidden;
+  }
+
+  .main__cloud-6 {
+    visibility: hidden;
+  }
+
+  .main__cloud-7 {
+    visibility: hidden;
+  }
+
+  .main__cloud-8 {
+    visibility: hidden;
+  }
+
+  .main__cloud-9 {
+    visibility: hidden;
+  }
+
+  .main__cloud-10 {
+    visibility: hidden;
+  }
+
+  .main__cloud-11 {
+    visibility: hidden;
+  }
+
+  .main__cloud-12 {
+    visibility: hidden;
+  }
+
+  .main__cloud-13 {
+    visibility: hidden;
+  }
+
+  .main__cloud-14 {
+    visibility: hidden;
+  }
+
+  .main__cloud-15 {
+    visibility: hidden;
+  }
+
+  .main__cloud-16 {
+    visibility: hidden;
+  }
+
+  .main__cloud-17 {
+    visibility: hidden;
+  }
+
+  .main__cloud-18 {
+    visibility: hidden;
+  }
+
+  .main__cloud-19 {
+    visibility: hidden;
+  }
+
+  .main__cloud-20 {
+    visibility: hidden;
+  }
+
+  .main__cloud-21 {
+    visibility: hidden;
+  }
+
+  .main__cloud-22 {
+    visibility: hidden;
+  }
+
+  .main__cloud-23 {
+    visibility: hidden;
   }
 }
 
-@media screen and (max-width: 475px) {
-  .main__title {
-    font-size: 28px;
-    padding: 0;
+@media screen and (max-width: 1300px) and (min-width: 1025px) {
+  .main__cloud-1 {
+    visibility: hidden;
   }
 
-  .main__title-white {
-    line-height: 100px;
-    font-size: 50px;
+  .main__cloud-2 {
+    visibility: hidden;
+  }
+
+  .main__cloud-3 {
+    visibility: hidden;
+  }
+
+  .main__cloud-4 {
+    visibility: hidden;
+  }
+
+  .main__cloud-5 {
+    visibility: hidden;
+  }
+
+  .main__cloud-6 {
+    visibility: hidden;
+  }
+
+  .main__cloud-7 {
+    visibility: hidden;
+  }
+
+  .main__cloud-8 {
+    visibility: hidden;
+  }
+
+  .main__cloud-9 {
+    visibility: hidden;
+  }
+
+  .main__cloud-10 {
+    visibility: hidden;
+  }
+
+  .main__cloud-11 {
+    visibility: hidden;
+  }
+
+  .main__cloud-12 {
+    visibility: hidden;
+  }
+
+  .main__cloud-13 {
+    visibility: hidden;
+  }
+
+  .main__cloud-14 {
+    visibility: hidden;
+  }
+
+  .main__cloud-15 {
+    visibility: hidden;
+  }
+
+  .main__cloud-16 {
+    visibility: hidden;
+  }
+
+  .main__cloud-17 {
+    visibility: hidden;
+  }
+
+  .main__cloud-18 {
+    visibility: hidden;
+  }
+
+  .main__cloud-19 {
+    visibility: hidden;
+  }
+
+  .main__cloud-20 {
+    visibility: hidden;
+  }
+
+  .main__cloud-21 {
+    visibility: hidden;
+  }
+
+  .main__cloud-22 {
+    visibility: hidden;
+  }
+
+  .main__cloud-23 {
+    visibility: hidden;
   }
 }
+
+@media screen and (max-width: 1024px) and (min-width: 580px) {
+  .main__cloud-1 {
+    visibility: hidden;
+  }
+
+  .main__cloud-2 {
+    visibility: hidden;
+  }
+
+  .main__cloud-3 {
+    visibility: hidden;
+  }
+
+  .main__cloud-4 {
+    visibility: hidden;
+  }
+
+  .main__cloud-5 {
+    visibility: hidden;
+  }
+
+  .main__cloud-6 {
+    visibility: hidden;
+  }
+
+  .main__cloud-7 {
+    visibility: hidden;
+  }
+
+  .main__cloud-8 {
+    visibility: hidden;
+  }
+
+  .main__cloud-9 {
+    visibility: hidden;
+  }
+
+  .main__cloud-10 {
+    visibility: hidden;
+  }
+
+  .main__cloud-11 {
+    visibility: hidden;
+  }
+
+  .main__cloud-12 {
+    visibility: hidden;
+  }
+
+  .main__cloud-13 {
+    visibility: hidden;
+  }
+
+  .main__cloud-14 {
+    visibility: hidden;
+  }
+
+  .main__cloud-15 {
+    visibility: hidden;
+  }
+
+  .main__cloud-16 {
+    visibility: hidden;
+  }
+
+  .main__cloud-17 {
+    visibility: hidden;
+  }
+
+  .main__cloud-18 {
+    visibility: hidden;
+  }
+
+  .main__cloud-19 {
+    visibility: hidden;
+  }
+
+  .main__cloud-20 {
+    visibility: hidden;
+  }
+
+  .main__cloud-21 {
+    visibility: hidden;
+  }
+
+  .main__cloud-22 {
+    visibility: hidden;
+  }
+
+  .main__cloud-23 {
+    visibility: hidden;
+  }
+}
+
+@media screen and (max-width: 579px) and (min-width: 320px) {
+  .main__cloud-1 {
+    visibility: hidden;
+  }
+
+  .main__cloud-2 {
+    visibility: hidden;
+  }
+
+  .main__cloud-3 {
+    visibility: hidden;
+  }
+
+  .main__cloud-4 {
+    visibility: hidden;
+  }
+
+  .main__cloud-5 {
+    visibility: hidden;
+  }
+
+  .main__cloud-6 {
+    visibility: hidden;
+  }
+
+  .main__cloud-7 {
+    visibility: hidden;
+  }
+
+  .main__cloud-8 {
+    visibility: hidden;
+  }
+
+  .main__cloud-9 {
+    visibility: hidden;
+  }
+
+  .main__cloud-10 {
+    visibility: hidden;
+  }
+
+  .main__cloud-11 {
+    visibility: hidden;
+  }
+
+  .main__cloud-12 {
+    visibility: hidden;
+  }
+
+  .main__cloud-13 {
+    visibility: hidden;
+  }
+
+  .main__cloud-14 {
+    visibility: hidden;
+  }
+
+  .main__cloud-15 {
+    visibility: hidden;
+  }
+
+  .main__cloud-16 {
+    visibility: hidden;
+  }
+
+  .main__cloud-17 {
+    visibility: hidden;
+  }
+
+  .main__cloud-18 {
+    visibility: hidden;
+  }
+
+  .main__cloud-19 {
+    visibility: hidden;
+  }
+
+  .main__cloud-20 {
+    visibility: hidden;
+  }
+
+  .main__cloud-21 {
+    visibility: hidden;
+  }
+
+  .main__cloud-22 {
+    visibility: hidden;
+  }
+
+  .main__cloud-23 {
+    visibility: hidden;
+  }
+} */
