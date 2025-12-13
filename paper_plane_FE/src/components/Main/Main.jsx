@@ -57,6 +57,12 @@ function Main({
   const titleRefTwo = useRef(null);
   const titleRefThree = useRef(null);
   const cloudRefThree = useRef(null);
+  const cloudRefFive = useRef(null);
+  const cloudRefSix = useRef(null);
+  const cloudRefEight = useRef(null);
+  const cloudRefEleven = useRef(null);
+  const cloudRefEighteen = useRef(null);
+  const cloudRefNineteen = useRef(null);
 
   useEffect(() => {
     const observerCallback = (entries) => {
@@ -118,16 +124,50 @@ function Main({
     const titleTwo = titleRefTwo.current;
     const titleThree = titleRefThree.current;
     const cloudThree = cloudRefThree.current;
+    const cloudFive = cloudRefFive.current;
+    const cloudSix = cloudRefSix.current;
+    const cloudEight = cloudRefEight.current;
+    const cloudEleven = cloudRefEleven.current;
+    const cloudEighteen = cloudRefEighteen.current;
+    const cloudNineteen = cloudRefNineteen.current;
 
-    if (titleOne || titleTwo || titleRefThree || cloudThree) {
+    if (
+      titleOne ||
+      titleTwo ||
+      titleRefThree ||
+      cloudThree ||
+      cloudFive ||
+      cloudSix ||
+      cloudEight ||
+      cloudEleven ||
+      cloudEighteen ||
+      cloudNineteen
+    ) {
       observer.observe(titleOne);
       observer.observe(titleTwo);
       observer.observe(titleThree);
       observer.observe(cloudThree);
+      observer.observe(cloudFive);
+      observer.observe(cloudSix);
+      observer.observe(cloudEight);
+      observer.observe(cloudEleven);
+      observer.observe(cloudEighteen);
+      observer.observe(cloudNineteen);
     }
 
     return () => {
-      if (titleOne || titleTwo || titleThree || cloudThree) {
+      if (
+        titleOne ||
+        titleTwo ||
+        titleThree ||
+        cloudThree ||
+        cloudFive ||
+        cloudSix ||
+        cloudEight ||
+        cloudEleven ||
+        cloudEighteen ||
+        cloudNineteen
+      ) {
         observer.disconnect();
       }
     };
@@ -140,13 +180,12 @@ function Main({
         openSignupRoute={openSignupRoute}
         closeActiveRoute={closeActiveRoute}
       ></Header>
-      <h2 ref={titleRefOne} className="main__title main__title-welcome">
-        Welcome Travelers!
-      </h2>
-
       <div id="cloudContainer" className="main__cloud-container">
         {/* The id are named from when the element code was added and not
             where the particular elements are placed on the page. */}
+        <h2 ref={titleRefOne} className="main__title main__title-welcome">
+          Welcome Travelers!
+        </h2>
         <img src={mediumCloud} id="cloud1" className=" main__cloud-1" />
         <img
           src={mediumCloud}
@@ -162,31 +201,70 @@ function Main({
         <img
           src={mediumCloud}
           id="cloud4"
-          className="main__cloud-animation main__cloud-4"
+          className="main__cloud-animation-2 main__cloud-4"
         />
-        <img src={mediumCloud} id="cloud5" className="main__cloud-5" />
-        <img src={smallCloud} id="cloud6" className="main__cloud-6" />
+        <img
+          src={mediumCloud}
+          ref={cloudRefFive}
+          id="cloud5"
+          className="main__cloud-5"
+        />
+        <img
+          src={smallCloud}
+          ref={cloudRefSix}
+          id="cloud6"
+          className="main__cloud-6"
+        />
         <img src={smallCloud} id="cloud7" className="main__cloud-7" />
-        <img src={mediumCloud} id="cloud8" className="main__cloud-8" />
-        <img src={mediumCloud} id="cloud9" className="main__cloud-9" />
-        <img src={smallCloud} id="cloud10" className="main__cloud-10" />
-        <img src={smallCloud} id="cloud11" className="main__cloud-11" />
-        <h2 ref={titleRefTwo} className="main__title">
+        <img
+          src={mediumCloud}
+          ref={cloudRefEight}
+          id="cloud8"
+          className="main__cloud-8"
+        />
+        <div className="main__cloud-animation main__cloud-group-1">
+          <img src={mediumCloud} id="cloud9" className="main__cloud-9" />
+          <img src={smallCloud} id="cloud10" className="main__cloud-10" />
+        </div>
+
+        <img
+          src={smallCloud}
+          ref={cloudRefEleven}
+          id="cloud11"
+          className="main__cloud-11"
+        />
+        <h2 ref={titleRefTwo} className="main__title main__title-start">
           Start explore the world
         </h2>
         <img src={smallCloud} id="cloud12" className="main__cloud-12" />
         <img src={mediumCloud} id="cloud13" className="main__cloud-13" />
         <img src={mediumCloud} id="cloud14" className="main__cloud-14" />
-        <img src={smallCloud} id="cloud15" className="main__cloud-15" />
-        <img src={mediumCloud} id="cloud16" className="main__cloud-16" />
-        <img src={smallCloud} id="cloud17" className="main__cloud-17" />
-        <img src={mediumCloud} id="cloud18" className="main__cloud-18" />
-        <img src={mediumCloud} id="cloud19" className="main__cloud-19" />
-        <h2 ref={titleRefThree} className="main__title">
+        <div className="main__cloud-group-2">
+          <img src={smallCloud} id="cloud15" className="main__cloud-15" />
+          <img src={mediumCloud} id="cloud16" className="main__cloud-16" />
+          <img src={smallCloud} id="cloud17" className="main__cloud-17" />
+        </div>
+
+        <img
+          src={mediumCloud}
+          ref={cloudRefEighteen}
+          id="cloud18"
+          className="main__cloud-18"
+        />
+        <img
+          src={mediumCloud}
+          ref={cloudRefNineteen}
+          id="cloud19"
+          className="main__cloud-19"
+        />
+        <h2 ref={titleRefThree} className="main__title main__title-lets">
           Lets get started . . .
         </h2>
-        <img src={mediumCloud} id="cloud20" className="main__cloud-20" />
-        <img src={smallCloud} id="cloud21" className="main__cloud-21" />
+        <div className="main__cloud-group-3">
+          <img src={mediumCloud} id="cloud20" className="main__cloud-20" />
+          <img src={smallCloud} id="cloud21" className="main__cloud-21" />
+        </div>
+
         <img src={mediumCloud} id="cloud22" className="main__cloud-22" />
         <img src={smallCloud} id="cloud23" className="main__cloud-23" />
       </div>

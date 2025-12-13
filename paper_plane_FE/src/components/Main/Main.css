@@ -5,19 +5,42 @@
 
 @keyframes moveCloudInfinite {
   0% {
-    transform: translateX(-10vw);
+    transform: translateX(-70vw);
+    opacity: 0.5;
+  }
+  25% {
+    opacity: 0.8;
+  }
+  50% {
+    opacity: 1;
+  }
+  75% {
+    opacity: 0.5;
+  }
+  100% {
+    /* Move it 120 viewport widths to ensure it goes completely off-screen */
+    transform: translateX(120vw);
     opacity: 0;
+  }
+}
+
+@keyframes moveCloudInfinite2 {
+  0% {
+    transform: translateX(-10vw);
+    opacity: 0.5;
   }
   25% {
     opacity: 0.5;
   }
   50% {
-    opacity: 0.8; /* Slight fade in the middle */
+    opacity: 1;
+  }
+  75% {
+    opacity: 0.8;
   }
   100% {
-    /* Move it 120 viewport widths to ensure it goes completely off-screen */
-    transform: translateX(100%);
-    opacity: 0;
+    transform: translateX(180vw);
+    opacity: 0.5;
   }
 }
 
@@ -26,25 +49,6 @@
   max-height: 100%;
   background: linear-gradient(#fff 2%, #4fc2f8, #4fc2f8, #4fc2f8);
   position: relative;
-}
-
-.main__title {
-  font-family: Konkhmer Sleokchher, fantasy, sans-serif;
-  color: #fff;
-  height: 142px;
-  font-size: 88px;
-  line-height: 150px;
-  text-decoration: solid;
-  text-shadow: -8px 7px 11px #000;
-  display: flex;
-  margin: 0;
-}
-
-.main__title-welcome {
-  justify-content: center;
-  position: relative;
-  top: 300px;
-  transition: opacity 1.5s linear;
 }
 
 /* EXAMPLE CLASS
@@ -72,14 +76,40 @@ Assuming a white background for visibility
 
 .main__cloud-container {
   width: 100%;
-  max-height: 2000px;
+  height: 100%;
+  min-height: 2000px;
   overflow: hidden;
   position: relative;
-  z-index: 20;
+}
+
+.main__title {
+  font-family: Konkhmer Sleokchher, fantasy, sans-serif;
+  color: #fff;
+  height: 142px;
+  font-size: 88px;
+  line-height: 150px;
+  text-decoration: solid;
+  text-shadow: -8px 7px 11px #000;
+  display: flex;
+  margin: 0;
+}
+
+.main__title-welcome {
+  position: absolute;
+  top: 10vh;
+  transition: opacity 1.5s linear;
+  width: 100vw;
+  justify-content: center;
+  z-index: 102;
 }
 
 .main__cloud-animation {
-  animation: moveCloudInfinite 25s linear infinite;
+  animation: moveCloudInfinite 50s linear infinite;
+  animation-delay: 0s;
+}
+
+.main__cloud-animation-2 {
+  animation: moveCloudInfinite2 75s linear infinite;
   animation-delay: 0s;
 }
 
@@ -97,28 +127,32 @@ Assuming a white background for visibility
 
 .main__cloud-1 {
   position: absolute;
-  top: 57vh;
+  top: 11vh;
   right: 53vw;
   width: 100%;
-  z-index: 221;
+  opacity: 73%;
+  z-index: 101;
 }
 
 .main__cloud-2 {
   position: absolute;
-  top: 57vh;
+  top: 30vh;
   transform: translate(0, 0);
   opacity: 1;
+  z-index: 92;
 }
 
 .main__cloud-3 {
   position: absolute;
-  top: 75vh;
+  top: 30vh;
+  left: 51vw;
+  width: 80%;
   opacity: 85%;
 }
 
 .main__cloud-4 {
   position: absolute;
-  top: 62vh;
+  top: 44vh;
   right: 90vw;
   width: 103%;
   transform: translate(0, 0);
@@ -126,75 +160,173 @@ Assuming a white background for visibility
 }
 
 .main__cloud-5 {
-  visibility: hidden;
+  position: absolute;
+  top: 37vh;
+  right: 18vw;
+  width: 80%;
+  rotate: 180deg;
 }
 
 .main__cloud-6 {
-  visibility: hidden;
+  position: absolute;
+  top: 43vh;
+  right: -65vw;
+  width: 125%;
+  rotate: 180deg;
 }
 
 .main__cloud-7 {
-  visibility: hidden;
+  position: absolute;
+  top: 66vh;
+  left: -17vw;
+  width: 83%;
+  opacity: 60%;
+  rotate: 180deg;
 }
 
 .main__cloud-8 {
-  visibility: hidden;
+  position: absolute;
+  top: 90vh;
+  right: -11vw;
+  width: 78%;
+}
+
+.main__cloud-group-1 {
+  width: 100%;
+  position: absolute;
+  top: 110vh;
 }
 
 .main__cloud-9 {
-  visibility: hidden;
+  position: absolute;
+  top: 15vh;
+  rotate: 180deg;
 }
 
 .main__cloud-10 {
-  visibility: hidden;
+  position: absolute;
+  top: -5vh;
+  right: 40vw;
+  width: 60%;
+  transform: translate(0, 0);
+  opacity: 1;
 }
 
 .main__cloud-11 {
-  visibility: hidden;
+  position: absolute;
+  top: 75vh;
+  width: 61%;
+  rotate: 180deg;
+}
+
+.main__title-start {
+  position: absolute;
+  top: 50%;
+  transition: opacity 1.5s linear;
+  width: 100vw;
+  justify-content: center;
+  z-index: 112;
 }
 
 .main__cloud-12 {
-  visibility: hidden;
+  position: absolute;
+  top: 100vh;
+  right: 10vw;
+  opacity: 30%;
+  rotate: 180deg;
 }
 
 .main__cloud-13 {
-  visibility: hidden;
+  position: absolute;
+  top: 102vh;
+  right: 2vw;
+  width: 75%;
+  opacity: 40%;
+  rotate: 180deg;
 }
 
 .main__cloud-14 {
-  visibility: hidden;
+  position: absolute;
+  top: 118vh;
+  right: 19vw;
+  width: 70%;
+  opacity: 20%;
+}
+
+.main__group-cloud-2 {
+  width: 100%;
+  position: absolute;
 }
 
 .main__cloud-15 {
-  visibility: hidden;
+  position: absolute;
+  top: 129vh;
+  left: -7vw;
+  rotate: 180deg;
+  opacity: 16%;
 }
 
 .main__cloud-16 {
-  visibility: hidden;
+  position: absolute;
+  top: 120vh;
+  left: -6vw;
+  width: 70%;
+  opacity: 45%;
 }
 
 .main__cloud-17 {
-  visibility: hidden;
+  position: absolute;
+  top: 130vh;
+  right: 27vw;
+  rotate: 180deg;
+  width: 47%;
+  opacity: 30%;
 }
 
 .main__cloud-18 {
-  visibility: hidden;
+  position: absolute;
+  top: 123vh;
+  left: -29vw;
+  rotate: 180deg;
+  width: 91%;
 }
 
 .main__cloud-19 {
-  visibility: hidden;
+  position: absolute;
+  top: 148vh;
+  right: -5vw;
+  width: 55%;
+}
+
+.main__title-lets {
+  position: absolute;
+  top: 90%;
+  transition: opacity 1.5s linear;
+  width: 100vw;
+  justify-content: center;
+}
+
+.main__cloud-group-4 {
+  width: 100%;
+  position: absolute;
 }
 
 .main__cloud-20 {
-  visibility: hidden;
+  position: absolute;
+  top: 154vh;
 }
 
 .main__cloud-21 {
-  visibility: hidden;
+  position: absolute;
+  top: 155vh;
 }
 
 .main__cloud-22 {
-  visibility: hidden;
+  position: absolute;
+  top: 128vh;
+  right: -41vw;
+  width: 95%;
+  opacity: 50%;
 }
 
 .main__cloud-23 {
