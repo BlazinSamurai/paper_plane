@@ -46,9 +46,8 @@
 
 .main {
   width: 100%;
-  max-height: 100%;
-  background: linear-gradient(#fff 2%, #4fc2f8, #4fc2f8, #4fc2f8);
-  position: relative;
+  max-height: 500px;
+  background: linear-gradient(#fff 19%, #4fc2f8, #000);
 }
 
 /* EXAMPLE CLASS
@@ -95,12 +94,16 @@ Assuming a white background for visibility
 }
 
 .main__title-welcome {
-  position: absolute;
+  /* position: absolute;
   top: 10vh;
   transition: opacity 1.5s linear;
-  width: 100vw;
   justify-content: center;
-  z-index: 102;
+  z-index: 102; */
+  width: 100vw;
+  font-size: 75px;
+  padding-bottom: 266px;
+  display: flex;
+  justify-content: center;
 }
 
 .main__cloud-animation {

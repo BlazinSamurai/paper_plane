@@ -64,114 +64,114 @@ function Main({
   const cloudRefEighteen = useRef(null);
   const cloudRefNineteen = useRef(null);
 
-  useEffect(() => {
-    const observerCallback = (entries) => {
-      entries.forEach((entry) => {
-        // interface tells you how much of the target element is currently
-        // visible within the root's intersection ratio, as a value between
-        // 0.0 and 1.0
-        // console.log(entry.intersectionRatio);
+  // useEffect(() => {
+  //   const observerCallback = (entries) => {
+  //     entries.forEach((entry) => {
+  // interface tells you how much of the target element is currently
+  // visible within the root's intersection ratio, as a value between
+  // 0.0 and 1.0
+  // console.log(entry.intersectionRatio);
 
-        // interface is a Boolean value which is true if the target element
-        // intersects with the intersection observer's root
-        //You can see if the target currently intersects the root by looking
-        // at the entry's isIntersecting propert
-        // if (entry.isIntersecting) {
-        //   setIsVisible(true);
-        // } else {
-        //   setIsVisible(false);
-        // }
+  // interface is a Boolean value which is true if the target element
+  // intersects with the intersection observer's root
+  //You can see if the target currently intersects the root by looking
+  // at the entry's isIntersecting propert
+  // if (entry.isIntersecting) {
+  //   setIsVisible(true);
+  // } else {
+  //   setIsVisible(false);
+  // }
 
-        // set the opacity to the intersectionRatio
-        entry.target.style.opacity = entry.intersectionRatio;
-      });
-    };
+  // set the opacity to the intersectionRatio
+  //     entry.target.style.opacity = entry.intersectionRatio;
+  //   });
+  // };
 
-    const observerOptions = {
-      // The element that is used as the
-      // viewport for checking visibility of the target.
-      root: null,
-      // Margin around nested scroll containers that
-      // takes the same values/has same default as rootMargin
-      rootMargin: "0px",
-      // Either a single number or an array of numbers which
-      // indicate at what percentage of the target's visibility
-      // the observer's callback should be executed.
-      // array of numbers of target visibility
-      threshold: buildThresholdList(),
-      // callback executes when 10% of the target is visible
-      // threshold: 0.1,
-    };
+  // const observerOptions = {
+  // The element that is used as the
+  // viewport for checking visibility of the target.
+  // root: null,
+  // Margin around nested scroll containers that
+  // takes the same values/has same default as rootMargin
+  // rootMargin: "0px",
+  // Either a single number or an array of numbers which
+  // indicate at what percentage of the target's visibility
+  // the observer's callback should be executed.
+  // array of numbers of target visibility
+  // threshold: buildThresholdList(),
+  // callback executes when 10% of the target is visible
+  // threshold: 0.1,
+  // };
 
-    const observer = new IntersectionObserver(
-      observerCallback,
-      observerOptions
-    );
+  // const observer = new IntersectionObserver(
+  //   observerCallback,
+  //   observerOptions
+  // );
 
-    function buildThresholdList() {
-      const numSteps = 20;
+  // function buildThresholdList() {
+  //   const numSteps = 20;
 
-      for (let i = 1.0; i <= numSteps; i++) {
-        const ratio = i / numSteps;
-        thresholds.push(ratio);
-      }
+  //   for (let i = 1.0; i <= numSteps; i++) {
+  //     const ratio = i / numSteps;
+  //     thresholds.push(ratio);
+  //   }
 
-      thresholds.push(0);
-      return thresholds;
-    }
+  //   thresholds.push(0);
+  //   return thresholds;
+  // }
 
-    const titleOne = titleRefOne.current;
-    const titleTwo = titleRefTwo.current;
-    const titleThree = titleRefThree.current;
-    const cloudThree = cloudRefThree.current;
-    const cloudFive = cloudRefFive.current;
-    const cloudSix = cloudRefSix.current;
-    const cloudEight = cloudRefEight.current;
-    const cloudEleven = cloudRefEleven.current;
-    const cloudEighteen = cloudRefEighteen.current;
-    const cloudNineteen = cloudRefNineteen.current;
+  // const titleOne = titleRefOne.current;
+  // const titleTwo = titleRefTwo.current;
+  // const titleThree = titleRefThree.current;
+  // const cloudThree = cloudRefThree.current;
+  // const cloudFive = cloudRefFive.current;
+  // const cloudSix = cloudRefSix.current;
+  // const cloudEight = cloudRefEight.current;
+  // const cloudEleven = cloudRefEleven.current;
+  // const cloudEighteen = cloudRefEighteen.current;
+  // const cloudNineteen = cloudRefNineteen.current;
 
-    if (
-      titleOne ||
-      titleTwo ||
-      titleRefThree ||
-      cloudThree ||
-      cloudFive ||
-      cloudSix ||
-      cloudEight ||
-      cloudEleven ||
-      cloudEighteen ||
-      cloudNineteen
-    ) {
-      observer.observe(titleOne);
-      observer.observe(titleTwo);
-      observer.observe(titleThree);
-      observer.observe(cloudThree);
-      observer.observe(cloudFive);
-      observer.observe(cloudSix);
-      observer.observe(cloudEight);
-      observer.observe(cloudEleven);
-      observer.observe(cloudEighteen);
-      observer.observe(cloudNineteen);
-    }
+  // if (
+  //   titleOne ||
+  //   titleTwo ||
+  //   titleRefThree ||
+  //   cloudThree ||
+  //   cloudFive ||
+  //   cloudSix ||
+  //   cloudEight ||
+  //   cloudEleven ||
+  //   cloudEighteen ||
+  //   cloudNineteen
+  // ) {
+  //   observer.observe(titleOne);
+  //   observer.observe(titleTwo);
+  //   observer.observe(titleThree);
+  //   observer.observe(cloudThree);
+  //   observer.observe(cloudFive);
+  //   observer.observe(cloudSix);
+  //   observer.observe(cloudEight);
+  //   observer.observe(cloudEleven);
+  //   observer.observe(cloudEighteen);
+  //   observer.observe(cloudNineteen);
+  // }
 
-    return () => {
-      if (
-        titleOne ||
-        titleTwo ||
-        titleThree ||
-        cloudThree ||
-        cloudFive ||
-        cloudSix ||
-        cloudEight ||
-        cloudEleven ||
-        cloudEighteen ||
-        cloudNineteen
-      ) {
-        observer.disconnect();
-      }
-    };
-  }, []);
+  // return () => {
+  //   if (
+  //     titleOne ||
+  //     titleTwo ||
+  //     titleThree ||
+  //     cloudThree ||
+  //     cloudFive ||
+  //     cloudSix ||
+  //     cloudEight ||
+  //     cloudEleven ||
+  //     cloudEighteen ||
+  //     cloudNineteen
+  //   ) {
+  //     observer.disconnect();
+  //   }
+  // };
+  // }, []);
 
   return (
     <main className="main">
@@ -180,9 +180,14 @@ function Main({
         openSignupRoute={openSignupRoute}
         closeActiveRoute={closeActiveRoute}
       ></Header>
-      <div id="cloudContainer" className="main__cloud-container">
-        {/* The id are named from when the element code was added and not
+
+      <h2 ref={titleRefOne} className="main__title main__title-welcome">
+        Welcome Travelers!
+      </h2>
+
+      {/* The id are named from when the element code was added and not
             where the particular elements are placed on the page. */}
+      {/* <div id="cloudContainer" className="main__cloud-container">
         <h2 ref={titleRefOne} className="main__title main__title-welcome">
           Welcome Travelers!
         </h2>
@@ -267,9 +272,7 @@ function Main({
 
         <img src={mediumCloud} id="cloud22" className="main__cloud-22" />
         <img src={smallCloud} id="cloud23" className="main__cloud-23" />
-      </div>
-
-      <Steps></Steps>
+      </div> */}
 
       {/* GLOBE SECTION */}
       <div
@@ -279,6 +282,8 @@ function Main({
       >
         {/* The map will be appended here by the useEffect hook */}
       </div>
+
+      <Steps></Steps>
 
       <Footer></Footer>
     </main>
