@@ -1,13 +1,10 @@
-const baseUrl =
-  process.env.NODE_ENV === "production"
-    ? "https://api.paperplane.csproject.org"
-    : "http://localhost:3001";
+const baseUrl = process.env.NODE_ENV === "production" ? "https://api.paperplane.csproject.org" : "http://localhost:3001";
 
 function checkResponse(res) {
   if (res.ok) {
     return res.json();
   } else {
-    return Promise.reject(`Error: ${res.status} + ${res.message}`);
+    return Promise.reject(`Error: ${res.status}`);
   }
 }
 
@@ -70,11 +67,4 @@ function getUserInfo(token) {
   });
 }
 
-export {
-  baseUrl,
-  request,
-  signUp,
-  loginViaUsername,
-  loginViaEmail,
-  getUserInfo,
-};
+export { baseUrl, request, signUp, loginViaUsername, loginViaEmail, getUserInfo };

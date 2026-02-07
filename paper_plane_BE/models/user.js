@@ -5,9 +5,12 @@ const bcrypt = require("bcryptjs");
 const userSchema = new mongoose.Schema({
   userName: {
     type: String,
+    unique: true,
     required: [true, "The name field is required."],
     minlength: 1,
     maxlength: 20,
+    trim: true, // Recommended: removes accidental whitespace
+    index: true, // Explicitly tells Mongoose to create an index
   },
   email: {
     type: String,
@@ -27,13 +30,12 @@ const userSchema = new mongoose.Schema({
   },
   profilePic: {
     type: String,
-    unique: true,
     require: [true, "The profile picture field is required."],
     validate: {
       validator(value) {
         return validator.isURL(value);
       },
-      message: "You must enter a valid email address.",
+      message: "You must enter a valid URL.",
     },
   },
 });
@@ -45,9 +47,7 @@ userSchema.statics.findUserByEmail = function findUserByEmail(email, password) {
     .then((user) => {
       // not found - rejecting the promise
       if (!user) {
-        return Promise.reject(
-          new Error("Invalid: Email or password combination.")
-        );
+        return Promise.reject(new Error("Invalid: Email or password combination."));
       }
       // found - comparing hashes
       return bcrypt.compare(password, user.password).then((matched) => {
@@ -61,19 +61,14 @@ userSchema.statics.findUserByEmail = function findUserByEmail(email, password) {
     });
 };
 
-userSchema.statics.findUserByUsername = function findUserByUsername(
-  userName,
-  password
-) {
+userSchema.statics.findUserByUsername = function findUserByUsername(userName, password) {
   // trying to find the user by username
   return this.findOne({ userName })
     .select("+password")
     .then((user) => {
       // not found - rejecting the promise
       if (!user) {
-        return Promise.reject(
-          new Error("Invalid: userName and password combination.")
-        );
+        return Promise.reject(new Error("Invalid: userName and password combination."));
       }
       // found - comparing hashes
       return bcrypt.compare(password, user.password).then((matched) => {

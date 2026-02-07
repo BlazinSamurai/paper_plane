@@ -1,17 +1,9 @@
 import { useContext, useEffect, useState } from "react";
 import { Routes, Route, useNavigate, Navigate } from "react-router-dom";
 import { setToken, getToken } from "../../utils/token";
-import {
-  signUp,
-  loginViaUsername,
-  loginViaEmail,
-  getUserInfo,
-} from "../../utils/auth";
+import { signUp, loginViaUsername, loginViaEmail, getUserInfo } from "../../utils/auth";
 import { createTrip, getTrips } from "../../utils/trips";
-import {
-  CurrentUserContext,
-  CurrentUserProvider,
-} from "../../Context/CurrentUserContext";
+import { CurrentUserContext, CurrentUserProvider } from "../../Context/CurrentUserContext";
 
 import "./App.css";
 
@@ -24,8 +16,7 @@ import ProtectedRoute from "../ProtectedRoute/ProtectRoute";
 function AppContent() {
   const [activeRoute, setActiveRoute] = useState("");
   const [tempTrip, setTempTrip] = useState([]);
-  const { isLoggedIn, setCurrentUser, setIsLoggedIn } =
-    useContext(CurrentUserContext);
+  const { isLoggedIn, setCurrentUser, setIsLoggedIn } = useContext(CurrentUserContext);
   const navigate = useNavigate();
 
   const closeActiveRoute = () => {
@@ -90,7 +81,11 @@ function AppContent() {
         setIsLoggedIn(true);
         navigate("/homepage");
       })
-      .catch(console.error);
+      .catch((err) => {
+        if (err.code === 409) {
+          console.error("Email or Username already exists.");
+        }
+      });
   };
 
   const handleLogout = () => {
@@ -117,10 +112,11 @@ function AppContent() {
   useEffect(() => {
     const jwt = getToken();
 
-    if (!jwt) {
+    if (jwt) {
       setCurrentUser(null);
       setIsLoggedIn(false);
-      return;
+      setToken(null);
+      return navigate("/");
     } else {
       getUserInfo(jwt)
         .then((data) => {
@@ -142,52 +138,14 @@ function AppContent() {
     <div className="page">
       <div className="page_content">
         <Routes>
-          <Route
-            path="/"
-            element={
-              <Main
-                openLoginRoute={openLoginRoute}
-                openSignupRoute={openSignupRoute}
-                closeActiveRoute={closeActiveRoute}
-                isLoggedIn={isLoggedIn}
-              />
-            }
-          />
-          <Route
-            path="/signup"
-            element={
-              <SignupModal
-                isOpen={activeRoute}
-                signupHandler={handleSignupSubmit}
-                openLoginRoute={openLoginRoute}
-                openSignupRoute={openSignupRoute}
-                closeActiveRoute={closeActiveRoute}
-              />
-            }
-          />
-          <Route
-            path="/login"
-            element={
-              <LoginModal
-                isOpen={activeRoute}
-                loginHandler={handleLoginSubmit}
-                openLoginRoute={openLoginRoute}
-                openSignupRoute={openSignupRoute}
-                closeActiveRoute={closeActiveRoute}
-              />
-            }
-          />
+          <Route path="/" element={<Main openLoginRoute={openLoginRoute} openSignupRoute={openSignupRoute} closeActiveRoute={closeActiveRoute} isLoggedIn={isLoggedIn} />} />
+          <Route path="/signup" element={<SignupModal isOpen={activeRoute} signupHandler={handleSignupSubmit} openLoginRoute={openLoginRoute} openSignupRoute={openSignupRoute} closeActiveRoute={closeActiveRoute} />} />
+          <Route path="/login" element={<LoginModal isOpen={activeRoute} loginHandler={handleLoginSubmit} openLoginRoute={openLoginRoute} openSignupRoute={openSignupRoute} closeActiveRoute={closeActiveRoute} />} />
           <Route
             path="/homepage"
             element={
               <ProtectedRoute isLoggedIn={isLoggedIn}>
-                <HomePage
-                  isLoggedIn={isLoggedIn}
-                  onLogout={handleLogout}
-                  closeActiveRoute={closeActiveRoute}
-                  addNewTrip={addNewTrip}
-                  itinerary={tempTrip}
-                />
+                <HomePage isLoggedIn={isLoggedIn} onLogout={handleLogout} closeActiveRoute={closeActiveRoute} addNewTrip={addNewTrip} itinerary={tempTrip} />
               </ProtectedRoute>
             }
           />

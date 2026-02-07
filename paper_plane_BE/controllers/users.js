@@ -18,27 +18,23 @@ const createUser = (req, res, next) => {
   if (!password) {
     return next(new BadRequestError("Password is required"));
   }
-  return User.findOne({ email })
+  return User.findOne({ email, userName })
     .then((existingUser) => {
       if (existingUser) {
-        return next(new ConflictError("This email already exists"));
+        return next(new ConflictError("This email or username already exists."));
       }
       return bcrypt.hash(password, 10).then((hash) =>
-        User.create({ userName, profilePic, email, password: hash }).then(
-          (user) =>
-            res.status(OKAY_STATUS).send({
-              userName: user.userName,
-              profilePic: user.profilePic,
-              email: user.email,
-              _id: user._id,
-            })
-        )
+        User.create({ userName, profilePic, email, password: hash }).then((user) =>
+          res.status(OKAY_STATUS).send({
+            userName: user.userName,
+            profilePic: user.profilePic,
+            email: user.email,
+            _id: user._id,
+          }),
+        ),
       );
     })
     .catch((err) => {
-      if (err.code === 11000) {
-        return next(new ConflictError("Duplication error."));
-      }
       if (err.name === "ValidationError") {
         return next(new BadRequestError("Invalid data."));
       }
@@ -51,9 +47,7 @@ const loginViaUsername = (req, res, next) => {
   const { userName, password } = req.body;
 
   if (!userName || !password) {
-    return next(
-      new BadRequestError("Username and Password fields are required.")
-    );
+    return next(new BadRequestError("Username and Password fields are required."));
   }
 
   return User.findUserByUsername(userName, password)
