@@ -82,10 +82,14 @@ function AppContent() {
         navigate("/homepage");
       })
       .catch((err) => {
-        if (err.code === 409) {
-          console.error("Email or Username already exists.");
+        // console.error("Incorrect: Username and Password combination.", err);
+        if (err.status === 409) {
+          console.error("Username or Email already exists.");
         }
       });
+    // .catch((err) => {
+    //   console.log(err);
+    // });
   };
 
   const handleLogout = () => {

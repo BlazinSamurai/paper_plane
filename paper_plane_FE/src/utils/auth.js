@@ -4,7 +4,15 @@ function checkResponse(res) {
   if (res.ok) {
     return res.json();
   } else {
-    return Promise.reject(`Error: ${res.status}`);
+    return res.json().then((data) => {
+      return Promise.reject(data);
+    }).catch((err) => {
+      // If the response body isn't JSON (e.g., HTML error page), create an error object
+      return Promise.reject({
+        message: `Error: ${res.status} ${res.statusText}`,
+        status: res.status
+      });
+    });
   }
 }
 

@@ -21,7 +21,7 @@ const createUser = (req, res, next) => {
   return User.findOne({ email, userName })
     .then((existingUser) => {
       if (existingUser) {
-        return next(new ConflictError("This email or username already exists."));
+        return next(new ConflictError("This username or email already exists."));
       }
       return bcrypt.hash(password, 10).then((hash) =>
         User.create({ userName, profilePic, email, password: hash }).then((user) =>
@@ -37,6 +37,9 @@ const createUser = (req, res, next) => {
     .catch((err) => {
       if (err.name === "ValidationError") {
         return next(new BadRequestError("Invalid data."));
+      }
+      if (err.name === "MongoServerError" && err.code === 11000) {
+        return next(new ConflictError("This email or username already exists."));
       }
       return next(err);
     });
